@@ -4,7 +4,7 @@ import { getCollection } from 'astro:content';
 /**
  * Live "Latest from Substack" endpoint.
  *
- * Runs on demand (Vercel serverless) — NOT prerendered — so it can fetch the
+ * Runs on demand (Vercel serverless), NOT prerendered, so it can fetch the
  * Substack RSS feed server-side, sidestepping the browser CORS restrictions
  * that block a direct client fetch. Returns the newest posts and marks which
  * ones already have a dedicated page on this site.

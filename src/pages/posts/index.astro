@@ -11,10 +11,10 @@ const posts = (await getCollection('posts', ({ data }) => !data.draft)).sort(
 
 const title = 'Essays & podcasts on the political economy of AI';
 const description =
-  'Every Generative Futures essay and podcast — on AI’s contingency, alignment, the agent economy, work, and how democratic societies can steer technology.';
+  'Every Generative Futures essay and podcast, on AI’s contingency, alignment, the agent economy, work, and how democratic societies can steer technology.';
 
 const schema = [
-  itemListSchema(posts, 'Generative Futures — all essays and podcasts'),
+  itemListSchema(posts, 'Generative Futures, all essays and podcasts'),
   breadcrumbSchema([
     { name: 'Home', path: '/' },
     { name: 'Essays & podcasts', path: '/posts' },
@@ -30,7 +30,7 @@ const schema = [
         <h1>Essays &amp; podcasts</h1>
         <p class="lede">
           {posts.length} pieces on how to escape techno-determinism and build
-          progressive technological futures — from AI architecture and alignment
+          progressive technological futures, from AI architecture and alignment
           to the geopolitics of compute.
         </p>
       </div>

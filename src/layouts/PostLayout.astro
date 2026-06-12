@@ -66,7 +66,7 @@ const postTopics = data.topics
         {
           data.guest && (
             <p class="muted" style="margin-top:0.5rem;">
-              <strong>Guest:</strong> {data.guest.name} — {data.guest.bio}
+              <strong>Guest:</strong> {data.guest.name}, {data.guest.bio}
             </p>
           )
         }
@@ -79,7 +79,7 @@ const postTopics = data.topics
             <div class="embed">
               <iframe
                 src={`https://www.youtube-nocookie.com/embed/${data.youtubeId}`}
-                title={`${data.title} — watch on YouTube`}
+                title={`${data.title}, watch on YouTube`}
                 loading="lazy"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowfullscreen
@@ -111,7 +111,7 @@ const postTopics = data.topics
           )
         }
 
-        {/* Primary CTA — the point of the whole site */}
+        {/* Primary CTA, the point of the whole site */}
         <div class="callout" style="border-color:#cfe0ff;background:#f3f7ff;">
           <h3 style="margin-top:0;">
             {data.type === 'podcast' ? 'Listen to the full episode' : 'Read the full piece'}
@@ -119,7 +119,7 @@ const postTopics = data.topics
           <p>
             This is a summary. {data.type === 'podcast'
               ? 'Listen to the full conversation on your platform of choice, or read the companion essay on Substack.'
-              : 'Read the complete essay — with all the sources and argument — on Substack.'}
+              : 'Read the complete essay, with all the sources and argument, on Substack.'}
           </p>
           <div class="hero__actions" style="margin-top:1rem;">
             <a class="btn btn-primary" href={data.substackUrl} rel="noopener" target="_blank">
@@ -149,7 +149,7 @@ const postTopics = data.topics
 
         <FAQ faqs={data.faqs} />
 
-        {/* Entities — context for readers and answer engines */}
+        {/* Entities, context for readers and answer engines */}
         {
           data.entities.length > 0 && (
             <section>

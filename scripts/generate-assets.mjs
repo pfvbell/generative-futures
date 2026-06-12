@@ -1,18 +1,18 @@
 /**
  * Generate every brand raster the site needs from the master logo
- * (`assets/brand-logo.png` — the navy square with the cream diverging mark).
+ * (`assets/brand-logo.png`, the navy square with the cream diverging mark).
  *
  * Runs automatically before each build via the `prebuild` npm script, and can
  * be run manually:  node scripts/generate-assets.mjs
  *
  * Outputs (into /public):
- *   logo.png            512×512 full square — Organization/OG schema + OG image
- *   mark.png            256×256 tight mark on navy — header brand chip
+ *   logo.png            512×512 full square, Organization/OG schema + OG image
+ *   mark.png            256×256 tight mark on navy, header brand chip
  *   apple-touch-icon    180×180 tight mark on navy
  *   favicon-32 / -16    PNG favicons
  *   og-default.png      1200×630 social share card (logo + wordmark + tagline)
  *
- * Uses `sharp`, a dependency of Astro — no extra install.
+ * Uses `sharp`, a dependency of Astro, no extra install.
  */
 import sharp from 'sharp';
 import { fileURLToPath } from 'node:url';
@@ -23,7 +23,7 @@ const r = (p) => resolve(root, p);
 const SRC = r('assets/brand-logo.png');
 
 async function run() {
-  // The logo's own background navy — reused so composites blend seamlessly.
+  // The logo's own background navy, reused so composites blend seamlessly.
   const corner = await sharp(SRC)
     .extract({ left: 0, top: 0, width: 1, height: 1 })
     .raw()

@@ -4,8 +4,8 @@ import sitemap from '@astrojs/sitemap';
 import vercel from '@astrojs/vercel';
 
 // The canonical production URL. Change this to your custom domain once it's live
-// (e.g. 'https://generativefutures.org'). Everything SEO — canonical tags,
-// sitemap, RSS, JSON-LD, Open Graph — derives from this single value.
+// (e.g. 'https://generativefutures.org'). Everything SEO, canonical tags,
+// sitemap, RSS, JSON-LD, Open Graph, derives from this single value.
 export const SITE_URL = 'https://generativefutures.app';
 
 // https://astro.build/config

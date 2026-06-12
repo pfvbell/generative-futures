@@ -8,7 +8,7 @@ const posts = await getCollection('posts', ({ data }) => !data.draft);
 const countFor = (slug: string) =>
   posts.filter((p) => p.data.topics.includes(slug)).length;
 
-const title = 'Topics — the political economy of AI, explained';
+const title = 'Topics, the political economy of AI, explained';
 const description =
   'Explore Generative Futures by theme: the political economy of AI, how AI works, AI and work, AI safety and alignment, AI geopolitics, and AI and society.';
 

@@ -2,7 +2,7 @@
   "name": "generative-futures",
   "type": "module",
   "version": "1.0.0",
-  "description": "Generative Futures — the political economy of AI. SEO/AEO-optimised companion site for the Substack, YouTube and podcast.",
+  "description": "Generative Futures, the political economy of AI. SEO/AEO-optimised companion site for the Substack, YouTube and podcast.",
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",

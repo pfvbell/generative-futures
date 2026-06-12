@@ -1,4 +1,4 @@
-# Generative Futures — website
+# Generative Futures, website
 
 The SEO/AEO-optimised companion site for **Generative Futures**, Phil Bell's
 publication on the political economy of AI. Its job is to help people discover
@@ -6,7 +6,7 @@ the work and route them to the [Substack](https://genfutures.substack.com),
 [YouTube](https://www.youtube.com/@generativefutures), and the podcast (on
 Spotify and Apple Podcasts).
 
-Built with [Astro](https://astro.build) — static, fast, and structured-data
+Built with [Astro](https://astro.build), static, fast, and structured-data
 rich. Designed to deploy to Vercel with a custom domain.
 
 ---
@@ -27,7 +27,7 @@ brand, replace that one file and rebuild.
 
 **Analytics:** [Vercel Web Analytics](https://vercel.com/docs/analytics) is
 wired in (`@vercel/analytics` in `src/layouts/BaseLayout.astro`). It only
-collects data once deployed to Vercel — enable it in the Vercel dashboard under
+collects data once deployed to Vercel, enable it in the Vercel dashboard under
 *Project → Analytics*. It's a no-op locally.
 
 ---
@@ -50,11 +50,11 @@ public/                 ← robots.txt, favicon, generated images
 ## Editing content
 
 **Add or update a post:** create/edit a Markdown file in `src/content/posts/`.
-The frontmatter drives everything — meta description, summary, takeaways, the
+The frontmatter drives everything, meta description, summary, takeaways, the
 FAQ (which becomes FAQ schema for AI answer engines), entities, keywords, and
 the outbound links. See any existing file for the full shape, or
 `src/content.config.ts` for the schema. The Markdown body is short original
-commentary that points readers to the full piece on Substack — we deliberately
+commentary that points readers to the full piece on Substack, we deliberately
 do **not** republish the source articles.
 
 **Change a link, the brand, or the author:** edit `src/site.config.ts`. Every
@@ -65,9 +65,9 @@ page, the footer, and the structured data read from it.
 These were probable-but-unconfirmed during research. Confirm, then fill in
 `src/site.config.ts`:
 
-- **X/Twitter handle** — research found `@PhilipfvBell` but couldn't verify it.
+- **X/Twitter handle**, research found `@PhilipfvBell` but couldn't verify it.
   Set `AUTHOR.twitter` and `AUTHOR.twitterHandle` once confirmed (empty = hidden).
-- **Newspeak House reading group** — referenced on the About page from your own
+- **Newspeak House reading group**, referenced on the About page from your own
   article; edit/remove in `src/pages/about.astro` if needed.
 
 ---
@@ -97,16 +97,16 @@ These were probable-but-unconfirmed during research. Confirm, then fill in
    needed.
 3. **Custom domain:** Vercel → Project → *Settings → Domains* → add your domain
    (e.g. `generativefutures.app`) and follow the DNS instructions.
-4. **Important — set the production URL:** update `SITE_URL` in
+4. **Important, set the production URL:** update `SITE_URL` in
    `astro.config.mjs` **and** `url` in `src/site.config.ts` to your real domain,
    then update the `Sitemap:` line in `public/robots.txt`. Canonical tags, the
    sitemap, RSS, and all JSON-LD derive from this. Redeploy.
 
-### After launch — recommended
+### After launch, recommended
 
 - Submit the site to **Google Search Console** and **Bing Webmaster Tools**, and
   submit `sitemap-index.xml`.
-- Turn on **Vercel Web Analytics** in the dashboard (*Project → Analytics*) — the
+- Turn on **Vercel Web Analytics** in the dashboard (*Project → Analytics*), the
   code is already in place.
 - Consider verifying the site on each platform and cross-linking back from your
   Substack/YouTube descriptions to boost discovery.

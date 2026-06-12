@@ -15,12 +15,12 @@ summary: "Phil Bell interviews Oxford's Carl Benedikt Frey on the political econ
 takeaways:
   - "Different institutional settings suit different lifecycle stages: decentralisation for exploration, coordination for scaling."
   - "Centralised systems (the USSR) excelled at static heavy industry but failed at dynamic computing."
-  - "Europe's digital lag stems from self-imposed service-market barriers — the IMF estimates them equivalent to a 110% internal tariff."
+  - "Europe's digital lag stems from self-imposed service-market barriers, the IMF estimates them equivalent to a 110% internal tariff."
   - "AI's wage impact hinges on automation (stagnation) vs enabling new tasks (growth)."
   - "Business dynamism is declining, and heavy regulation disproportionately burdens small firms and solo inventors."
 faqs:
   - question: "Can Europe catch up on AI?"
-    answer: "It faces structural barriers — especially fragmented service markets the IMF likens to a 110% internal tariff — which, unlike its post-war manufacturing success, have left it lagging in digital and AI."
+    answer: "It faces structural barriers, especially fragmented service markets the IMF likens to a 110% internal tariff, which, unlike its post-war manufacturing success, have left it lagging in digital and AI."
   - question: "Is technological progress inevitable?"
     answer: "No. Frey argues progress is contingent on institutions: decentralised systems enable exploration of new technologies while centralised coordination suits scaling mature ones."
   - question: "Will AI raise or stagnate wages?"
@@ -49,6 +49,6 @@ keywords:
 
 "Progress is not inevitable" could be the motto of this whole publication, and Carl Frey has spent a career showing why.
 
-In this conversation he lays out a deceptively simple framework: new technologies need *decentralised* institutions to explore and discover them, but *centralised* coordination to scale them — and societies fail when they apply the wrong one at the wrong moment. He uses it to explain everything from why the USSR could build steel but not computers, to why Europe caught up on post-war manufacturing yet fell behind on digital.
+In this conversation he lays out a deceptively simple framework: new technologies need *decentralised* institutions to explore and discover them, but *centralised* coordination to scale them, and societies fail when they apply the wrong one at the wrong moment. He uses it to explain everything from why the USSR could build steel but not computers, to why Europe caught up on post-war manufacturing yet fell behind on digital.
 
-For Europe specifically, his diagnosis is uncomfortable: the biggest barrier isn't a lack of talent but self-imposed fragmentation of its own service markets. And on the question everyone asks — will AI lift or flatten wages? — his answer is that it's a choice between automating and enabling, not a forecast.
+For Europe specifically, his diagnosis is uncomfortable: the biggest barrier isn't a lack of talent but self-imposed fragmentation of its own service markets. And on the question everyone asks, will AI lift or flatten wages?, his answer is that it's a choice between automating and enabling, not a forecast.

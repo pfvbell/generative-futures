@@ -108,7 +108,7 @@ export function postSchema(post: CollectionEntry<'posts'>) {
     publisher: { '@id': ORG_ID },
     isPartOf: { '@id': WEBSITE_ID },
     mainEntityOfPage: { '@type': 'WebPage', '@id': url },
-    // The canonical full text lives on Substack — declare it.
+    // The canonical full text lives on Substack, declare it.
     sameAs: [data.substackUrl],
   };
 

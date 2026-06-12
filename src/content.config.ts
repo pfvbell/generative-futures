@@ -10,7 +10,7 @@ import { glob } from 'astro/loaders';
  * the canonical links out to Substack / YouTube / the podcast.
  *
  * The Markdown body is original commentary that points readers to the full
- * piece on Substack — we never republish the source articles wholesale.
+ * piece on Substack, we never republish the source articles wholesale.
  */
 const posts = defineCollection({
   loader: glob({ pattern: '**/*.md', base: './src/content/posts' }),
@@ -29,12 +29,12 @@ const posts = defineCollection({
     faqs: z
       .array(z.object({ question: z.string(), answer: z.string() }))
       .default([]),
-    /** People, orgs, books, concepts — strengthens entity SEO. */
+    /** People, orgs, books, concepts, strengthens entity SEO. */
     entities: z.array(z.string()).default([]),
     keywords: z.array(z.string()).default([]),
     topics: z.array(z.string()).default([]),
 
-    // Canonical outbound links — the site funnels to these.
+    // Canonical outbound links, the site funnels to these.
     substackUrl: z.string().url(),
     youtubeId: z.string().optional(),
     spotifyEpisodeUrl: z.string().url().optional(),

@@ -14,7 +14,7 @@ const allPosts = (await getCollection('posts', ({ data }) => !data.draft)).sort(
 );
 const latest = allPosts.slice(0, 6);
 
-// "Where to start" — the cornerstone pieces Phil recommends.
+// "Where to start", the cornerstone pieces Phil recommends.
 const startSlugs = [
   'why-we-dont-understand-ai-models',
   'why-ai-cant-learn-on-the-job',
@@ -25,7 +25,7 @@ const starters = startSlugs
   .map((s) => allPosts.find((p) => p.id === s))
   .filter(Boolean) as typeof allPosts;
 
-// Publication-level FAQ — high-value for AEO / AI answer engines.
+// Publication-level FAQ, high-value for AEO / AI answer engines.
 const faqs = [
   {
     question: 'What is Generative Futures?',
@@ -35,7 +35,7 @@ const faqs = [
   {
     question: 'What does "generative futures" mean?',
     answer:
-      'The name rejects two traps: technological inevitability (believing AI’s effects are unavoidable) and nostalgia (simply rejecting new technology). Technologies are malleable — their impact is the product of negotiation between people, institutions, and the technology itself — so many different futures can be generated.',
+      'The name rejects two traps: technological inevitability (believing AI’s effects are unavoidable) and nostalgia (simply rejecting new technology). Technologies are malleable, their impact is the product of negotiation between people, institutions, and the technology itself, so many different futures can be generated.',
   },
   {
     question: 'Who writes Generative Futures?',
@@ -63,7 +63,7 @@ const faqs = [
       <h1>Building progressive technological futures.</h1>
       <p class="lede">
         AI is not inevitable. {SITE.name} explores how democratic societies can
-        steer technology — not be steered by it. Essays and podcasts with the
+        steer technology, not be steered by it. Essays and podcasts with the
         researchers shaping AI and its alternatives, written to be understood
         without a technical background.
       </p>
@@ -92,11 +92,10 @@ const faqs = [
         </p>
         <p>
           Almost every technology in history involved a careful, uncertain
-          negotiation that could have turned out differently — and still could.
+          negotiation that could have turned out differently, and still could.
           Radio spread both democracy and Nazism. The dominant path of AI was
           contingent on cheap capital, GPUs, and cheap energy. Generative Futures
-          digs into that contingency to show how malleable the future really is —
-          and tries to articulate a positive vision for what we want from it.
+          digs into that contingency to show how malleable the future really is, and tries to articulate a positive vision for what we want from it.
         </p>
         <p>
           <a href="/about">Read the full mission →</a>
@@ -180,7 +179,7 @@ const faqs = [
     <div class="container" style="text-align:center;">
       <h2>Get involved</h2>
       <p class="lede" style="margin-inline:auto;max-width:42ch;">
-        Subscribe for new essays and interviews — or join the reading group,
+        Subscribe for new essays and interviews, or join the reading group,
         contribute, or suggest a podcast guest.
       </p>
       <div class="hero__actions" style="justify-content:center;margin-top:1.5rem;">

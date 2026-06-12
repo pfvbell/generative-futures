@@ -1,6 +1,6 @@
 /**
  * Topic clusters. Each becomes a pillar page at /topics/<slug> that links to
- * every post tagged with it — a classic SEO hub-and-spoke structure that helps
+ * every post tagged with it, a classic SEO hub-and-spoke structure that helps
  * search and answer engines understand the publication's coverage of a subject.
  *
  * A post joins a topic via its `topics: [...]` frontmatter (matching `slug`).
@@ -21,15 +21,15 @@ export const TOPICS: Topic[] = [
     description:
       'Why AI is not inevitable. Essays and interviews on techno-determinism, who really steers technology, and how democratic societies can shape the future of AI.',
     intro:
-      'The founding idea of Generative Futures: technologies are malleable, not inevitable. Their impact is the product of political choices, institutions, and material conditions — which means a different future is possible.',
+      'The founding idea of Generative Futures: technologies are malleable, not inevitable. Their impact is the product of political choices, institutions, and material conditions, which means a different future is possible.',
   },
   {
     slug: 'how-ai-works',
     title: 'How AI Actually Works',
     description:
-      'Plain-language explainers on transformers, interpretability, and the limits of large language models — making the technical AI debate legible to non-specialists.',
+      'Plain-language explainers on transformers, interpretability, and the limits of large language models, making the technical AI debate legible to non-specialists.',
     intro:
-      'You cannot steer a technology you do not understand. These pieces open up the technical workings of modern AI — architectures, interpretability, and where today’s models break.',
+      'You cannot steer a technology you do not understand. These pieces open up the technical workings of modern AI: its architectures, its interpretability, and where today’s models break.',
   },
   {
     slug: 'ai-and-work',
@@ -43,7 +43,7 @@ export const TOPICS: Topic[] = [
     slug: 'ai-safety-and-alignment',
     title: 'AI Safety & Alignment',
     description:
-      'Interpretability, positive alignment, and the politics of AI safety — conversations with researchers at the frontier of making AI legible and aligned.',
+      'Interpretability, positive alignment, and the politics of AI safety, conversations with researchers at the frontier of making AI legible and aligned.',
     intro:
       'Making AI safe is as much a political and institutional question as a technical one. These pieces explore interpretability, alignment, and human flourishing as a design target.',
   },
@@ -51,7 +51,7 @@ export const TOPICS: Topic[] = [
     slug: 'ai-and-geopolitics',
     title: 'AI & Geopolitics',
     description:
-      'The US–China AI race, the agent economy, compute and sovereignty, and whether Europe can catch up — the contested infrastructure of the AI era.',
+      'The US–China AI race, the agent economy, compute and sovereignty, and whether Europe can catch up, the contested infrastructure of the AI era.',
     intro:
       'AI is being built into the infrastructure of power. These pieces map the US–China race, the contested agent economy, and the politics of compute, sovereignty, and progress.',
   },
@@ -59,7 +59,7 @@ export const TOPICS: Topic[] = [
     slug: 'ai-and-society',
     title: 'AI, Time & Society',
     description:
-      'How AI is reshaping memory, time, creativity, and learning — and whether it could be an antidote to social media rather than an accelerant.',
+      'How AI is reshaping memory, time, creativity, and learning, and whether it could be an antidote to social media rather than an accelerant.',
     intro:
       'Beyond economics and geopolitics, AI is reshaping how we experience time, memory, creativity, and learning. These pieces ask what kind of human life we want technology to support.',
   },

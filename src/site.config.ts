@@ -3,7 +3,7 @@
  *
  * This is the single source of truth for the brand, author, and every external
  * link. SEO metadata, JSON-LD structured data, the footer, and the platform
- * buttons all read from here — so updating a URL once updates it everywhere.
+ * buttons all read from here, so updating a URL once updates it everywhere.
  *
  * Items marked UNVERIFIED were probable-but-unconfirmed during research.
  * Confirm them, then set `verified: true` (or just delete the line) to surface
@@ -17,7 +17,7 @@ export const SITE = {
   tagline: 'Building progressive technological futures',
   /** One-line description used as the default meta description + Org schema. */
   description:
-    'Generative Futures explores the political economy of AI — how democratic societies can steer technology toward a progressive future, instead of being steered by it. Essays and podcasts by Phil Bell.',
+    'Generative Futures explores the political economy of AI, how democratic societies can steer technology toward a progressive future, instead of being steered by it. Essays and podcasts by Phil Bell.',
   /** Longer "elevator pitch" used on the homepage hero + About page intro. */
   mission:
     'A project dedicated to escaping techno-determinism and thinking through how to build progressive technological futures.',
@@ -34,10 +34,10 @@ export const AUTHOR = {
   name: 'Phil Bell',
   jobTitle: 'Writer & founder, Generative Futures',
   bio: 'Phil Bell writes Generative Futures, a publication on the political economy of AI and how to build progressive technological futures. He interviews researchers at the frontier of AI and AI safety.',
-  // UNVERIFIED — research found @PhilipfvBell as probable but could not confirm.
+  // UNVERIFIED, research found @PhilipfvBell as probable but could not confirm.
   // Confirm and set to the real URL, or leave empty to hide.
   twitter: '', // e.g. 'https://x.com/PhilipfvBell'
-  twitterHandle: '', // e.g. '@PhilipfvBell' — used for twitter:creator card
+  twitterHandle: '', // e.g. '@PhilipfvBell', used for twitter:creator card
   linkedin: '', // add if/when available
 } as const;
 

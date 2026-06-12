@@ -1,6 +1,6 @@
 ---
 /**
- * "Latest from Substack" — a button that live-fetches the newest posts from the
+ * "Latest from Substack", a button that live-fetches the newest posts from the
  * Substack feed (via the /api/latest-posts.json serverless endpoint) and lists
  * them, badging which are already on this site vs brand-new on Substack.
  *
@@ -18,7 +18,7 @@ const archiveUrl = `${PLATFORMS.substack.url}/archive`;
         <p class="eyebrow">Straight from the source</p>
         <h2>Latest from Substack</h2>
         <p class="muted" style="margin:0;max-width:48ch;">
-          Pull the newest posts live — including any published since this site
+          Pull the newest posts live, including any published since this site
           last updated that don’t yet have a page here.
         </p>
       </div>
@@ -67,7 +67,7 @@ const archiveUrl = `${PLATFORMS.substack.url}/archive`;
       list.hidden = false;
       list.innerHTML =
         '<li class="latest-item"><a href="' + esc(btn.dataset.archive) +
-        '" target="_blank" rel="noopener">Couldn’t load live right now — browse the full archive on Substack →</a></li>';
+        '" target="_blank" rel="noopener">Couldn’t load live right now, browse the full archive on Substack →</a></li>';
     }
 
     btn.addEventListener('click', async function () {

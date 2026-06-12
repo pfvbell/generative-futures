@@ -9,7 +9,7 @@ export async function GET(context: APIContext) {
   );
 
   return rss({
-    title: `${SITE.name} — essays & podcasts`,
+    title: `${SITE.name}, essays & podcasts`,
     description: SITE.description,
     site: context.site ?? SITE.url,
     items: posts.map((post) => ({

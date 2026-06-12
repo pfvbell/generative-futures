@@ -25,7 +25,7 @@ const groups = [
   },
   {
     heading: 'The politics & geopolitics of AI',
-    blurb: 'Who is building the AI era — and who gets to steer it.',
+    blurb: 'Who is building the AI era, and who gets to steer it.',
     slugs: [
       'is-china-really-racing-for-agi-with',
       'who-is-building-the-agent-economy',
@@ -47,13 +47,13 @@ const groups = [
 
 const find = (slug: string) => all.find((p) => p.id === slug);
 
-const title = 'Start here — a guide to Generative Futures';
+const title = 'Start here, a guide to Generative Futures';
 const description =
-  'New to Generative Futures? Start with these essays and podcasts on the political economy of AI — the big idea, how AI works, its geopolitics, and its effect on society.';
+  'New to Generative Futures? Start with these essays and podcasts on the political economy of AI, the big idea, how AI works, its geopolitics, and its effect on society.';
 
 const ordered = groups.flatMap((g) => g.slugs.map(find)).filter(Boolean) as typeof all;
 const schema = [
-  itemListSchema(ordered, 'Start here — recommended reading'),
+  itemListSchema(ordered, 'Start here, recommended reading'),
   breadcrumbSchema([
     { name: 'Home', path: '/' },
     { name: 'Start here', path: '/start-here' },
@@ -68,7 +68,7 @@ const schema = [
         <p class="eyebrow">New here?</p>
         <h1>Start here</h1>
         <p class="lede">
-          A guided path into Generative Futures — from the founding idea to the
+          A guided path into Generative Futures, from the founding idea to the
           technical, political, and human questions AI raises.
         </p>
       </div>

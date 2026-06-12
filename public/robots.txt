@@ -1,4 +1,4 @@
-# Generative Futures — robots.txt
+# Generative Futures robots.txt
 # We *want* search engines AND answer engines (AI) to read and cite this site.
 
 User-agent: *
