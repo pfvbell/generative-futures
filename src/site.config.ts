@@ -44,9 +44,6 @@ export const AUTHOR = {
 /**
  * Every place readers can find the publication. `primary: true` items are
  * featured prominently (hero, platform bar); others appear in the footer.
- *
- * NOTE: the audio podcast is branded "Tech Futures Project" on Spotify and
- * Apple — same show, same host. We label it so listeners find it everywhere.
  */
 export const PLATFORMS = {
   substack: {
@@ -67,14 +64,14 @@ export const PLATFORMS = {
     label: 'Spotify',
     cta: 'Listen',
     url: 'https://open.spotify.com/show/5XfgcoT3QpRY1WEi8dqm4h',
-    handle: 'Tech Futures Project',
+    handle: 'Generative Futures',
     primary: true,
   },
   applePodcasts: {
     label: 'Apple Podcasts',
     cta: 'Listen',
     url: 'https://podcasts.apple.com/us/podcast/tech-futures-project/id1850111159',
-    handle: 'Tech Futures Project',
+    handle: 'Generative Futures',
     primary: false,
   },
   rss: {

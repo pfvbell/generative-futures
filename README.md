@@ -4,7 +4,7 @@ The SEO/AEO-optimised companion site for **Generative Futures**, Phil Bell's
 publication on the political economy of AI. Its job is to help people discover
 the work and route them to the [Substack](https://genfutures.substack.com),
 [YouTube](https://www.youtube.com/@generativefutures), and the podcast (on
-Spotify and Apple Podcasts as *Tech Futures Project*).
+Spotify and Apple Podcasts).
 
 Built with [Astro](https://astro.build) — static, fast, and structured-data
 rich. Designed to deploy to Vercel with a custom domain.

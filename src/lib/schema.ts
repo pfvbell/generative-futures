@@ -31,7 +31,6 @@ export function organizationSchema() {
     '@type': 'Organization',
     '@id': ORG_ID,
     name: SITE.name,
-    alternateName: 'Tech Futures Project',
     description: SITE.description,
     url: SITE.url,
     logo: abs('/logo.png'),
