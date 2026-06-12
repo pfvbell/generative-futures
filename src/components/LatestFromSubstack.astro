@@ -1,0 +1,114 @@
+---
+/**
+ * "Latest from Substack" — a button that live-fetches the newest posts from the
+ * Substack feed (via the /api/latest-posts.json serverless endpoint) and lists
+ * them, badging which are already on this site vs brand-new on Substack.
+ *
+ * Progressive enhancement: if the endpoint is unreachable (e.g. a purely static
+ * preview), it falls back to a link to the Substack archive.
+ */
+import { PLATFORMS } from '../site.config';
+const archiveUrl = `${PLATFORMS.substack.url}/archive`;
+---
+
+<section class="section section--soft" id="latest-substack">
+  <div class="container">
+    <div class="latest-head">
+      <div>
+        <p class="eyebrow">Straight from the source</p>
+        <h2>Latest from Substack</h2>
+        <p class="muted" style="margin:0;max-width:48ch;">
+          Pull the newest posts live — including any published since this site
+          last updated that don’t yet have a page here.
+        </p>
+      </div>
+      <button
+        class="btn btn-dark"
+        id="gf-latest-btn"
+        type="button"
+        data-endpoint="/api/latest-posts.json"
+        data-archive={archiveUrl}
+      >
+        Load latest
+      </button>
+    </div>
+
+    <p id="gf-latest-status" class="muted" style="margin-top:1rem;" hidden></p>
+    <ul id="gf-latest-list" class="latest-list" hidden></ul>
+  </div>
+</section>
+
+<script is:inline>
+  (function () {
+    var btn = document.getElementById('gf-latest-btn');
+    if (!btn) return;
+    var list = document.getElementById('gf-latest-list');
+    var status = document.getElementById('gf-latest-status');
+    var loaded = false;
+
+    function esc(s) {
+      return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) {
+        return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+      });
+    }
+    function fmtDate(iso) {
+      if (!iso) return '';
+      try {
+        return new Date(iso).toLocaleDateString('en-GB', {
+          year: 'numeric', month: 'short', day: 'numeric',
+        });
+      } catch (e) { return ''; }
+    }
+    function setStatus(msg) {
+      status.hidden = !msg;
+      status.textContent = msg || '';
+    }
+    function fallback() {
+      list.hidden = false;
+      list.innerHTML =
+        '<li class="latest-item"><a href="' + esc(btn.dataset.archive) +
+        '" target="_blank" rel="noopener">Couldn’t load live right now — browse the full archive on Substack →</a></li>';
+    }
+
+    btn.addEventListener('click', async function () {
+      if (loaded) {
+        list.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        return;
+      }
+      btn.disabled = true;
+      var label = btn.textContent;
+      btn.textContent = 'Loading…';
+      setStatus('Fetching the latest from Substack…');
+      try {
+        var res = await fetch(btn.dataset.endpoint, { headers: { Accept: 'application/json' } });
+        var data = await res.json();
+        if (!data || !data.ok || !data.items || !data.items.length) throw new Error('empty');
+
+        list.innerHTML = data.items.map(function (it) {
+          var href = it.onSite ? it.localPath : it.url;
+          var attrs = it.onSite ? '' : ' target="_blank" rel="noopener"';
+          var badge = it.onSite
+            ? '<span class="latest-badge">On this site</span>'
+            : '<span class="latest-badge latest-badge--new">New on Substack</span>';
+          var typeLabel = it.type === 'podcast' ? 'Podcast' : 'Essay';
+          var meta = typeLabel + (it.date ? ' · ' + esc(fmtDate(it.date)) : '');
+          return '<li class="latest-item"><a href="' + esc(href) + '"' + attrs + '>' +
+            '<span class="latest-item__meta">' + meta + '</span>' +
+            '<span class="latest-item__title">' + esc(it.title) + '</span>' +
+            badge + '</a></li>';
+        }).join('');
+
+        list.hidden = false;
+        setStatus('');
+        loaded = true;
+        btn.textContent = 'Refresh';
+        btn.disabled = false;
+      } catch (e) {
+        setStatus('');
+        fallback();
+        btn.textContent = label;
+        btn.disabled = false;
+      }
+    });
+  })();
+</script>

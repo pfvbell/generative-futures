@@ -1,6 +1,7 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
+import vercel from '@astrojs/vercel';
 
 // The canonical production URL. Change this to your custom domain once it's live
 // (e.g. 'https://generativefutures.org'). Everything SEO — canonical tags,
@@ -11,6 +12,12 @@ export const SITE_URL = 'https://generativefutures.app';
 export default defineConfig({
   site: SITE_URL,
   trailingSlash: 'never',
+  // The site stays static; only routes that opt in with `export const
+  // prerender = false` (the /api/latest-posts.json endpoint) run on demand as
+  // a Vercel serverless function. This lets us read the Substack feed
+  // server-side and dodge browser CORS restrictions.
+  output: 'static',
+  adapter: vercel(),
   integrations: [
     sitemap({
       // Show search engines the relative importance + freshness of pages.

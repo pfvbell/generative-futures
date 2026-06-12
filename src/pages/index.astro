@@ -3,6 +3,7 @@ import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PostCard from '../components/PostCard.astro';
 import PlatformLinks from '../components/PlatformLinks.astro';
+import LatestFromSubstack from '../components/LatestFromSubstack.astro';
 import FAQ from '../components/FAQ.astro';
 import { SITE, PLATFORMS } from '../site.config';
 import { TOPICS } from '../data/topics';
@@ -143,6 +144,9 @@ const faqs = [
       </p>
     </div>
   </section>
+
+  <!-- LATEST FROM SUBSTACK (live) -->
+  <LatestFromSubstack />
 
   <!-- TOPICS -->
   <section class="section section--soft">
