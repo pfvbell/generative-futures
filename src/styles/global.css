@@ -183,9 +183,11 @@ img {
   text-decoration: none;
 }
 .brand__mark {
-  width: 26px;
-  height: 26px;
+  width: 30px;
+  height: 30px;
   flex: none;
+  border-radius: 7px;
+  display: block;
 }
 .nav {
   display: flex;

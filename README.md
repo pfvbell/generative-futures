@@ -20,9 +20,15 @@ npm run build    # production build into ./dist
 npm run preview  # preview the production build locally
 ```
 
-`npm run build` automatically regenerates the brand raster images
-(`public/og-default.png`, `logo.png`, `apple-touch-icon.png`) from the SVG
-sources via `scripts/generate-assets.mjs`.
+`npm run build` automatically regenerates every brand raster (favicons, header
+mark, app icons, and the 1200×630 OG share card) from the master logo at
+`assets/brand-logo.png`, via `scripts/generate-assets.mjs`. To change the
+brand, replace that one file and rebuild.
+
+**Analytics:** [Vercel Web Analytics](https://vercel.com/docs/analytics) is
+wired in (`@vercel/analytics` in `src/layouts/BaseLayout.astro`). It only
+collects data once deployed to Vercel — enable it in the Vercel dashboard under
+*Project → Analytics*. It's a no-op locally.
 
 ---
 
@@ -100,7 +106,7 @@ These were probable-but-unconfirmed during research. Confirm, then fill in
 
 - Submit the site to **Google Search Console** and **Bing Webmaster Tools**, and
   submit `sitemap-index.xml`.
-- Add a real, high-quality `public/og-default.png` if you want to replace the
-  generated one (1200×630).
+- Turn on **Vercel Web Analytics** in the dashboard (*Project → Analytics*) — the
+  code is already in place.
 - Consider verifying the site on each platform and cross-linking back from your
   Substack/YouTube descriptions to boost discovery.
