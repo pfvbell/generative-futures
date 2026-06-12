@@ -1,0 +1,191 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import BaseLayout from './BaseLayout.astro';
+import FormattedDate from '../components/FormattedDate.astro';
+import FAQ from '../components/FAQ.astro';
+import PlatformLinks from '../components/PlatformLinks.astro';
+import { postSchema, breadcrumbSchema, faqSchema } from '../lib/schema';
+import { TOPIC_BY_SLUG } from '../data/topics';
+import { PLATFORMS } from '../site.config';
+
+interface Props {
+  post: CollectionEntry<'posts'>;
+}
+const { post } = Astro.props;
+const { data } = post;
+
+const typeLabel =
+  data.type === 'podcast' ? 'Podcast' : data.type === 'newsletter' ? 'Newsletter' : 'Essay';
+
+const breadcrumbs = [
+  { name: 'Home', path: '/' },
+  { name: 'Essays & podcasts', path: '/posts' },
+  { name: data.title, path: `/posts/${post.id}` },
+];
+
+const schema: Record<string, any>[] = [
+  postSchema(post),
+  breadcrumbSchema(breadcrumbs),
+];
+if (data.faqs.length) schema.push(faqSchema(data.faqs));
+
+const postTopics = data.topics
+  .map((slug) => TOPIC_BY_SLUG.get(slug))
+  .filter(Boolean);
+---
+
+<BaseLayout
+  title={data.title}
+  description={data.description}
+  path={`/posts/${post.id}`}
+  image={data.ogImage}
+  ogType="article"
+  publishedTime={data.pubDate.toISOString()}
+  modifiedTime={(data.updatedDate ?? data.pubDate).toISOString()}
+  keywords={data.keywords}
+  schema={schema}
+>
+  <div class="container">
+    <article>
+      <header class="article-header">
+        <nav class="breadcrumbs" aria-label="Breadcrumb">
+          <a href="/">Home</a> ›
+          <a href="/posts">Essays &amp; podcasts</a> ›
+          <span>{data.title}</span>
+        </nav>
+
+        <div class="article-meta">
+          <span class={`tag tag--${data.type}`}>{typeLabel}</span>
+          <FormattedDate date={data.pubDate} />
+          {data.durationMinutes && <span>· {data.durationMinutes} min listen</span>}
+        </div>
+
+        <h1>{data.title}</h1>
+        {data.subtitle && <p class="lede">{data.subtitle}</p>}
+
+        {
+          data.guest && (
+            <p class="muted" style="margin-top:0.5rem;">
+              <strong>Guest:</strong> {data.guest.name} — {data.guest.bio}
+            </p>
+          )
+        }
+      </header>
+
+      <div class="prose article-body">
+        {/* Podcast / video embed */}
+        {
+          data.youtubeId && (
+            <div class="embed">
+              <iframe
+                src={`https://www.youtube-nocookie.com/embed/${data.youtubeId}`}
+                title={`${data.title} — watch on YouTube`}
+                loading="lazy"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen
+              />
+            </div>
+          )
+        }
+
+        {/* AEO answer-first summary */}
+        <div class="callout">
+          <h3>In short</h3>
+          <p style="margin-bottom:0;">{data.summary}</p>
+        </div>
+
+        {/* Original commentary (Markdown body) */}
+        <slot />
+
+        {/* Key takeaways */}
+        {
+          data.takeaways.length > 0 && (
+            <section>
+              <h2>Key takeaways</h2>
+              <ul class="takeaways">
+                {data.takeaways.map((t) => (
+                  <li>{t}</li>
+                ))}
+              </ul>
+            </section>
+          )
+        }
+
+        {/* Primary CTA — the point of the whole site */}
+        <div class="callout" style="border-color:#cfe0ff;background:#f3f7ff;">
+          <h3 style="margin-top:0;">
+            {data.type === 'podcast' ? 'Listen to the full episode' : 'Read the full piece'}
+          </h3>
+          <p>
+            This is a summary. {data.type === 'podcast'
+              ? 'Listen to the full conversation on your platform of choice, or read the companion essay on Substack.'
+              : 'Read the complete essay — with all the sources and argument — on Substack.'}
+          </p>
+          <div class="hero__actions" style="margin-top:1rem;">
+            <a class="btn btn-primary" href={data.substackUrl} rel="noopener" target="_blank">
+              Read on Substack →
+            </a>
+            {
+              data.youtubeId && (
+                <a
+                  class="btn btn-ghost"
+                  href={`https://www.youtube.com/watch?v=${data.youtubeId}`}
+                  rel="noopener"
+                  target="_blank"
+                >
+                  Watch on YouTube
+                </a>
+              )
+            }
+            {
+              data.type === 'podcast' && (
+                <a class="btn btn-ghost" href={PLATFORMS.spotify.url} rel="noopener" target="_blank">
+                  Listen on Spotify
+                </a>
+              )
+            }
+          </div>
+        </div>
+
+        <FAQ faqs={data.faqs} />
+
+        {/* Entities — context for readers and answer engines */}
+        {
+          data.entities.length > 0 && (
+            <section>
+              <h2>People &amp; ideas in this piece</h2>
+              <div class="chips">
+                {data.entities.map((e) => (
+                  <span class="chip">{e}</span>
+                ))}
+              </div>
+            </section>
+          )
+        }
+
+        {/* Topic links */}
+        {
+          postTopics.length > 0 && (
+            <p style="margin-top:2rem;">
+              <strong>Topics:</strong>{' '}
+              {postTopics.map((t, i) => (
+                <>
+                  {i > 0 && ', '}
+                  <a href={`/topics/${t!.slug}`}>{t!.title}</a>
+                </>
+              ))}
+            </p>
+          )
+        }
+      </div>
+
+      <hr class="divider" />
+
+      <section>
+        <h2>Follow Generative Futures</h2>
+        <p class="muted">New essays and interviews on the political economy of AI.</p>
+        <PlatformLinks primaryOnly={true} />
+      </section>
+    </article>
+  </div>
+</BaseLayout>

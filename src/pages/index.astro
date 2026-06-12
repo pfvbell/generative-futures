@@ -1,0 +1,195 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PostCard from '../components/PostCard.astro';
+import PlatformLinks from '../components/PlatformLinks.astro';
+import FAQ from '../components/FAQ.astro';
+import { SITE, PLATFORMS } from '../site.config';
+import { TOPICS } from '../data/topics';
+import { faqSchema } from '../lib/schema';
+
+const allPosts = (await getCollection('posts', ({ data }) => !data.draft)).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+);
+const latest = allPosts.slice(0, 6);
+
+// "Where to start" — the cornerstone pieces Phil recommends.
+const startSlugs = [
+  'why-we-dont-understand-ai-models',
+  'why-ai-cant-learn-on-the-job',
+  'why-poetry-breaks-ai',
+  'is-china-really-racing-for-agi-with',
+];
+const starters = startSlugs
+  .map((s) => allPosts.find((p) => p.id === s))
+  .filter(Boolean) as typeof allPosts;
+
+// Publication-level FAQ — high-value for AEO / AI answer engines.
+const faqs = [
+  {
+    question: 'What is Generative Futures?',
+    answer:
+      'Generative Futures is a publication by Phil Bell on the political economy of AI. It explores how democratic societies can steer AI and emerging technologies toward a progressive future, rather than treating their effects as inevitable. It publishes essays and podcast interviews with researchers at the frontier of AI and AI safety.',
+  },
+  {
+    question: 'What does "generative futures" mean?',
+    answer:
+      'The name rejects two traps: technological inevitability (believing AI’s effects are unavoidable) and nostalgia (simply rejecting new technology). Technologies are malleable — their impact is the product of negotiation between people, institutions, and the technology itself — so many different futures can be generated.',
+  },
+  {
+    question: 'Who writes Generative Futures?',
+    answer:
+      'Phil Bell writes and hosts Generative Futures. He interviews AI researchers, economists, and political theorists, and writes plain-language explainers that make the technical AI debate legible to non-specialists.',
+  },
+  {
+    question: 'Where can I read, watch, or listen to Generative Futures?',
+    answer:
+      'Essays are published on Substack (genfutures.substack.com). Video interviews are on YouTube (@generativefutures). The audio podcast is on Spotify and Apple Podcasts under the name “Tech Futures Project.” You can also subscribe via RSS.',
+  },
+  {
+    question: 'Why is the podcast called "Tech Futures Project" on Spotify and Apple?',
+    answer:
+      'It is the same show, same host. The publication is “Generative Futures” on Substack and YouTube; the audio podcast feed carries the earlier name “Tech Futures Project” on Spotify and Apple Podcasts.',
+  },
+];
+---
+
+<BaseLayout
+  title={SITE.name}
+  description={SITE.description}
+  path="/"
+  schema={faqSchema(faqs)}
+>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <p class="eyebrow">The political economy of AI</p>
+      <h1>Building progressive technological futures.</h1>
+      <p class="lede">
+        AI is not inevitable. {SITE.name} explores how democratic societies can
+        steer technology — not be steered by it. Essays and podcasts with the
+        researchers shaping AI and its alternatives, written to be understood
+        without a technical background.
+      </p>
+      <div class="hero__actions">
+        <a class="btn btn-dark" href={PLATFORMS.substack.url} rel="noopener" target="_blank">
+          Subscribe on Substack
+        </a>
+        <a class="btn btn-ghost" href="/start-here">Start here →</a>
+      </div>
+
+      <div style="margin-top:2rem;">
+        <PlatformLinks primaryOnly={true} />
+      </div>
+    </div>
+  </section>
+
+  <!-- MISSION -->
+  <section class="section">
+    <div class="container">
+      <div class="prose">
+        <p class="eyebrow">The idea</p>
+        <h2>Escaping techno-determinism</h2>
+        <p class="lede" style="color:var(--ink);">
+          We are trapped between two bad options: the belief that AI’s effects
+          are inevitable, and the urge to simply reject it.
+        </p>
+        <p>
+          Almost every technology in history involved a careful, uncertain
+          negotiation that could have turned out differently — and still could.
+          Radio spread both democracy and Nazism. The dominant path of AI was
+          contingent on cheap capital, GPUs, and cheap energy. Generative Futures
+          digs into that contingency to show how malleable the future really is —
+          and tries to articulate a positive vision for what we want from it.
+        </p>
+        <p>
+          <a href="/about">Read the full mission →</a>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- START HERE -->
+  {
+    starters.length > 0 && (
+      <section class="section section--soft">
+        <div class="container">
+          <div class="section__head">
+            <p class="eyebrow">Where to start</p>
+            <h2>Four pieces to begin with</h2>
+          </div>
+          <div class="card-grid">
+            {starters.map((post) => (
+              <PostCard post={post} />
+            ))}
+          </div>
+        </div>
+      </section>
+    )
+  }
+
+  <!-- LATEST -->
+  <section class="section">
+    <div class="container">
+      <div class="section__head">
+        <p class="eyebrow">Latest</p>
+        <h2>New essays &amp; podcasts</h2>
+      </div>
+      <div class="card-grid">
+        {latest.map((post) => <PostCard post={post} />)}
+      </div>
+      <p style="margin-top:1.5rem;">
+        <a class="btn btn-ghost" href="/posts">Browse all {allPosts.length} pieces →</a>
+      </p>
+    </div>
+  </section>
+
+  <!-- TOPICS -->
+  <section class="section section--soft">
+    <div class="container">
+      <div class="section__head">
+        <p class="eyebrow">Explore by theme</p>
+        <h2>Topics</h2>
+      </div>
+      <div class="card-grid">
+        {
+          TOPICS.map((topic) => (
+            <article class="post-card">
+              <a href={`/topics/${topic.slug}`}>
+                <h3>{topic.title}</h3>
+                <p class="post-card__summary">{topic.intro}</p>
+                <span class="post-card__footer">Explore →</span>
+              </a>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section">
+    <div class="container">
+      <div class="prose">
+        <FAQ faqs={faqs} heading="About Generative Futures" />
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="section section--soft">
+    <div class="container" style="text-align:center;">
+      <h2>Get involved</h2>
+      <p class="lede" style="margin-inline:auto;max-width:42ch;">
+        Subscribe for new essays and interviews — or join the reading group,
+        contribute, or suggest a podcast guest.
+      </p>
+      <div class="hero__actions" style="justify-content:center;margin-top:1.5rem;">
+        <a class="btn btn-dark" href={PLATFORMS.substack.url} rel="noopener" target="_blank">
+          Subscribe free
+        </a>
+        <a class="btn btn-ghost" href="/about">About the project</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

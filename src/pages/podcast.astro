@@ -1,0 +1,58 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PostCard from '../components/PostCard.astro';
+import PlatformLinks from '../components/PlatformLinks.astro';
+import { SITE, PLATFORMS } from '../site.config';
+import { breadcrumbSchema, ORG_ID } from '../lib/schema';
+
+const episodes = (
+  await getCollection('posts', ({ data }) => !data.draft && data.type === 'podcast')
+).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+const title = 'The Generative Futures podcast (Tech Futures Project)';
+const description =
+  'Long-form interviews on the political economy of AI with researchers in AI, AI safety, economics and politics. Listen on Spotify, Apple Podcasts, or YouTube.';
+
+const schema = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'PodcastSeries',
+    name: 'Generative Futures',
+    alternateName: 'Tech Futures Project',
+    description,
+    url: `${SITE.url}/podcast`,
+    webFeed: PLATFORMS.rss.url,
+    publisher: { '@id': ORG_ID },
+    sameAs: [PLATFORMS.spotify.url, PLATFORMS.applePodcasts.url, PLATFORMS.youtube.url],
+  },
+  breadcrumbSchema([
+    { name: 'Home', path: '/' },
+    { name: 'Podcast', path: '/podcast' },
+  ]),
+];
+---
+
+<BaseLayout title={title} description={description} path="/podcast" schema={schema}>
+  <section class="section">
+    <div class="container">
+      <div class="section__head">
+        <p class="eyebrow">Podcast</p>
+        <h1>The Generative Futures podcast</h1>
+        <p class="lede">
+          Long-form conversations with the people building — and rethinking — AI.
+          Also known as <strong>Tech Futures Project</strong> on Spotify and Apple
+          Podcasts.
+        </p>
+      </div>
+
+      <div style="margin-bottom:2.5rem;">
+        <PlatformLinks />
+      </div>
+
+      <div class="card-grid">
+        {episodes.map((post) => <PostCard post={post} />)}
+      </div>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,44 @@
+---
+import { SITE, AUTHOR, NAV, PLATFORM_LIST } from '../site.config';
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <h4>{SITE.name}</h4>
+        <p style="max-width: 34ch; color:#aebbcf; margin:0;">
+          {SITE.mission}
+        </p>
+      </div>
+
+      <div>
+        <h4>Explore</h4>
+        <ul class="footer-links">
+          {NAV.map((item) => <li><a href={item.href}>{item.label}</a></li>)}
+        </ul>
+      </div>
+
+      <div>
+        <h4>Follow</h4>
+        <ul class="footer-links">
+          {
+            PLATFORM_LIST.map((p) => (
+              <li>
+                <a href={p.url} rel="noopener" target="_blank">
+                  {p.label}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>© {year} {AUTHOR.name} · {SITE.name}</span>
+      <span>The political economy of AI · Built for a progressive technological future</span>
+    </div>
+  </div>
+</footer>

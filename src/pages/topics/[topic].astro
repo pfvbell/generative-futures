@@ -1,0 +1,52 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PostCard from '../../components/PostCard.astro';
+import { TOPICS } from '../../data/topics';
+import { itemListSchema, breadcrumbSchema } from '../../lib/schema';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('posts', ({ data }) => !data.draft);
+  return TOPICS.map((topic) => {
+    const topicPosts = posts
+      .filter((p) => p.data.topics.includes(topic.slug))
+      .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+    return { params: { topic: topic.slug }, props: { topic, topicPosts } };
+  });
+}
+
+const { topic, topicPosts } = Astro.props;
+
+const schema = [
+  itemListSchema(topicPosts, topic.title),
+  breadcrumbSchema([
+    { name: 'Home', path: '/' },
+    { name: 'Topics', path: '/topics' },
+    { name: topic.title, path: `/topics/${topic.slug}` },
+  ]),
+];
+---
+
+<BaseLayout
+  title={topic.title}
+  description={topic.description}
+  path={`/topics/${topic.slug}`}
+  schema={schema}
+>
+  <section class="section">
+    <div class="container">
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <a href="/">Home</a> › <a href="/topics">Topics</a> › <span>{topic.title}</span>
+      </nav>
+      <div class="section__head">
+        <p class="eyebrow">Topic</p>
+        <h1>{topic.title}</h1>
+        <p class="lede">{topic.intro}</p>
+      </div>
+
+      <div class="card-grid">
+        {topicPosts.map((post) => <PostCard post={post} />)}
+      </div>
+    </div>
+  </section>
+</BaseLayout>

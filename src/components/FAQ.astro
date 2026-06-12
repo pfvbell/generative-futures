@@ -1,0 +1,26 @@
+---
+/**
+ * Renders an FAQ as accessible <details> elements. The matching FAQPage
+ * JSON-LD is emitted separately (in the post layout) so answer engines can
+ * lift these Q&As directly into AI overviews and featured snippets.
+ */
+interface Props {
+  faqs: { question: string; answer: string }[];
+  heading?: string;
+}
+const { faqs, heading = 'Frequently asked questions' } = Astro.props;
+---
+
+{
+  faqs.length > 0 && (
+    <section class="faq" aria-label={heading}>
+      <h2>{heading}</h2>
+      {faqs.map((f) => (
+        <details>
+          <summary>{f.question}</summary>
+          <div class="faq__answer">{f.answer}</div>
+        </details>
+      ))}
+    </section>
+  )
+}

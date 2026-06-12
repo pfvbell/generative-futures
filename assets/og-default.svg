@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0b1f3a"/>
+      <stop offset="1" stop-color="#13294d"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.85" cy="0.1" r="0.6">
+      <stop offset="0" stop-color="#1f6feb" stop-opacity="0.35"/>
+      <stop offset="1" stop-color="#1f6feb" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect width="1200" height="630" fill="url(#glow)"/>
+  <g transform="translate(90,90)">
+    <rect width="64" height="64" rx="16" fill="#102a4f"/>
+    <path d="M14 46c0-15 9.5-24 21-24 7 0 12.5 3.8 14.5 9.6" fill="none" stroke="#4f9bff" stroke-width="5.2" stroke-linecap="round"/>
+    <circle cx="49" cy="22" r="5.4" fill="#d98324"/>
+    <text x="86" y="42" font-family="-apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="30" font-weight="700" fill="#cdd9ea">Generative Futures</text>
+  </g>
+  <text x="90" y="330" font-family="-apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="76" font-weight="800" fill="#ffffff" letter-spacing="-2">Building progressive</text>
+  <text x="90" y="418" font-family="-apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="76" font-weight="800" fill="#ffffff" letter-spacing="-2">technological futures.</text>
+  <text x="90" y="500" font-family="-apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="32" font-weight="500" fill="#8fa6c6">The political economy of AI — essays &amp; podcasts by Phil Bell</text>
+  <rect x="90" y="548" width="1020" height="3" rx="1.5" fill="#1f6feb" opacity="0.5"/>
+</svg>

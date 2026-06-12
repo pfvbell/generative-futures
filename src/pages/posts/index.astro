@@ -1,0 +1,42 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PostCard from '../../components/PostCard.astro';
+import { itemListSchema, breadcrumbSchema } from '../../lib/schema';
+
+const posts = (await getCollection('posts', ({ data }) => !data.draft)).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+);
+
+const title = 'Essays & podcasts on the political economy of AI';
+const description =
+  'Every Generative Futures essay and podcast — on AI’s contingency, alignment, the agent economy, work, and how democratic societies can steer technology.';
+
+const schema = [
+  itemListSchema(posts, 'Generative Futures — all essays and podcasts'),
+  breadcrumbSchema([
+    { name: 'Home', path: '/' },
+    { name: 'Essays & podcasts', path: '/posts' },
+  ]),
+];
+---
+
+<BaseLayout title={title} description={description} path="/posts" schema={schema}>
+  <section class="section">
+    <div class="container">
+      <div class="section__head">
+        <p class="eyebrow">The archive</p>
+        <h1>Essays &amp; podcasts</h1>
+        <p class="lede">
+          {posts.length} pieces on how to escape techno-determinism and build
+          progressive technological futures — from AI architecture and alignment
+          to the geopolitics of compute.
+        </p>
+      </div>
+
+      <div class="card-grid">
+        {posts.map((post) => <PostCard post={post} />)}
+      </div>
+    </div>
+  </section>
+</BaseLayout>

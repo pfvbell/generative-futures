@@ -1,0 +1,46 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { TOPICS } from '../../data/topics';
+import { breadcrumbSchema } from '../../lib/schema';
+
+const posts = await getCollection('posts', ({ data }) => !data.draft);
+const countFor = (slug: string) =>
+  posts.filter((p) => p.data.topics.includes(slug)).length;
+
+const title = 'Topics — the political economy of AI, explained';
+const description =
+  'Explore Generative Futures by theme: the political economy of AI, how AI works, AI and work, AI safety and alignment, AI geopolitics, and AI and society.';
+
+const schema = breadcrumbSchema([
+  { name: 'Home', path: '/' },
+  { name: 'Topics', path: '/topics' },
+]);
+---
+
+<BaseLayout title={title} description={description} path="/topics" schema={schema}>
+  <section class="section">
+    <div class="container">
+      <div class="section__head">
+        <p class="eyebrow">Explore by theme</p>
+        <h1>Topics</h1>
+        <p class="lede">Six threads running through Generative Futures.</p>
+      </div>
+
+      <div class="card-grid">
+        {
+          TOPICS.map((topic) => (
+            <article class="post-card">
+              <a href={`/topics/${topic.slug}`}>
+                <div class="post-card__meta">{countFor(topic.slug)} pieces</div>
+                <h3>{topic.title}</h3>
+                <p class="post-card__summary">{topic.intro}</p>
+                <span class="post-card__footer">Explore →</span>
+              </a>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+</BaseLayout>

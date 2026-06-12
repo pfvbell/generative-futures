@@ -1,0 +1,112 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PlatformLinks from '../components/PlatformLinks.astro';
+import { SITE, AUTHOR } from '../site.config';
+import { breadcrumbSchema, PERSON_ID, ORG_ID } from '../lib/schema';
+
+const title = 'About Generative Futures';
+const description =
+  'Generative Futures is a project on the political economy of AI — escaping techno-determinism and articulating a positive vision for what comes after. By Phil Bell.';
+
+const schema = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'AboutPage',
+    name: title,
+    description,
+    url: `${SITE.url}/about`,
+    mainEntity: { '@id': ORG_ID },
+    about: { '@id': PERSON_ID },
+  },
+  breadcrumbSchema([
+    { name: 'Home', path: '/' },
+    { name: 'About', path: '/about' },
+  ]),
+];
+---
+
+<BaseLayout title={title} description={description} path="/about" schema={schema}>
+  <section class="section">
+    <div class="container prose">
+      <p class="eyebrow">About</p>
+      <h1>What are Generative Futures?</h1>
+
+      <blockquote>
+        “The myth of technological and political and social inevitability is a
+        powerful tranquilizer of the conscience… But, in fact, there are actors!”
+        <br /><span class="muted">— Joseph Weizenbaum</span>
+      </blockquote>
+
+      <p class="lede" style="color:var(--ink);">
+        Technologies are malleable. The way they are used, and their impact, is
+        not inevitable — it is the product of a negotiation between the people who
+        use them, institutions, and the affordances of the technology itself.
+      </p>
+
+      <h2>Escaping techno-determinism</h2>
+      <p>
+        We chose the name <strong>Generative Futures</strong> because the debate
+        about AI is currently trapped between two poles: <em>inevitability</em>
+        (the belief that the effects of AI are unavoidable) and <em>nostalgia</em>
+        (the desire to simply reject it). Both are dead ends.
+      </p>
+      <p>
+        The history of AI has been highly contingent. If it weren’t for GPUs,
+        cheap capital from quantitative easing, cheap energy from fracking, and
+        rising scepticism about social media, AI could have taken a different
+        path. Many researchers believe the dominant approach — transformer-based
+        language models — isn’t optimal; it simply won the “hardware lottery.”
+        Diving into the details reveals how contingent our technological present
+        is, and how malleable the future could be.
+      </p>
+      <p>
+        Whether technologies replace people or empower them is, as economists
+        like Daron Acemoglu and David Autor argue, a political choice — not a
+        technical destiny. “AI will not decide how AI is used,” as Autor puts it.
+        “Its constructive and destructive applications are boundless.”
+      </p>
+
+      <h2>Understanding AI in order to shape it</h2>
+      <p>
+        The barrier to entry on the AI debate is currently too high — much as
+        economics became forbiddingly technical before 2008, sidelining the
+        political questions until a crisis forced them open. We think the
+        technical AI conversation is similarly too narrow. AI is political, and
+        keeping its technicalities reserved for a small group in the Bay Area is
+        good for no one. Generative Futures speaks to people building AI and AI
+        safety, and writes explainers that make those ideas legible to a wider
+        set of actors.
+      </p>
+
+      <h2>A positive vision</h2>
+      <p>
+        Almost no one has articulated a positive vision for what comes after
+        powerful AI. Without one, we risk defaulting to whatever emerges from
+        market and geopolitical dynamics. As Milton Friedman observed, when a
+        crisis comes, “the actions that are taken depend on the ideas that are
+        lying around.” Because we don’t know when an opportunity or crisis will
+        arrive, we should start generating those ideas now.
+      </p>
+
+      <div class="callout">
+        <h3>Get involved</h3>
+        <ul>
+          <li><strong>Subscribe</strong> to receive new posts.</li>
+          <li><strong>Join the reading group</strong> at Newspeak House in London.</li>
+          <li><strong>Write with us</strong> — we’re looking for contributors.</li>
+          <li><strong>Collaborate</strong> — suggest a podcast guest or co-host an episode.</li>
+        </ul>
+        <div class="hero__actions" style="margin-top:1rem;">
+          <a class="btn btn-primary" href="https://genfutures.substack.com" rel="noopener" target="_blank">Subscribe on Substack</a>
+        </div>
+      </div>
+
+      <h2>About the author</h2>
+      <p>{AUTHOR.bio}</p>
+
+      <hr class="divider" />
+      <h2>Find Generative Futures everywhere</h2>
+      <PlatformLinks />
+    </div>
+  </section>
+</BaseLayout>

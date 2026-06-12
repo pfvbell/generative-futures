@@ -1,0 +1,27 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import FormattedDate from './FormattedDate.astro';
+
+interface Props {
+  post: CollectionEntry<'posts'>;
+}
+const { post } = Astro.props;
+const { data } = post;
+const typeLabel =
+  data.type === 'podcast' ? 'Podcast' : data.type === 'newsletter' ? 'Newsletter' : 'Essay';
+---
+
+<article class="post-card">
+  <a href={`/posts/${post.id}`}>
+    <div class="post-card__meta">
+      <span class={`tag tag--${data.type}`}>{typeLabel}</span>
+      <FormattedDate date={data.pubDate} />
+      {data.durationMinutes && <span>· {data.durationMinutes} min</span>}
+    </div>
+    <h3>{data.title}</h3>
+    <p class="post-card__summary">{data.subtitle ?? data.description}</p>
+    <span class="post-card__footer">
+      {data.type === 'podcast' ? 'Listen & read →' : 'Read the summary →'}
+    </span>
+  </a>
+</article>

@@ -1,0 +1,95 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PostCard from '../components/PostCard.astro';
+import { breadcrumbSchema, itemListSchema } from '../lib/schema';
+
+const all = await getCollection('posts', ({ data }) => !data.draft);
+
+// Curated entry points, grouped by intent.
+const groups = [
+  {
+    heading: 'Start with the big idea',
+    blurb: 'The manifesto, and why AI is more malleable than it looks.',
+    slugs: ['what-are-generative-futures', 'why-is-ai-shale-shaped'],
+  },
+  {
+    heading: 'Understand how AI works',
+    blurb: 'Plain-language explainers on what today’s models can and can’t do.',
+    slugs: [
+      'why-we-dont-understand-ai-models',
+      'why-ai-cant-learn-on-the-job',
+      'the-post-transformer-era',
+      'why-llms-cant-count',
+    ],
+  },
+  {
+    heading: 'The politics & geopolitics of AI',
+    blurb: 'Who is building the AI era — and who gets to steer it.',
+    slugs: [
+      'is-china-really-racing-for-agi-with',
+      'who-is-building-the-agent-economy',
+      'compute-is-not-the-answer-to-ai-sovereignty',
+      'can-europe-catch-up-on-ai-with-carl',
+    ],
+  },
+  {
+    heading: 'AI, work & society',
+    blurb: 'What AI means for jobs, learning, creativity, time, and memory.',
+    slugs: [
+      'teachers-wont-be-automated',
+      'efficiency-vs-learning',
+      'how-is-ai-changing-our-experience',
+      'why-poetry-breaks-ai',
+    ],
+  },
+];
+
+const find = (slug: string) => all.find((p) => p.id === slug);
+
+const title = 'Start here — a guide to Generative Futures';
+const description =
+  'New to Generative Futures? Start with these essays and podcasts on the political economy of AI — the big idea, how AI works, its geopolitics, and its effect on society.';
+
+const ordered = groups.flatMap((g) => g.slugs.map(find)).filter(Boolean) as typeof all;
+const schema = [
+  itemListSchema(ordered, 'Start here — recommended reading'),
+  breadcrumbSchema([
+    { name: 'Home', path: '/' },
+    { name: 'Start here', path: '/start-here' },
+  ]),
+];
+---
+
+<BaseLayout title={title} description={description} path="/start-here" schema={schema}>
+  <section class="section">
+    <div class="container">
+      <div class="section__head">
+        <p class="eyebrow">New here?</p>
+        <h1>Start here</h1>
+        <p class="lede">
+          A guided path into Generative Futures — from the founding idea to the
+          technical, political, and human questions AI raises.
+        </p>
+      </div>
+
+      {
+        groups.map((group) => {
+          const posts = group.slugs.map(find).filter(Boolean) as typeof all;
+          if (!posts.length) return null;
+          return (
+            <div style="margin-bottom:2.5rem;">
+              <h2>{group.heading}</h2>
+              <p class="muted" style="margin-top:-0.25rem;">{group.blurb}</p>
+              <div class="card-grid" style="margin-top:1rem;">
+                {posts.map((post) => (
+                  <PostCard post={post} />
+                ))}
+              </div>
+            </div>
+          );
+        })
+      }
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,22 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Page not found"
+  description="That page doesn’t exist. Explore Generative Futures essays and podcasts on the political economy of AI."
+  path="/404"
+  noindex={true}
+>
+  <section class="section">
+    <div class="container prose" style="text-align:center;">
+      <p class="eyebrow">404</p>
+      <h1>This page generated a different future.</h1>
+      <p class="lede">The page you’re looking for doesn’t exist (or moved).</p>
+      <div class="hero__actions" style="justify-content:center;margin-top:1.5rem;">
+        <a class="btn btn-dark" href="/">Go home</a>
+        <a class="btn btn-ghost" href="/posts">Browse all pieces</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

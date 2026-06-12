@@ -1,0 +1,24 @@
+---
+/**
+ * Renders one or more JSON-LD structured-data blocks.
+ * Pass a single schema object or an array of them.
+ *
+ * Structured data is the backbone of AEO (Answer Engine Optimisation): it lets
+ * Google, Bing, and LLM-based answer engines understand the entity, the
+ * article, the podcast episode, and the FAQ without guessing.
+ */
+interface Props {
+  schema: Record<string, any> | Record<string, any>[];
+}
+const { schema } = Astro.props;
+const blocks = Array.isArray(schema) ? schema : [schema];
+---
+
+{
+  blocks.map((block) => (
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify(block)}
+    />
+  ))
+}
