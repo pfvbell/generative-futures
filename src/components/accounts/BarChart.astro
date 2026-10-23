@@ -1,0 +1,118 @@
+---
+/**
+ * Static column chart for /national-accounts: one HTML column per bar, so it reflows at any
+ * width. Bars grow from the zero line (down for negatives). Tooltips come from the page script.
+ */
+import { niceScale } from '../../lib/charts';
+
+interface Bar {
+  value: number;
+  color: string;
+  title: string;
+  display: string;
+  tick?: string;
+  minor?: boolean;
+  label?: string;
+}
+interface Props {
+  label: string;
+  bars: Bar[];
+  tipLabel: string;
+  tickFmt: (v: number) => string;
+  height?: number;
+}
+
+const { label, bars, tipLabel, tickFmt, height = 260 } = Astro.props;
+const vals = bars.map((b) => b.value);
+const y = niceScale(Math.min(0, ...vals), Math.max(0, ...vals), 5);
+const zero = y.at(0);
+const yW = Math.max(...y.ticks.map((t) => tickFmt(t).length)) + 1;
+---
+
+<div class="bc" style={`--h:${height}px;--yl:${yW}ch`}>
+  <div class="bc-plot" role="img" aria-label={label}>
+    {y.ticks.map((t) => (
+      <>
+        <i class:list={[t === 0 ? 'bc-zero' : 'bc-grid']} style={`bottom:${y.at(t)}%`}></i>
+        <span class="bc-yt" style={`bottom:${y.at(t)}%`}>{tickFmt(t)}</span>
+      </>
+    ))}
+    <div class:list={['bc-cols', { 'bc-dense': bars.length > 40 }]}>
+      {bars.map((b, i) => {
+        const top = y.at(b.value);
+        const pos = b.value >= 0;
+        const edge = i === 0 ? 'bc-lab-first' : i === bars.length - 1 ? 'bc-lab-last' : '';
+        return (
+          <span class="bc-col" data-t={b.title} data-v={b.display} data-l={tipLabel} tabindex="-1">
+            <i
+              class:list={['bc-bar', pos ? 'bc-pos' : 'bc-neg']}
+              style={`bottom:${pos ? zero : top}%;height:${Math.max(0.5, Math.abs(top - zero))}%;background:${b.color}`}
+            ></i>
+            {b.label && <em class:list={['bc-lab', edge]} style={`bottom:${pos ? top : zero}%`}>{b.label}</em>}
+            {b.tick && <span class:list={['bc-xt', { 'bc-minor': b.minor }]}>{b.tick}</span>}
+          </span>
+        );
+      })}
+    </div>
+    <div class="bc-tip" hidden></div>
+  </div>
+</div>
+
+<style>
+  .bc { font-size: 0.78rem; padding: 0.4rem 0 1.7rem var(--yl); }
+  .bc-plot { position: relative; height: var(--h); }
+  .bc [hidden] { display: none !important; }
+  .bc-grid, .bc-zero { position: absolute; left: 0; right: 0; height: 0; border-top: 1px solid var(--na-grid); }
+  .bc-zero { border-top-color: var(--na-axis); z-index: 1; }
+  .bc-yt {
+    position: absolute;
+    right: calc(100% + 0.6rem);
+    transform: translateY(50%);
+    color: var(--muted);
+    white-space: nowrap;
+    font-variant-numeric: tabular-nums;
+  }
+  .bc-cols { position: absolute; inset: 0; display: flex; gap: 3px; }
+  .bc-dense { gap: 1px; }
+  .bc-col { position: relative; flex: 1 1 0; min-width: 0; outline: none; }
+  .bc-bar { position: absolute; left: 0; right: 0; transition: opacity 0.15s ease; }
+  .bc-pos { border-radius: 3px 3px 0 0; }
+  .bc-neg { border-radius: 0 0 3px 3px; }
+  .bc-cols:has(.bc-on) .bc-col:not(.bc-on) .bc-bar { opacity: 0.4; }
+  .bc-lab {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -0.35rem);
+    font-style: normal;
+    font-weight: 600;
+    color: var(--ink);
+    white-space: nowrap;
+  }
+  .bc-lab-first { left: 0; transform: translate(0, -0.35rem); }
+  .bc-lab-last { left: auto; right: 0; transform: translate(0, -0.35rem); }
+  .bc-xt {
+    position: absolute;
+    top: calc(100% + 0.45rem);
+    left: 50%;
+    transform: translateX(-50%);
+    color: var(--muted);
+    white-space: nowrap;
+    font-variant-numeric: tabular-nums;
+  }
+  .bc-tip {
+    position: absolute;
+    top: 0;
+    z-index: 2;
+    pointer-events: none;
+    min-width: 8rem;
+    padding: 0.45rem 0.6rem;
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-sm);
+    box-shadow: 0 4px 16px rgba(20, 24, 31, 0.1);
+    line-height: 1.45;
+  }
+  @media (max-width: 560px) {
+    .bc-minor { display: none; }
+  }
+</style>
