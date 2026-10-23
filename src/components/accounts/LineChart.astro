@@ -1,0 +1,225 @@
+---
+/**
+ * Static line chart for /national-accounts. Lines are drawn in a stretched SVG with
+ * non-scaling strokes; every label is HTML positioned in %, so text stays crisp at any width.
+ * Hover and keyboard tooltips are added by the page script from `data-tips`.
+ */
+import { niceScale, fmt } from '../../lib/charts';
+
+interface Series {
+  label: string;
+  values: (number | null)[];
+  color: string;
+  area?: boolean;
+}
+interface Props {
+  id: string;
+  label: string;
+  x: number[];
+  series: Series[];
+  xTicks: { x: number; label: string }[];
+  tipTitles: string[];
+  yMin?: number;
+  yMax?: number;
+  unit?: string;
+  decimals?: number;
+  tickDecimals?: number;
+  height?: number;
+  points?: boolean;
+  events?: { x: number; label: string }[];
+  callout?: { x: number; y: number; label: string; color: string };
+}
+
+const {
+  id, label, x, series, xTicks, tipTitles, unit = '', decimals = 1, tickDecimals = 0,
+  height = 280, points = false, events = [], callout,
+} = Astro.props;
+
+const all = series.flatMap((s) => s.values).filter((v): v is number => v != null);
+const y = niceScale(Astro.props.yMin ?? Math.min(0, ...all), Astro.props.yMax ?? Math.max(...all), 5);
+const x0 = x[0];
+const x1 = x[x.length - 1];
+const px = (v: number) => ((v - x0) / (x1 - x0)) * 100;
+const sx = (v: number) => (px(v) * 10).toFixed(1);
+const sy = (v: number) => (1000 - y.at(v) * 10).toFixed(1);
+
+const drawn = series.map((s, k) => {
+  let d = '';
+  let pen = false;
+  s.values.forEach((v, i) => {
+    if (v == null) { pen = false; return; }
+    d += `${pen ? 'L' : 'M'}${sx(x[i])},${sy(v)}`;
+    pen = true;
+  });
+  const idx = s.values.flatMap((v, i) => (v == null ? [] : [i]));
+  const area = s.area && idx.length
+    ? `M${sx(x[idx[0]])},1000${idx.map((i) => `L${sx(x[i])},${sy(s.values[i]!)}`).join('')}L${sx(x[idx[idx.length - 1]])},1000Z`
+    : '';
+  return { ...s, d, area, grad: `${id}-g${k}` };
+});
+
+// End labels: value over name at each series' last point, nudged apart so they never collide
+const ends = series
+  .map((s) => {
+    let i = s.values.length - 1;
+    while (i >= 0 && s.values[i] == null) i -= 1;
+    return i < 0 ? null : { s, i, v: s.values[i]!, top: (1 - y.at(s.values[i]!) / 100) * height };
+  })
+  .filter((e): e is NonNullable<typeof e> => e != null)
+  .sort((a, b) => a.top - b.top);
+for (let k = 1; k < ends.length; k += 1) if (ends[k].top - ends[k - 1].top < 32) ends[k].top = ends[k - 1].top + 32;
+const spill = ends.length ? ends[ends.length - 1].top - (height - 26) : 0;
+if (spill > 0) ends.forEach((e) => { e.top -= spill; });
+
+const tickText = y.ticks.map((t) => fmt(t, tickDecimals, unit));
+const yW = Math.max(...tickText.map((t) => t.length)) + 1;
+const endW = Math.max(0, ...ends.map((e) => Math.max(e.s.label.length, fmt(e.v, decimals, unit).length))) + 2;
+
+const tips = {
+  x: x.map((v) => +px(v).toFixed(2)),
+  t: tipTitles,
+  s: series.map((s) => ({
+    l: s.label,
+    c: s.color,
+    y: s.values.map((v) => (v == null ? null : +y.at(v).toFixed(2))),
+    v: s.values.map((v) => (v == null ? '—' : fmt(v, decimals, unit))),
+  })),
+};
+---
+
+<div class:list={['lc', { 'lc-ev': events.length > 0 }]} style={`--h:${height}px;--yl:${yW}ch;--el:${endW}ch`}>
+  <div class="lc-plot" role="img" aria-label={label}>
+    <svg viewBox="0 0 1000 1000" preserveAspectRatio="none" aria-hidden="true">
+      <defs>
+        {drawn.filter((s) => s.area).map((s) => (
+          <linearGradient id={s.grad} x1="0" y1="0" x2="0" y2="1">
+            {[[0, 0.26], [0.25, 0.16], [0.5, 0.08], [0.75, 0.03], [1, 0]].map(([o, a]) => (
+              <stop offset={o} style={`stop-color:${s.color};stop-opacity:${a}`} />
+            ))}
+          </linearGradient>
+        ))}
+      </defs>
+      {y.ticks.map((t) => (
+        <line class={t === 0 ? 'lc-zero' : 'lc-grid'} x1="0" x2="1000" y1={sy(t)} y2={sy(t)} vector-effect="non-scaling-stroke" />
+      ))}
+      {events.map((ev) => (
+        <line class="lc-ref" x1={sx(ev.x)} x2={sx(ev.x)} y1="0" y2="1000" vector-effect="non-scaling-stroke" />
+      ))}
+      {drawn.filter((s) => s.area).map((s) => <path d={s.area} style={`fill:url(#${s.grad})`} />)}
+      {drawn.map((s) => (
+        <path class="lc-line" d={s.d} style={`stroke:${s.color}`} vector-effect="non-scaling-stroke" />
+      ))}
+    </svg>
+
+    {y.ticks.map((t, k) => <span class="lc-yt" style={`bottom:${y.at(t)}%`}>{tickText[k]}</span>)}
+    {xTicks.map((t, k) => (
+      <span class:list={['lc-xt', { 'lc-xt-alt': xTicks.length > 6 && k % 2 === 1 }]} style={`left:${px(t.x)}%`}>{t.label}</span>
+    ))}
+    {events.map((ev) => (
+      <span class:list={['lc-evl', { 'lc-evl-r': px(ev.x) > 68 }]} style={`left:${px(ev.x)}%`}>{ev.label}</span>
+    ))}
+    {points && series.map((s) => s.values.map((v, i) => v != null && (
+      <i class="lc-pt" style={`left:${px(x[i])}%;bottom:${y.at(v)}%;background:${s.color}`}></i>
+    )))}
+    {ends.map((e) => (
+      <i class="lc-dot" style={`left:${px(x[e.i])}%;bottom:${y.at(e.v)}%;background:${e.s.color}`}></i>
+    ))}
+    {ends.map((e) => (
+      <span class="lc-end" style={`top:${e.top}px`}><b>{fmt(e.v, decimals, unit)}</b><span>{e.s.label}</span></span>
+    ))}
+    {callout && (
+      <>
+        <i class="lc-dot lc-dot-call" style={`left:${px(callout.x)}%;bottom:${y.at(callout.y)}%;background:${callout.color}`}></i>
+        <span class:list={['lc-call', { 'lc-call-l': px(callout.x) < 45 }]} style={`left:${px(callout.x)}%;bottom:${y.at(callout.y)}%`}>{callout.label}</span>
+      </>
+    )}
+
+    <div class="lc-hit" tabindex="0" aria-label={`${label}. Use the arrow keys to read values.`} data-tips={JSON.stringify(tips)}>
+      <i class="lc-cross" hidden></i>
+      {series.map((s) => <i class="lc-hdot" hidden style={`background:${s.color}`}></i>)}
+      <div class="lc-tip" hidden></div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .lc {
+    container-type: inline-size;
+    font-size: 0.78rem;
+    padding: 0.4rem var(--el) 1.7rem var(--yl);
+  }
+  .lc-ev { padding-top: 1.6rem; }
+  .lc-plot { position: relative; height: var(--h); }
+  .lc [hidden] { display: none !important; }
+  svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+  .lc-grid { stroke: var(--na-grid); stroke-width: 1; }
+  .lc-zero { stroke: var(--na-axis); stroke-width: 1; }
+  .lc-ref { stroke: var(--na-axis); stroke-width: 1; stroke-dasharray: 3 3; }
+  .lc-line { fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+  .lc-yt, .lc-xt, .lc-evl, .lc-end, .lc-call {
+    position: absolute;
+    white-space: nowrap;
+    line-height: 1.2;
+    font-variant-numeric: tabular-nums;
+    color: var(--muted);
+  }
+  .lc-yt { right: calc(100% + 0.6rem); transform: translateY(50%); }
+  .lc-xt { top: calc(100% + 0.45rem); transform: translateX(-50%); }
+  .lc-evl {
+    bottom: calc(100% + 0.35rem);
+    padding-left: 0.3rem;
+    text-shadow: 0 0 2px var(--na-halo, #fff), 0 0 4px var(--na-halo, #fff), 0 0 6px var(--na-halo, #fff);
+  }
+  .lc-evl-r { transform: translateX(-100%); padding: 0 0.3rem 0 0; }
+  .lc-end { left: calc(100% + 0.7rem); transform: translateY(-0.65em); display: grid; }
+  .lc-end b { color: var(--ink); font-weight: 700; font-size: 0.86rem; }
+  .lc-call { color: var(--ink); font-weight: 600; transform: translate(calc(-100% - 0.6rem), -50%); }
+  .lc-call-l { transform: translate(0.6rem, -50%); }
+
+  .lc-pt, .lc-dot, .lc-hdot {
+    position: absolute;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    transform: translate(-50%, 50%);
+    box-shadow: 0 0 0 2px #fff;
+  }
+  .lc-dot, .lc-hdot { width: 9px; height: 9px; }
+
+  .lc-hit { position: absolute; inset: 0; outline: none; touch-action: pan-y; }
+  .lc-hit:focus-visible { box-shadow: 0 0 0 2px var(--na-red); border-radius: 2px; }
+  .lc-cross { position: absolute; top: 0; bottom: 0; width: 0; border-left: 1px solid var(--na-axis); }
+  .lc-hdot { z-index: 1; }
+  .lc-tip {
+    position: absolute;
+    top: 0;
+    z-index: 2;
+    pointer-events: none;
+    min-width: 9rem;
+    max-width: 16rem;
+    padding: 0.45rem 0.6rem;
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-sm);
+    box-shadow: 0 4px 16px rgba(20, 24, 31, 0.1);
+    font-size: 0.78rem;
+    line-height: 1.45;
+  }
+
+  /* Narrow charts: event labels run up their own dashed line inside the plot, and every other
+     year label drops out, so neighbours never overlap. Kept last so it overrides the rules above. */
+  @container (max-width: 36rem) {
+    .lc-evl,
+    .lc-evl-r {
+      bottom: auto;
+      top: 0.3rem;
+      margin-left: 3px;
+      padding: 0;
+      writing-mode: vertical-rl;
+      transform: rotate(180deg);
+    }
+    .lc-xt-alt,
+    .lc-call { display: none; }
+  }
+</style>

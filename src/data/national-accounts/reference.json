@@ -1,0 +1,752 @@
+{
+ "_about": "Hand-maintained annual tables for /national-accounts. Update when each release in `releases` comes out; monthly and quarterly series live in series.json (npm run accounts:refresh).",
+ "union_density": [
+  {
+   "year": 1995,
+   "density_pct": 32.4,
+   "coverage_pct": null
+  },
+  {
+   "year": 1996,
+   "density_pct": 31.4,
+   "coverage_pct": null
+  },
+  {
+   "year": 1997,
+   "density_pct": 30.7,
+   "coverage_pct": null
+  },
+  {
+   "year": 1998,
+   "density_pct": 29.9,
+   "coverage_pct": null
+  },
+  {
+   "year": 1999,
+   "density_pct": 29.7,
+   "coverage_pct": null
+  },
+  {
+   "year": 2000,
+   "density_pct": 29.8,
+   "coverage_pct": null
+  },
+  {
+   "year": 2001,
+   "density_pct": 29.3,
+   "coverage_pct": null
+  },
+  {
+   "year": 2002,
+   "density_pct": 28.8,
+   "coverage_pct": null
+  },
+  {
+   "year": 2003,
+   "density_pct": 29.3,
+   "coverage_pct": null
+  },
+  {
+   "year": 2004,
+   "density_pct": 28.8,
+   "coverage_pct": null
+  },
+  {
+   "year": 2005,
+   "density_pct": 28.6,
+   "coverage_pct": 50.1
+  },
+  {
+   "year": 2006,
+   "density_pct": 28.3,
+   "coverage_pct": 50.6
+  },
+  {
+   "year": 2007,
+   "density_pct": 28.0,
+   "coverage_pct": 49.6
+  },
+  {
+   "year": 2008,
+   "density_pct": 27.5,
+   "coverage_pct": 49.5
+  },
+  {
+   "year": 2009,
+   "density_pct": 27.4,
+   "coverage_pct": 49.2
+  },
+  {
+   "year": 2010,
+   "density_pct": 26.6,
+   "coverage_pct": 47.8
+  },
+  {
+   "year": 2011,
+   "density_pct": 26.0,
+   "coverage_pct": 47.0
+  },
+  {
+   "year": 2012,
+   "density_pct": 26.1,
+   "coverage_pct": 45.1
+  },
+  {
+   "year": 2013,
+   "density_pct": 25.6,
+   "coverage_pct": 44.6
+  },
+  {
+   "year": 2014,
+   "density_pct": 25.0,
+   "coverage_pct": 42.9
+  },
+  {
+   "year": 2015,
+   "density_pct": 24.7,
+   "coverage_pct": 41.6
+  },
+  {
+   "year": 2016,
+   "density_pct": 23.5,
+   "coverage_pct": 41.7
+  },
+  {
+   "year": 2017,
+   "density_pct": 23.3,
+   "coverage_pct": 39.6
+  },
+  {
+   "year": 2018,
+   "density_pct": 23.4,
+   "coverage_pct": 39.2
+  },
+  {
+   "year": 2019,
+   "density_pct": 23.6,
+   "coverage_pct": 39.2
+  },
+  {
+   "year": 2020,
+   "density_pct": 23.9,
+   "coverage_pct": 38.9
+  },
+  {
+   "year": 2021,
+   "density_pct": 23.2,
+   "coverage_pct": 40.9
+  },
+  {
+   "year": 2022,
+   "density_pct": 22.3,
+   "coverage_pct": 39.5
+  },
+  {
+   "year": 2023,
+   "density_pct": 22.4,
+   "coverage_pct": 39.2
+  },
+  {
+   "year": 2024,
+   "density_pct": 22.0,
+   "coverage_pct": 40.3
+  },
+  {
+   "year": 2025,
+   "density_pct": 22.4,
+   "coverage_pct": 39.9
+  }
+ ],
+ "bargaining_coverage": [
+  {
+   "country": "United Kingdom",
+   "iso3": "GBR",
+   "coverage_pct": 40.2,
+   "year": 2024
+  },
+  {
+   "country": "United States",
+   "iso3": "USA",
+   "coverage_pct": 11.1,
+   "year": 2024
+  },
+  {
+   "country": "Germany",
+   "iso3": "DEU",
+   "coverage_pct": 49.0,
+   "year": 2024
+  },
+  {
+   "country": "France",
+   "iso3": "FRA",
+   "coverage_pct": 98.0,
+   "year": 2024
+  },
+  {
+   "country": "Sweden",
+   "iso3": "SWE",
+   "coverage_pct": 88.0,
+   "year": 2024
+  },
+  {
+   "country": "Denmark",
+   "iso3": "DNK",
+   "coverage_pct": 81.6,
+   "year": 2023
+  },
+  {
+   "country": "Norway",
+   "iso3": "NOR",
+   "coverage_pct": 72.0,
+   "year": 2022
+  },
+  {
+   "country": "Finland",
+   "iso3": "FIN",
+   "coverage_pct": 88.8,
+   "year": 2022
+  },
+  {
+   "country": "Netherlands",
+   "iso3": "NLD",
+   "coverage_pct": 72.1,
+   "year": 2024
+  },
+  {
+   "country": "Italy",
+   "iso3": "ITA",
+   "coverage_pct": 100.0,
+   "year": 2024
+  },
+  {
+   "country": "Spain",
+   "iso3": "ESP",
+   "coverage_pct": 92.1,
+   "year": 2024
+  },
+  {
+   "country": "Canada",
+   "iso3": "CAN",
+   "coverage_pct": 30.2,
+   "year": 2024
+  },
+  {
+   "country": "Australia",
+   "iso3": "AUS",
+   "coverage_pct": 59.7,
+   "year": 2023
+  },
+  {
+   "country": "Japan",
+   "iso3": "JPN",
+   "coverage_pct": 15.2,
+   "year": 2023
+  },
+  {
+   "country": "Korea",
+   "iso3": "KOR",
+   "coverage_pct": 16.3,
+   "year": 2023
+  },
+  {
+   "country": "New Zealand",
+   "iso3": "NZL",
+   "coverage_pct": 18.7,
+   "year": 2024
+  }
+ ],
+ "share_ownership": [
+  {
+   "year": 1963,
+   "rest_of_world_pct": 7.0,
+   "individuals_pct": 54.0
+  },
+  {
+   "year": 1969,
+   "rest_of_world_pct": 6.6,
+   "individuals_pct": 47.4
+  },
+  {
+   "year": 1975,
+   "rest_of_world_pct": 5.6,
+   "individuals_pct": 37.5
+  },
+  {
+   "year": 1981,
+   "rest_of_world_pct": 3.6,
+   "individuals_pct": 28.2
+  },
+  {
+   "year": 1989,
+   "rest_of_world_pct": 12.8,
+   "individuals_pct": 20.6
+  },
+  {
+   "year": 1990,
+   "rest_of_world_pct": 11.8,
+   "individuals_pct": 20.3
+  },
+  {
+   "year": 1991,
+   "rest_of_world_pct": 12.8,
+   "individuals_pct": 19.9
+  },
+  {
+   "year": 1992,
+   "rest_of_world_pct": 13.1,
+   "individuals_pct": 20.4
+  },
+  {
+   "year": 1993,
+   "rest_of_world_pct": 16.3,
+   "individuals_pct": 17.7
+  },
+  {
+   "year": 1994,
+   "rest_of_world_pct": 16.3,
+   "individuals_pct": 20.3
+  },
+  {
+   "year": 1997,
+   "rest_of_world_pct": 28.0,
+   "individuals_pct": 16.5
+  },
+  {
+   "year": 1998,
+   "rest_of_world_pct": 30.7,
+   "individuals_pct": 16.7
+  },
+  {
+   "year": 1999,
+   "rest_of_world_pct": 33.0,
+   "individuals_pct": 15.3
+  },
+  {
+   "year": 2000,
+   "rest_of_world_pct": 35.7,
+   "individuals_pct": 16.0
+  },
+  {
+   "year": 2001,
+   "rest_of_world_pct": 35.7,
+   "individuals_pct": 14.8
+  },
+  {
+   "year": 2002,
+   "rest_of_world_pct": 35.9,
+   "individuals_pct": 14.3
+  },
+  {
+   "year": 2003,
+   "rest_of_world_pct": 36.1,
+   "individuals_pct": 14.9
+  },
+  {
+   "year": 2004,
+   "rest_of_world_pct": 36.3,
+   "individuals_pct": 14.1
+  },
+  {
+   "year": 2006,
+   "rest_of_world_pct": 40.0,
+   "individuals_pct": 12.8
+  },
+  {
+   "year": 2008,
+   "rest_of_world_pct": 41.5,
+   "individuals_pct": 10.2
+  },
+  {
+   "year": 2010,
+   "rest_of_world_pct": 43.1,
+   "individuals_pct": 10.6
+  },
+  {
+   "year": 2012,
+   "rest_of_world_pct": 53.3,
+   "individuals_pct": 10.6
+  },
+  {
+   "year": 2014,
+   "rest_of_world_pct": 53.7,
+   "individuals_pct": 12.4
+  },
+  {
+   "year": 2016,
+   "rest_of_world_pct": 53.9,
+   "individuals_pct": 12.3
+  },
+  {
+   "year": 2018,
+   "rest_of_world_pct": 55.7,
+   "individuals_pct": 13.3
+  },
+  {
+   "year": 2020,
+   "rest_of_world_pct": 56.3,
+   "individuals_pct": 12.0
+  },
+  {
+   "year": 2022,
+   "rest_of_world_pct": 57.7,
+   "individuals_pct": 10.8
+  },
+  {
+   "year": 2024,
+   "rest_of_world_pct": 58.8,
+   "individuals_pct": 11.6
+  }
+ ],
+ "house_price_earnings": [
+  {
+   "year": 1997,
+   "ratio_england": 3.54,
+   "ratio_london": 4.0
+  },
+  {
+   "year": 1998,
+   "ratio_england": 3.67,
+   "ratio_london": 4.34
+  },
+  {
+   "year": 1999,
+   "ratio_england": 3.96,
+   "ratio_london": 4.94
+  },
+  {
+   "year": 2000,
+   "ratio_england": 4.19,
+   "ratio_london": 5.54
+  },
+  {
+   "year": 2001,
+   "ratio_england": 4.5,
+   "ratio_london": 5.95
+  },
+  {
+   "year": 2002,
+   "ratio_england": 5.12,
+   "ratio_london": 6.57
+  },
+  {
+   "year": 2003,
+   "ratio_england": 5.93,
+   "ratio_london": 7.1
+  },
+  {
+   "year": 2004,
+   "ratio_england": 6.6,
+   "ratio_london": 7.55
+  },
+  {
+   "year": 2005,
+   "ratio_england": 6.79,
+   "ratio_london": 7.66
+  },
+  {
+   "year": 2006,
+   "ratio_england": 6.95,
+   "ratio_london": 7.91
+  },
+  {
+   "year": 2007,
+   "ratio_england": 7.15,
+   "ratio_london": 7.94
+  },
+  {
+   "year": 2008,
+   "ratio_england": 6.97,
+   "ratio_london": 8.08
+  },
+  {
+   "year": 2009,
+   "ratio_england": 6.4,
+   "ratio_london": 7.42
+  },
+  {
+   "year": 2010,
+   "ratio_england": 6.85,
+   "ratio_london": 8.24
+  },
+  {
+   "year": 2011,
+   "ratio_england": 6.8,
+   "ratio_london": 8.52
+  },
+  {
+   "year": 2012,
+   "ratio_england": 6.77,
+   "ratio_london": 8.53
+  },
+  {
+   "year": 2013,
+   "ratio_england": 6.76,
+   "ratio_london": 8.96
+  },
+  {
+   "year": 2014,
+   "ratio_england": 7.09,
+   "ratio_london": 10.08
+  },
+  {
+   "year": 2015,
+   "ratio_england": 7.54,
+   "ratio_london": 11.05
+  },
+  {
+   "year": 2016,
+   "ratio_england": 7.72,
+   "ratio_london": 12.03
+  },
+  {
+   "year": 2017,
+   "ratio_england": 7.91,
+   "ratio_london": 12.38
+  },
+  {
+   "year": 2018,
+   "ratio_england": 8.04,
+   "ratio_london": 12.26
+  },
+  {
+   "year": 2019,
+   "ratio_england": 7.88,
+   "ratio_london": 12.05
+  },
+  {
+   "year": 2020,
+   "ratio_england": 7.86,
+   "ratio_london": 11.83
+  },
+  {
+   "year": 2021,
+   "ratio_england": 9.06,
+   "ratio_london": 12.86
+  },
+  {
+   "year": 2022,
+   "ratio_england": 8.56,
+   "ratio_london": 12.38
+  },
+  {
+   "year": 2023,
+   "ratio_england": 8.45,
+   "ratio_london": 11.77
+  },
+  {
+   "year": 2024,
+   "ratio_england": 7.84,
+   "ratio_london": 11.17
+  },
+  {
+   "year": 2025,
+   "ratio_england": 7.63,
+   "ratio_london": 10.61
+  }
+ ],
+ "wealth_by_age": {
+  "period": "April 2020 to March 2022",
+  "rows": [
+   {
+    "age_band": "16 to 24",
+    "median_wealth_gbp": 15200
+   },
+   {
+    "age_band": "25 to 34",
+    "median_wealth_gbp": 109800
+   },
+   {
+    "age_band": "35 to 44",
+    "median_wealth_gbp": 209600
+   },
+   {
+    "age_band": "45 to 54",
+    "median_wealth_gbp": 301900
+   },
+   {
+    "age_band": "55 to 64",
+    "median_wealth_gbp": 496500
+   },
+   {
+    "age_band": "65 to 74",
+    "median_wealth_gbp": 502500
+   },
+   {
+    "age_band": "75 and above",
+    "median_wealth_gbp": 373100
+   }
+  ]
+ },
+ "wealth_deciles": {
+  "period": "April 2020 to March 2022",
+  "rows": [
+   {
+    "decile": 1,
+    "aggregate_wealth_gbp_m": 13897
+   },
+   {
+    "decile": 2,
+    "aggregate_wealth_gbp_m": 78424
+   },
+   {
+    "decile": 3,
+    "aggregate_wealth_gbp_m": 195622
+   },
+   {
+    "decile": 4,
+    "aggregate_wealth_gbp_m": 392482
+   },
+   {
+    "decile": 5,
+    "aggregate_wealth_gbp_m": 651950
+   },
+   {
+    "decile": 6,
+    "aggregate_wealth_gbp_m": 955204
+   },
+   {
+    "decile": 7,
+    "aggregate_wealth_gbp_m": 1322966
+   },
+   {
+    "decile": 8,
+    "aggregate_wealth_gbp_m": 1805596
+   },
+   {
+    "decile": 9,
+    "aggregate_wealth_gbp_m": 2628545
+   },
+   {
+    "decile": 10,
+    "aggregate_wealth_gbp_m": 5523204
+   }
+  ]
+ },
+ "funds": [
+  {
+   "fund": "Alaska Permanent Fund",
+   "place": "Alaska",
+   "assets_bn": 91.9,
+   "currency": "USD",
+   "assets_as_of": "30 June 2026 (audited)",
+   "gdp_bn": 75.0,
+   "gdp_year": 2025,
+   "pays_dividend": "Yes, to every resident since 1982",
+   "owner": "Alaska residents, via the state",
+   "source": "alaska"
+  },
+  {
+   "fund": "National Wealth Fund",
+   "place": "United Kingdom",
+   "assets_bn": 27.8,
+   "currency": "GBP",
+   "assets_as_of": "Capital committed at launch, October 2024",
+   "gdp_bn": 3044.6,
+   "gdp_year": 2025,
+   "pays_dividend": "No (a public investment bank)",
+   "owner": "HM Treasury",
+   "source": "nwf"
+  }
+ ],
+ "register": [
+  {
+   "key": "rent_share",
+   "account": "Rent share of national income, by type",
+   "proposition": "2. Rent, not profit",
+   "status": "Not counted",
+   "nearest_official": "National accounts report gross operating surplus and imputed housing rent, but do not split returns to owning chokepoints from returns to building."
+  },
+  {
+   "key": "asset_ownership",
+   "account": "Asset ownership and asset income, by age, region and education",
+   "proposition": "3. Universal ownership",
+   "status": "Partial",
+   "nearest_official": "ONS Wealth and Assets Survey for Great Britain, a household survey published two to three years after fieldwork."
+  },
+  {
+   "key": "task_data",
+   "account": "Task-level labour market data",
+   "proposition": "4. The direction of technology",
+   "status": "Not counted",
+   "nearest_official": "The Labour Force Survey reports occupations, not tasks, so automation and augmentation cannot be told apart."
+  },
+  {
+   "key": "security_index",
+   "account": "Security index: tenure, income floor and claim on asset income",
+   "proposition": "5. Security as precondition",
+   "status": "Not counted",
+   "nearest_official": "Tenure, income and wealth are published in separate surveys. No composite index exists."
+  },
+  {
+   "key": "cognition_capital",
+   "account": "Compute, energy and data stocks as national capital",
+   "proposition": "6. Middle-power economy",
+   "status": "Not counted",
+   "nearest_official": "Business investment counts software and databases inside intangibles. Compute capacity, data stocks and who owns them are not separated."
+  },
+  {
+   "key": "time_use",
+   "account": "Time use",
+   "proposition": "Measurement",
+   "status": "Partial",
+   "nearest_official": "ONS has run time use surveys occasionally, not as a regular series alongside GDP."
+  },
+  {
+   "key": "mediation_density",
+   "account": "Mediation density: unions, sectoral agreements, local institutions",
+   "proposition": "7. Rebuild mediation",
+   "status": "Partial",
+   "nearest_official": "DBT trade union statistics give union density and collective agreement coverage each year. Local institutional presence is not measured."
+  }
+ ],
+ "releases": [
+  {
+   "series": "Trade union density and agreement coverage",
+   "title": "Trade union statistics 2025",
+   "publisher": "DBT",
+   "last_release": "28 May 2026",
+   "next_release": "May 2027",
+   "next_release_iso": "2027-05-31"
+  },
+  {
+   "series": "Ownership of UK quoted shares",
+   "title": "Ownership of UK quoted shares: 2024",
+   "publisher": "ONS",
+   "last_release": "29 January 2026",
+   "next_release": "Early 2028 (every two years)",
+   "next_release_iso": "2028-03-31"
+  },
+  {
+   "series": "House price to earnings ratio",
+   "title": "Housing affordability in England and Wales: 2025",
+   "publisher": "ONS",
+   "last_release": "26 March 2026",
+   "next_release": "March 2027",
+   "next_release_iso": "2027-03-31"
+  },
+  {
+   "series": "Household wealth by age and decile",
+   "title": "Household total wealth in Great Britain: April 2020 to March 2022",
+   "publisher": "ONS",
+   "last_release": "24 January 2025",
+   "next_release": "Not yet scheduled",
+   "next_release_iso": ""
+  },
+  {
+   "series": "Collective bargaining coverage",
+   "title": "OECD/AIAS ICTWSS database",
+   "publisher": "OECD",
+   "last_release": "30 September 2025",
+   "next_release": "2026 update planned",
+   "next_release_iso": "2026-12-31"
+  },
+  {
+   "series": "Wealth fund values",
+   "title": "NBIM market value; APFC audited FY26 balance",
+   "publisher": "NBIM, APFC",
+   "last_release": "30 June 2026 values",
+   "next_release": "Quarterly",
+   "next_release_iso": "2026-11-30"
+  }
+ ]
+}

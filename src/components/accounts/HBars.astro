@@ -1,0 +1,54 @@
+---
+/**
+ * Horizontal bars for /national-accounts. Plain HTML grid; `stacked` puts each label on its
+ * own line above a full-width bar, for long names.
+ */
+interface Row {
+  label: string;
+  sub?: string;
+  value: number;
+  display: string;
+  color: string;
+  me?: boolean;
+}
+interface Props {
+  label: string;
+  rows: Row[];
+  max?: number;
+  stacked?: boolean;
+}
+
+const { label, rows, stacked = false } = Astro.props;
+const max = Astro.props.max ?? Math.max(...rows.map((r) => r.value));
+---
+
+<div class:list={['hb', { 'hb-stacked': stacked }]} role="img" aria-label={label}>
+  {rows.map((r) => (
+    <div class:list={['hb-row', { 'hb-me': r.me }]}>
+      <span class="hb-l">{r.label}{r.sub && <small>{r.sub}</small>}</span>
+      <span class="hb-t"><i style={`width:${Math.max(0.6, (r.value / max) * 100)}%;background:${r.color}`}></i></span>
+      <span class="hb-v">{r.display}</span>
+    </div>
+  ))}
+</div>
+
+<style>
+  .hb {
+    display: grid;
+    grid-template-columns: max-content minmax(0, 1fr) max-content;
+    align-items: center;
+    gap: 0.5rem 0.75rem;
+    font-size: 0.9rem;
+  }
+  .hb-row { display: contents; }
+  .hb-l { color: var(--ink-soft); }
+  .hb-me .hb-l { color: var(--ink); font-weight: 700; }
+  .hb-l small { margin-left: 0.5rem; color: var(--muted); font-size: 0.8rem; }
+  .hb-t { display: block; height: 0.8rem; }
+  .hb-t i { display: block; height: 100%; border-radius: 0 4px 4px 0; }
+  .hb-v { font-variant-numeric: tabular-nums; font-weight: 600; color: var(--ink); text-align: right; }
+  .hb-stacked { grid-template-columns: minmax(0, 1fr) max-content; row-gap: 0.35rem; }
+  .hb-stacked .hb-l { grid-column: 1 / -1; padding-top: 0.55rem; }
+  .hb-stacked .hb-row:first-child .hb-l { padding-top: 0; }
+  .hb-stacked .hb-l small { display: block; margin: 0.1rem 0 0; }
+</style>

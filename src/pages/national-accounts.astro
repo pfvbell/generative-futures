@@ -1,0 +1,1016 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PlatformLinks from '../components/PlatformLinks.astro';
+import FAQ from '../components/FAQ.astro';
+import LineChart from '../components/accounts/LineChart.astro';
+import BarChart from '../components/accounts/BarChart.astro';
+import HBars from '../components/accounts/HBars.astro';
+import series from '../data/national-accounts/series.json';
+import ref from '../data/national-accounts/reference.json';
+import { breadcrumbSchema, faqSchema, PERSON_ID, ORG_ID, WEBSITE_ID } from '../lib/schema';
+import { SITE } from '../site.config';
+import { r1, fmt } from '../lib/charts';
+
+/* ------------------------------------------------------------------ *
+ * The New National Accounts: the measurements proposed in the working
+ * essay "A Political Economy for the Age of AI", kept for the UK from
+ * official statistics. Every figure below is computed here at build
+ * time from src/data/national-accounts/ (series.json is refreshed with
+ * `npm run accounts:refresh`; reference.json is updated by hand).
+ * ------------------------------------------------------------------ */
+
+const RED = 'var(--na-red)';
+const BLUE = 'var(--na-blue)';
+const GREY = 'var(--na-grey)';
+const pct = (v: number, d = 1) => fmt(v, d, '%');
+const usd = (v: number) => `$${Math.round(v).toLocaleString('en-US')}`;
+const gbp = (v: number) => `£${Math.round(v).toLocaleString('en-GB')}`;
+const MON = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+const monthIdx = (m: string) => MON.findIndex((s) => s.toLowerCase() === m.toLowerCase());
+/** "2026 JUN-AUG" → "Jun–Aug 2026"; periods that cross a year keep both years. */
+const period = (p: string) => {
+  const m = /^(\d{4}) (\w{3})-(\w{3})$/i.exec(p);
+  if (!m) return p;
+  const [a, b, yr] = [monthIdx(m[2]), monthIdx(m[3]), Number(m[1])];
+  return b < a ? `${MON[a]} ${yr} to ${MON[b]} ${yr + 1}` : `${MON[a]}–${MON[b]} ${yr}`;
+};
+const monthX = (m: string) => {
+  const [yy, mm] = m.split('-').map(Number);
+  return yy + (mm - 0.5) / 12;
+};
+const longDate = (iso: string) =>
+  new Date(iso).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'Europe/London' });
+const ageLabel = (a: string) => a.replace(/^(\d+) to (\d+)$/, '$1–$2').replace(/^(\d+) and above$/, '$1+');
+const yearTicks = (from: number, to: number, step: number) =>
+  Array.from({ length: Math.floor((to - from) / step) + 1 }, (_, i) => ({ x: from + i * step, label: String(from + i * step) }));
+const maxBy = <T,>(rows: T[], f: (r: T) => number) => rows.reduce((a, b) => (f(b) > f(a) ? b : a));
+const minBy = <T,>(rows: T[], f: (r: T) => number) => rows.reduce((a, b) => (f(b) < f(a) ? b : a));
+
+// Proposition 1: the wage share
+const wage = series.wage_share.map((r) => ({ year: r.year, pct: r1((100 * r.compensation_gbp_m) / r.gdp_gbp_m) }));
+const wLast = wage[wage.length - 1];
+const wPeak = maxBy(wage, (r) => r.pct);
+const wLow = minBy(wage, (r) => r.pct);
+
+// Proposition 2: rent
+const hp = ref.house_price_earnings;
+const hpPeak = maxBy(hp, (r) => r.ratio_england);
+const rent = ref.register.find((r) => r.key === 'rent_share')!;
+
+// Proposition 3: a stake
+const pfd = series.alaska_pfd;
+const pfdTotal = Math.round(pfd.reduce((s, r) => s + r.dividend_usd, 0));
+const pfdMax = maxBy(pfd, (r) => r.dividend_usd);
+const funds = [series.norway_fund, ...ref.funds]
+  .map((f) => ({ ...f, pct_gdp: r1((100 * f.assets_bn) / f.gdp_bn) }))
+  .sort((a, b) => b.pct_gdp - a.pct_gdp);
+const norway = funds.find((f) => f.place === 'Norway')!;
+const ukFund = funds.find((f) => f.place === 'United Kingdom')!;
+const deciles = ref.wealth_deciles.rows;
+const wealthTotal = deciles.reduce((s, r) => s + r.aggregate_wealth_gbp_m, 0);
+const wealthOf = (lo: number, hi: number) =>
+  deciles.filter((r) => r.decile >= lo && r.decile <= hi).reduce((s, r) => s + r.aggregate_wealth_gbp_m, 0);
+const split = [
+  { group: 'Top 10%', share: r1((100 * wealthOf(10, 10)) / wealthTotal), color: RED },
+  { group: 'Middle 40%', share: r1((100 * wealthOf(6, 9)) / wealthTotal), color: GREY },
+  { group: 'Bottom 50%', share: r1((100 * wealthOf(1, 5)) / wealthTotal), color: BLUE },
+];
+const topToBottom = r1(wealthOf(10, 10) / wealthOf(1, 5));
+const ages = ref.wealth_by_age.rows;
+const ageMax = maxBy(ages, (r) => r.median_wealth_gbp);
+
+// Proposition 6: selling assets
+const own = ref.share_ownership;
+const oFirst = own[0];
+const oLast = own[own.length - 1];
+const ca = series.current_account;
+const caLast = ca[ca.length - 1];
+const caSurplus = ca.filter((r) => r.balance_pct_gdp > 0).at(-1)!;
+
+// Proposition 7: mediation
+const ud = ref.union_density;
+const udFirst = ud[0];
+const udLast = ud[ud.length - 1];
+const udChange = r1(udLast.density_pct - udFirst.density_pct);
+const coverage = [...ref.bargaining_coverage].sort((a, b) => b.coverage_pct - a.coverage_pct);
+const ukCoverage = coverage.find((r) => r.iso3 === 'GBR')!;
+
+// Crisis watch: entry-level labour market
+const un = series.unemployment;
+const uLast = un[un.length - 1];
+const uAgo = un[un.length - 13];
+const uChange = r1(uLast.youth_pct - uAgo.youth_pct);
+const uPeak = maxBy(un.slice(-12), (r) => r.youth_pct);
+const uPrior = un.slice(0, -12).filter((r) => r.youth_pct >= uPeak.youth_pct).at(-1);
+
+// Measurement
+const reg = ref.register;
+const regCount = (s: string) => reg.filter((r) => r.status === s).length;
+const releases = [...series.releases, ...ref.releases];
+const refreshed = longDate(series.generated);
+
+const faqs = [
+  {
+    question: 'What are the new national accounts?',
+    answer: `A proposed set of statistics for an AI economy, from the working essay A Political Economy for the Age of AI: the rent share of national income, asset ownership by age and region, task-level labour data, a security index, compute and data as national capital, time use, and mediation density. Of these ${reg.length} accounts, official UK statistics cover ${regCount('Partial')} in part and ${regCount('Not counted')} not at all.`,
+  },
+  {
+    question: 'What share of UK national income goes to workers?',
+    answer: `Compensation of employees was ${pct(wLast.pct)} of UK GDP in ${wLast.year}, according to ONS national accounts. It peaked at ${pct(wPeak.pct)} in ${wPeak.year} and fell to a low of ${pct(wLow.pct)} in ${wLow.year}.`,
+  },
+  {
+    question: 'Does the UK have a sovereign wealth fund that pays a dividend?',
+    answer: `No. The UK's National Wealth Fund is a public investment bank with £${ukFund.assets_bn}bn of capital, about ${pct(ukFund.pct_gdp)} of GDP, and pays no dividend. Norway's fund is worth about ${pct(norway.pct_gdp, 0)} of Norway's GDP, and Alaska has paid every eligible resident a dividend each year since ${pfd[0].year}, ${usd(pfdTotal)} in total.`,
+  },
+  {
+    question: 'How high is youth unemployment in the UK?',
+    answer: `${pct(uLast.youth_pct)} of economically active 16 to 24 year olds were unemployed in ${period(uLast.period)}, according to the ONS Labour Force Survey, ${fmt(uChange, 1, ' points', true)} on a year earlier. The rate reached ${pct(uPeak.youth_pct)} in ${period(uPeak.period)}${uPrior ? `, its highest since ${period(uPrior.period)}` : ''}.`,
+  },
+];
+
+const pageTitle = 'The New National Accounts';
+const pageDesc =
+  'The national accounts Britain would need for the age of AI, kept from official statistics: the wage share, rent, wealth funds, asset ownership, unions and youth unemployment, plus the accounts nobody publishes yet.';
+const path = '/national-accounts';
+const url = `${SITE.url}${path}`;
+const published = '2026-10-23T09:00:00.000Z';
+const keywords = [
+  'national accounts', 'political economy of AI', 'labour share', 'wage share UK', 'rent share',
+  'sovereign wealth fund', 'citizens wealth fund', 'Alaska Permanent Fund dividend', 'trade union density',
+  'youth unemployment UK', 'Keynes',
+];
+const schema = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: pageTitle,
+    name: pageTitle,
+    description: pageDesc,
+    url,
+    inLanguage: SITE.language,
+    datePublished: published,
+    dateModified: series.generated,
+    keywords: keywords.join(', '),
+    about: ['National accounts', 'Political economy of AI', 'Wealth funds', 'Labour share', 'Collective bargaining']
+      .map((name) => ({ '@type': 'Thing', name })),
+    author: { '@id': PERSON_ID },
+    publisher: { '@id': ORG_ID },
+    isPartOf: { '@id': WEBSITE_ID },
+    mainEntityOfPage: { '@type': 'WebPage', '@id': url },
+  },
+  breadcrumbSchema([
+    { name: 'Home', path: '/' },
+    { name: pageTitle, path },
+  ]),
+  faqSchema(faqs),
+];
+---
+
+<BaseLayout
+  title={pageTitle}
+  description={pageDesc}
+  path={path}
+  ogType="article"
+  publishedTime={published}
+  modifiedTime={series.generated}
+  keywords={keywords}
+  schema={schema}
+>
+  <div class="gna">
+    <header class="na-hero">
+      <div class="container">
+        <nav class="breadcrumbs" aria-label="Breadcrumb">
+          <a href="/">Home</a> › <span>{pageTitle}</span>
+        </nav>
+        <p class="na-kicker">Prototype accounts for the United Kingdom</p>
+        <h1>{pageTitle}</h1>
+        <p class="na-lede">
+          Keynes needed national income accounting before he could manage demand. The working essay
+          <em>A Political Economy for the Age of AI</em> argues that Britain now needs a new set of accounts:
+          who owns the returns, who carries the risk, and who still bargains. This page keeps the ones official
+          statistics can already fill, and lists the ones nobody publishes yet.
+        </p>
+        <p class="na-take">
+          Workers take <b>{pct(wLast.pct)}</b> of national income. Overseas investors own <b>{pct(oLast.rest_of_world_pct)}</b>
+          of UK quoted shares, and <b>{pct(uLast.youth_pct)}</b> of young people in the labour market are out of work.
+          Of the {reg.length} accounts the essay calls for, <b>{regCount('Not counted')}</b> are not kept at all.
+        </p>
+        <ul class="na-meta">
+          <li>Latest data: {period(uLast.period)}</li>
+          <li>Refreshed {refreshed}</li>
+          <li>Official statistics from the ONS, DBT, OECD and others</li>
+        </ul>
+      </div>
+    </header>
+
+    <div class="container">
+      <section class="na-strip" aria-label="Headline figures">
+        <div class="na-fig">
+          <p class="na-fig-l">Workers' share of national income, {wLast.year}</p>
+          <p class="na-fig-v">{pct(wLast.pct)}</p>
+          <p class="na-fig-n">Peak {pct(wPeak.pct)} in {wPeak.year}</p>
+          <p class="na-fig-t">Proposition 1</p>
+        </div>
+        <div class="na-fig">
+          <p class="na-fig-l">Unemployment, ages 16 to 24, {period(uLast.period)}</p>
+          <p class="na-fig-v">{pct(uLast.youth_pct)}</p>
+          <p class="na-fig-n">{fmt(uChange, 1, ' pts', true)} on a year earlier</p>
+          <p class="na-fig-t">Crisis watch</p>
+        </div>
+        <div class="na-fig">
+          <p class="na-fig-l">UK quoted shares owned overseas, {oLast.year}</p>
+          <p class="na-fig-v">{pct(oLast.rest_of_world_pct)}</p>
+          <p class="na-fig-n">{pct(oFirst.rest_of_world_pct)} in {oFirst.year}</p>
+          <p class="na-fig-t">Proposition 6</p>
+        </div>
+        <div class="na-fig">
+          <p class="na-fig-l">Current account balance, share of GDP, {caLast.year}</p>
+          <p class="na-fig-v">{fmt(caLast.balance_pct_gdp, 1, '%')}</p>
+          <p class="na-fig-n">Last annual surplus in {caSurplus.year}</p>
+          <p class="na-fig-t">Proposition 6</p>
+        </div>
+        <div class="na-fig">
+          <p class="na-fig-l">Employees in a trade union, {udLast.year}</p>
+          <p class="na-fig-v">{pct(udLast.density_pct)}</p>
+          <p class="na-fig-n">{fmt(udChange, 1, ' pts', true)} since {udFirst.year}</p>
+          <p class="na-fig-t">Proposition 7</p>
+        </div>
+      </section>
+    </div>
+
+    <section class="na-band" id="distribution">
+      <div class="container na-sec">
+        <header class="na-head">
+          <p class="na-num">Proposition 1</p>
+          <h2>Distribution determines demand</h2>
+          <blockquote class="na-quote">“Distribution is a macro variable. The equity-efficiency trade-off runs the other way at current levels of inequality.”</blockquote>
+        </header>
+        <div class="na-grid">
+          <figure class="na-ex na-wide" id="wage-share">
+            <figcaption>
+              <h3>Workers' share of national income</h3>
+              <p class="na-note">
+                Wages, salaries and employer contributions as a share of GDP. It peaked at {pct(wPeak.pct)} in {wPeak.year}
+                and bottomed at {pct(wLow.pct)} in {wLow.year}. The 2020 jump reflects furlough pay while output fell.
+              </p>
+            </figcaption>
+            <LineChart
+              id="wage"
+              label={`Line chart: wage share of UK GDP, ${wage[0].year} to ${wLast.year}`}
+              x={wage.map((r) => r.year)}
+              series={[{ label: 'Wage share', values: wage.map((r) => r.pct), color: RED, area: true }]}
+              xTicks={yearTicks(1950, 2020, 10)}
+              tipTitles={wage.map((r) => String(r.year))}
+              yMin={40}
+              unit="%"
+              height={300}
+              events={[{ x: 1979, label: 'Thatcher elected' }, { x: 2008, label: 'Financial crisis' }]}
+            />
+            <p class="na-src">
+              Source: ONS UK Economic Accounts, series
+              <a href="https://www.ons.gov.uk/economy/grossdomesticproductgdp/timeseries/dtwm/ukea">DTWM</a> divided by
+              <a href="https://www.ons.gov.uk/economy/grossdomesticproductgdp/timeseries/ybha/ukea">YBHA</a>, current prices.
+            </p>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="na-band" id="rent">
+      <div class="container na-sec">
+        <header class="na-head">
+          <p class="na-num">Proposition 2</p>
+          <h2>Rent, not profit</h2>
+          <blockquote class="na-quote">“Rent share of national income is the variable to track and reduce. Tax rents, not production.”</blockquote>
+        </header>
+        <div class="na-grid">
+          <figure class="na-ex" id="house-prices">
+            <figcaption>
+              <h3>House prices against earnings</h3>
+              <p class="na-note">
+                Median house price as a multiple of median full-time earnings where people work. England peaked at
+                {fmt(hpPeak.ratio_england, 1)} times in {hpPeak.year}, partly because measured earnings dipped that year.
+              </p>
+            </figcaption>
+            <LineChart
+              id="house"
+              label="Line chart: house price to earnings ratio, England and London"
+              x={hp.map((r) => r.year)}
+              series={[
+                { label: 'England', values: hp.map((r) => r.ratio_england), color: RED, area: true },
+                { label: 'London', values: hp.map((r) => r.ratio_london), color: BLUE },
+              ]}
+              xTicks={yearTicks(2000, 2025, 5)}
+              tipTitles={hp.map((r) => String(r.year))}
+              yMin={0}
+              decimals={1}
+              height={280}
+            />
+            <p class="na-src">
+              Source: ONS, <a href="https://www.ons.gov.uk/peoplepopulationandcommunity/housing/bulletins/housingaffordabilityinenglandandwales/2025">Housing affordability in England and Wales: 2025</a>, table 1c.
+            </p>
+          </figure>
+          <figure class="na-ex" id="rent-share">
+            <figcaption>
+              <h3>The rent share of national income</h3>
+            </figcaption>
+            <p class="na-verdict">{rent.status}</p>
+            <p class="na-body">
+              This is the account the essay builds everything else on: the share of income that goes to whoever owns land,
+              housing, data, compute, platforms and patents, rather than to whoever builds things.
+            </p>
+            <p class="na-note">{rent.nearest_official}</p>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="na-band" id="stake">
+      <div class="container na-sec">
+        <header class="na-head">
+          <p class="na-num">Proposition 3</p>
+          <h2>Everyone needs a stake</h2>
+          <blockquote class="na-quote">“Everyone needs a claim on capital income that does not depend on their wage or their credential.”</blockquote>
+        </header>
+        <div class="na-grid">
+          <figure class="na-ex na-wide" id="alaska">
+            <figcaption>
+              <h3>Alaska's dividend, paid every year since {pfd[0].year}</h3>
+            </figcaption>
+            <p class="na-total"><b>{usd(pfdTotal)}</b><span>paid in total to a resident who qualified in all {pfd.length} years</span></p>
+            <p class="na-note">
+              Amount paid to each eligible resident, in US dollars, not adjusted for inflation. Some years include one-off
+              energy relief. Alaska's fund is capitalised from oil revenue; the essay's version would be capitalised from captured rents.
+            </p>
+            <BarChart
+              label={`Column chart: Alaska Permanent Fund Dividend per resident, ${pfd[0].year} to ${pfd[pfd.length - 1].year}`}
+              bars={pfd.map((r) => ({
+                value: r.dividend_usd,
+                color: RED,
+                title: `${r.year} dividend`,
+                display: usd(r.dividend_usd),
+                tick: r.year % 5 === 0 ? String(r.year) : undefined,
+                minor: r.year % 10 !== 0,
+                label: r === pfdMax ? usd(r.dividend_usd) : undefined,
+              }))}
+              tipLabel="Per resident"
+              tickFmt={(v) => usd(v)}
+              height={240}
+            />
+            <p class="na-src">
+              Source: Alaska Department of Revenue, <a href="https://pfd.alaska.gov/Division-Info/summary-of-dividend-applications-payments">Summary of dividend applications and payments</a>.
+            </p>
+          </figure>
+
+          <figure class="na-ex" id="wealth-funds">
+            <figcaption>
+              <h3>Public wealth funds against the economy</h3>
+              <p class="na-note">
+                Fund assets as a share of each economy's GDP. Britain's National Wealth Fund is a public investment bank:
+                it pays no dividend and no citizen owns a share.
+              </p>
+            </figcaption>
+            <HBars
+              stacked
+              label="Bar chart: wealth fund assets as a share of GDP for Norway, Alaska and the United Kingdom"
+              rows={funds.map((f) => ({
+                label: f.place,
+                sub: `${f.fund}, ${f.pays_dividend.startsWith('Yes') ? 'pays a dividend' : 'no dividend'}`,
+                value: f.pct_gdp,
+                display: `${f.pct_gdp.toLocaleString('en-GB')}% of GDP`,
+                color: f.place === 'United Kingdom' ? RED : GREY,
+                me: f.place === 'United Kingdom',
+              }))}
+            />
+            <p class="na-src">
+              Sources: <a href="https://www.nbim.no/en/the-fund/market-value/">NBIM</a> and
+              <a href="https://www.ssb.no/en/statbank/table/09189">Statistics Norway</a>;
+              <a href="https://apfc.org/fund-news/fy26-audit-and-budget-proposal/">APFC</a> and BEA state GDP
+              (<a href="https://en.wikipedia.org/wiki/List_of_U.S._states_and_territories_by_GDP">as compiled here</a>);
+              <a href="https://www.gov.uk/government/publications/national-wealth-fund-mobilising-private-investment">HM Treasury</a> and ONS.
+            </p>
+          </figure>
+
+          <figure class="na-ex" id="wealth-split">
+            <figcaption>
+              <h3>Who holds Britain's household wealth</h3>
+              <p class="na-note">
+                Share of all household wealth, including pensions, Great Britain, {ref.wealth_deciles.period}.
+                The top tenth holds {fmt(topToBottom, 1)} times as much as the bottom half.
+              </p>
+            </figcaption>
+            <div class="na-split" role="img" aria-label={split.map((s) => `${s.group} ${pct(s.share)}`).join(', ')}>
+              {split.map((s) => <i style={`flex:${s.share} 1 0;background:${s.color}`}></i>)}
+            </div>
+            <div class="na-split-key">
+              {split.map((s) => (
+                <div>
+                  <p class="na-split-v">{pct(s.share)}</p>
+                  <p class="na-split-l"><i class="na-sw" style={`background:${s.color}`}></i>{s.group}</p>
+                </div>
+              ))}
+            </div>
+            <p class="na-src">
+              Source: ONS, <a href="https://www.ons.gov.uk/peoplepopulationandcommunity/personalandhouseholdfinances/incomeandwealth/bulletins/totalwealthingreatbritain/april2020tomarch2022">Household total wealth in Great Britain</a>, table 2.2 decile totals.
+            </p>
+          </figure>
+
+          <figure class="na-ex na-wide" id="wealth-age">
+            <figcaption>
+              <h3>Wealth by age</h3>
+              <p class="na-note">
+                Median total household wealth, including pensions, by age of the head of household, Great Britain,
+                {ref.wealth_by_age.period}. The essay's coalition is generational: under-forties own almost nothing.
+              </p>
+            </figcaption>
+            <BarChart
+              label="Column chart: median household wealth by age band"
+              bars={ages.map((r, i) => ({
+                value: r.median_wealth_gbp,
+                color: RED,
+                title: `Aged ${ageLabel(r.age_band)}`,
+                display: gbp(r.median_wealth_gbp),
+                tick: ageLabel(r.age_band),
+                label: i === 0 || r === ageMax ? gbp(r.median_wealth_gbp) : undefined,
+              }))}
+              tipLabel="Median wealth"
+              tickFmt={(v) => `£${(v / 1000).toLocaleString('en-GB')}k`}
+              height={240}
+            />
+            <p class="na-src">
+              Source: ONS, <a href="https://www.ons.gov.uk/peoplepopulationandcommunity/personalandhouseholdfinances/incomeandwealth/bulletins/totalwealthingreatbritain/april2020tomarch2022">Household total wealth in Great Britain</a>, figure 2.
+            </p>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="na-band" id="assets">
+      <div class="container na-sec">
+        <header class="na-head">
+          <p class="na-num">Proposition 6</p>
+          <h2>A middle power that sells its assets</h2>
+          <blockquote class="na-quote">“It sells assets (property, gilts, companies, financial services) rather than goods. The kindness of strangers.”</blockquote>
+        </header>
+        <div class="na-grid">
+          <figure class="na-ex" id="share-ownership">
+            <figcaption>
+              <h3>Who owns UK-listed companies</h3>
+              <p class="na-note">Share of the value of UK quoted shares, by beneficial owner. Surveys are irregular, and the ONS advises care comparing years before 2010.</p>
+            </figcaption>
+            <LineChart
+              id="shares"
+              label="Line chart: ownership of UK quoted shares by overseas investors and UK individuals"
+              x={own.map((r) => r.year)}
+              series={[
+                { label: 'Overseas', values: own.map((r) => r.rest_of_world_pct), color: RED },
+                { label: 'UK individuals', values: own.map((r) => r.individuals_pct), color: BLUE },
+              ]}
+              xTicks={yearTicks(1970, 2020, 10)}
+              tipTitles={own.map((r) => String(r.year))}
+              yMin={0}
+              unit="%"
+              points
+              height={280}
+            />
+            <p class="na-src">
+              Source: ONS, <a href="https://www.ons.gov.uk/economy/investmentspensionsandtrusts/bulletins/ownershipofukquotedshares/2024">Ownership of UK quoted shares: 2024</a>, table 12.
+            </p>
+          </figure>
+          <figure class="na-ex" id="current-account">
+            <figcaption>
+              <h3>Current account balance</h3>
+              <p class="na-note">Per cent of GDP. A deficit is financed by selling assets or borrowing from abroad. The last annual surplus was in {caSurplus.year}.</p>
+            </figcaption>
+            <BarChart
+              label={`Column chart: UK current account balance as a share of GDP, ${ca[0].year} to ${caLast.year}`}
+              bars={ca.map((r) => ({
+                value: r.balance_pct_gdp,
+                color: r.balance_pct_gdp < 0 ? RED : BLUE,
+                title: String(r.year),
+                display: fmt(r.balance_pct_gdp, 1, '%', true),
+                tick: r.year % 10 === 0 ? String(r.year) : undefined,
+                minor: r.year % 20 !== 0,
+              }))}
+              tipLabel="Balance"
+              tickFmt={(v) => fmt(v, 0, '%')}
+              height={280}
+            />
+            <p class="na-legend"><span><i class="na-sw" style={`background:${RED}`}></i>Deficit</span><span><i class="na-sw" style={`background:${BLUE}`}></i>Surplus</span></p>
+            <p class="na-src">
+              Source: ONS UK Economic Accounts, series <a href="https://www.ons.gov.uk/economy/nationalaccounts/balanceofpayments/timeseries/aa6h/ukea">AA6H</a>.
+            </p>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="na-band" id="mediation">
+      <div class="container na-sec">
+        <header class="na-head">
+          <p class="na-num">Proposition 7</p>
+          <h2>Mediation must be rebuilt</h2>
+          <blockquote class="na-quote">“Intermediaries are where bargaining, judgment and slack live. AI dissolves these by default; policy must rebuild them by design.”</blockquote>
+        </header>
+        <div class="na-grid">
+          <figure class="na-ex" id="unions">
+            <figcaption>
+              <h3>Union membership and pay agreements</h3>
+              <p class="na-note">
+                Share of UK employees in a union (Labour Force Survey), and share of employee jobs whose pay is set by a
+                collective agreement (ASHE, from 2005). DBT advises caution on recent year-to-year changes.
+              </p>
+            </figcaption>
+            <LineChart
+              id="unions"
+              label="Line chart: UK trade union density and collective agreement coverage"
+              x={ud.map((r) => r.year)}
+              series={[
+                { label: 'Union members', values: ud.map((r) => r.density_pct), color: RED, area: true },
+                { label: 'Pay agreements', values: ud.map((r) => r.coverage_pct), color: BLUE },
+              ]}
+              xTicks={yearTicks(1995, 2025, 5)}
+              tipTitles={ud.map((r) => String(r.year))}
+              yMin={0}
+              unit="%"
+              height={380}
+            />
+            <p class="na-src">
+              Source: DBT, <a href="https://www.gov.uk/government/statistics/trade-union-statistics-2025">Trade union statistics 2025</a>, tables 1.2b and 2.4b.
+            </p>
+          </figure>
+          <figure class="na-ex" id="bargaining">
+            <figcaption>
+              <h3>Collective bargaining coverage by country</h3>
+              <p class="na-note">
+                Share of employees covered by collective agreements, latest year for each country. The UK is at
+                {pct(ukCoverage.coverage_pct)}. France and Italy are derived from bargaining law; Japan and Korea are expert estimates.
+              </p>
+            </figcaption>
+            <HBars
+              label="Bar chart: collective bargaining coverage by country"
+              max={100}
+              rows={coverage.map((r) => ({
+                label: r.country,
+                value: r.coverage_pct,
+                display: pct(r.coverage_pct),
+                color: r.iso3 === 'GBR' ? RED : GREY,
+                me: r.iso3 === 'GBR',
+              }))}
+            />
+            <p class="na-src">
+              Source: OECD/AIAS ICTWSS database,
+              <a href="https://sdmx.oecd.org/public/rest/data/OECD.ELS.SAE,DSD_TUD_CBC@DF_CBC,1.0/all?dimensionAtObservation=AllDimensions&format=csvfilewithlabels">collective bargaining coverage</a> (CSV).
+            </p>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="na-band na-band-tint" id="crisis-watch">
+      <div class="container na-sec">
+        <header class="na-head">
+          <p class="na-num">Crisis watch</p>
+          <h2>The entry-level labour market</h2>
+          <blockquote class="na-quote">“Graduate and entry-level unemployment becoming politically undeniable.” One of the essay's candidate validating crises.</blockquote>
+        </header>
+        <div class="na-grid">
+          <figure class="na-ex na-wide" id="youth-unemployment">
+            <figcaption>
+              <h3>Unemployment: ages 16 to 24 against all ages</h3>
+              <p class="na-note">
+                Rolling three-month Labour Force Survey estimates, seasonally adjusted. The youth rate reached
+                {pct(uPeak.youth_pct)} in {period(uPeak.period)}{uPrior && <>, its highest since {period(uPrior.period)}</>}.
+                Falling survey response rates make recent estimates less certain. The ChatGPT marker is a date for
+                reference; the chart does not show cause.
+              </p>
+            </figcaption>
+            <LineChart
+              id="youth"
+              label={`Line chart: UK unemployment rate for 16 to 24 year olds and all ages, to ${period(uLast.period)}`}
+              x={un.map((r) => monthX(r.month))}
+              series={[
+                { label: 'Ages 16–24', values: un.map((r) => r.youth_pct), color: RED, area: true },
+                { label: 'All ages', values: un.map((r) => r.all_pct), color: BLUE },
+              ]}
+              xTicks={yearTicks(1995, 2025, 5)}
+              tipTitles={un.map((r) => period(r.period))}
+              yMin={0}
+              unit="%"
+              height={320}
+              events={[{ x: 2008 + 8.5 / 12, label: 'Financial crisis' }, { x: 2022 + 11 / 12, label: 'ChatGPT released' }]}
+              callout={uPrior ? {
+                x: monthX(uPeak.month),
+                y: uPeak.youth_pct,
+                label: `${pct(uPeak.youth_pct)}, highest since ${uPrior.period.slice(0, 4)}`,
+                color: RED,
+              } : undefined}
+            />
+            <p class="na-src">
+              Source: ONS Labour Force Survey, series
+              <a href="https://www.ons.gov.uk/employmentandlabourmarket/peoplenotinwork/unemployment/timeseries/mgwy/lms">MGWY</a> and
+              <a href="https://www.ons.gov.uk/employmentandlabourmarket/peoplenotinwork/unemployment/timeseries/mgsx/lms">MGSX</a>.
+            </p>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="na-band" id="measurement">
+      <div class="container na-sec">
+        <header class="na-head">
+          <p class="na-num">Measurement</p>
+          <h2>The accounts Britain does not keep</h2>
+          <blockquote class="na-quote">“Measurement follows the lever, not the other way round. Build the fund and you will need to know the rent share.”</blockquote>
+        </header>
+        <div class="na-grid">
+          <figure class="na-ex na-wide" id="register">
+            <figcaption>
+              <h3>The {reg.length} accounts the essay proposes</h3>
+              <p class="na-note">
+                {regCount('Published') || 'None'} published in full, {regCount('Partial')} in part, {regCount('Not counted')} not counted.
+                Status is our reading of what the ONS and government departments publish today.
+              </p>
+            </figcaption>
+            <div class="na-table-wrap">
+              <table class="na-table">
+                <thead>
+                  <tr><th scope="col">Account</th><th scope="col">Status</th><th scope="col" class="na-hide-sm">Nearest official statistic</th><th scope="col" class="na-hide-sm">Essay</th></tr>
+                </thead>
+                <tbody>
+                  {reg.map((r) => (
+                    <tr>
+                      <td class="na-strong">{r.account}</td>
+                      <td><span class:list={['na-chip', r.status === 'Not counted' ? 'na-chip-not' : r.status === 'Partial' ? 'na-chip-part' : 'na-chip-ok']}>{r.status}</span></td>
+                      <td class="na-muted na-hide-sm">{r.nearest_official}</td>
+                      <td class="na-muted na-nowrap na-hide-sm">{r.proposition}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </figure>
+
+          <figure class="na-ex na-wide" id="releases">
+            <figcaption>
+              <h3>When these numbers next change</h3>
+              <p class="na-note">
+                Every figure on this page is a copy of an official release. Monthly and quarterly series are pulled from
+                each publisher after a release; annual tables are updated when they come out. A release that has
+                passed is marked due.
+              </p>
+            </figcaption>
+            <div class="na-table-wrap">
+              <table class="na-table">
+                <thead>
+                  <tr><th scope="col">Series</th><th scope="col">Publisher</th><th scope="col">Last release</th><th scope="col">Next release</th><th scope="col" class="na-hide-sm">Release</th></tr>
+                </thead>
+                <tbody>
+                  {releases.map((r) => (
+                    <tr data-next={r.next_release_iso}>
+                      <td class="na-strong">{r.series}</td>
+                      <td class="na-nowrap">{r.publisher}</td>
+                      <td class="na-nowrap">{r.last_release}</td>
+                      <td class="na-next">{r.next_release}</td>
+                      <td class="na-muted na-hide-sm">{r.title}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="na-band">
+      <div class="container">
+        <div class="prose">
+          <FAQ faqs={faqs} />
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--soft">
+      <div class="container">
+        <div class="prose">
+          <h2 class="na-cta">Follow the argument</h2>
+          <p class="lede">The essay behind these accounts is being written in public on Generative Futures.</p>
+        </div>
+        <div style="margin-top:2rem;"><PlatformLinks primaryOnly={true} /></div>
+      </div>
+    </section>
+  </div>
+</BaseLayout>
+
+<script>
+  type Row = { l: string; v: string; c?: string };
+  const make = (tag: string, cls: string, text?: string) => {
+    const e = document.createElement(tag);
+    if (cls) e.className = cls;
+    if (text != null) e.textContent = text;
+    return e;
+  };
+  const fill = (tip: HTMLElement, title: string, rows: Row[]) => {
+    tip.replaceChildren(
+      make('div', 'na-tip-h', title),
+      ...rows.map((r) => {
+        const row = make('div', 'na-tip-r');
+        if (r.c) {
+          const sw = make('i', 'na-tip-sw');
+          sw.style.background = r.c;
+          row.append(sw);
+        }
+        row.append(make('span', '', r.l), make('b', '', r.v));
+        return row;
+      }),
+    );
+    tip.hidden = false;
+  };
+  const place = (tip: HTMLElement, host: HTMLElement, x: number) => {
+    const tw = tip.offsetWidth;
+    let left = x + 14;
+    if (left + tw > host.clientWidth) left = x - 14 - tw;
+    tip.style.left = `${Math.max(0, left)}px`;
+  };
+
+  // Line charts: crosshair, a dot per series and a tooltip at the nearest point
+  document.querySelectorAll<HTMLElement>('.lc-hit').forEach((hit) => {
+    const d = JSON.parse(hit.dataset.tips || '{}') as {
+      x: number[]; t: string[]; s: { l: string; c: string; y: (number | null)[]; v: string[] }[];
+    };
+    const cross = hit.querySelector<HTMLElement>('.lc-cross')!;
+    const dots = [...hit.querySelectorAll<HTMLElement>('.lc-hdot')];
+    const tip = hit.querySelector<HTMLElement>('.lc-tip')!;
+    let cur = -1;
+    const show = (i: number) => {
+      cur = Math.max(0, Math.min(d.x.length - 1, i));
+      const xp = d.x[cur];
+      cross.style.left = `${xp}%`;
+      cross.hidden = false;
+      d.s.forEach((s, k) => {
+        const yv = s.y[cur];
+        dots[k].hidden = yv == null;
+        if (yv != null) {
+          dots[k].style.left = `${xp}%`;
+          dots[k].style.bottom = `${yv}%`;
+        }
+      });
+      fill(tip, d.t[cur], d.s.map((s) => ({ l: s.l, v: s.v[cur], c: d.s.length > 1 ? s.c : undefined })));
+      place(tip, hit, (xp / 100) * hit.clientWidth);
+    };
+    const hide = () => {
+      cross.hidden = true;
+      dots.forEach((dot) => { dot.hidden = true; });
+      tip.hidden = true;
+    };
+    const nearest = (p: number) => {
+      let lo = 0;
+      let hi = d.x.length - 1;
+      while (hi - lo > 1) {
+        const mid = (lo + hi) >> 1;
+        if (d.x[mid] < p) lo = mid; else hi = mid;
+      }
+      return p - d.x[lo] < d.x[hi] - p ? lo : hi;
+    };
+    hit.addEventListener('pointermove', (e) => {
+      const r = hit.getBoundingClientRect();
+      show(nearest(((e.clientX - r.left) / r.width) * 100));
+    });
+    hit.addEventListener('pointerleave', hide);
+    hit.addEventListener('focus', () => show(d.x.length - 1));
+    hit.addEventListener('blur', hide);
+    hit.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') {
+        e.preventDefault();
+        show(cur + (e.key === 'ArrowLeft' ? -1 : 1));
+      }
+      if (e.key === 'Escape') hide();
+    });
+  });
+
+  // Column charts: highlight the hovered column and show its value
+  document.querySelectorAll<HTMLElement>('.bc-plot').forEach((plot) => {
+    const tip = plot.querySelector<HTMLElement>('.bc-tip')!;
+    plot.querySelectorAll<HTMLElement>('.bc-col').forEach((col) => {
+      col.addEventListener('pointerenter', () => {
+        col.classList.add('bc-on');
+        fill(tip, col.dataset.t || '', [{ l: col.dataset.l || '', v: col.dataset.v || '' }]);
+        const pr = plot.getBoundingClientRect();
+        const cr = col.getBoundingClientRect();
+        place(tip, plot, cr.left - pr.left + cr.width / 2);
+      });
+      col.addEventListener('pointerleave', () => {
+        col.classList.remove('bc-on');
+        tip.hidden = true;
+      });
+    });
+  });
+
+  // Release calendar: mark releases whose date has passed since the last refresh
+  const today = new Date().toISOString().slice(0, 10);
+  document.querySelectorAll<HTMLElement>('tr[data-next]').forEach((tr) => {
+    const next = tr.dataset.next;
+    if (next && next < today) tr.classList.add('na-due');
+  });
+</script>
+
+<style>
+  /* Dala Floda (Commercial Type) needs a web licence. Put the licensed files at
+     public/fonts/dala-floda/ and it takes over; until then the stack falls back to Bodoni or Didot. */
+  @font-face {
+    font-family: 'Dala Floda';
+    src: local('Dala Floda'), local('DalaFloda-Roman'),
+      url('/fonts/dala-floda/DalaFloda-Roman-Web.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  /* Layout: a red poster masthead, a strip of headline figures, then one band per proposition with
+     its heading in a narrow left column and the exhibits beside it. Dala Floda for display only. */
+  .gna {
+    --na-red: #c8102e;
+    --na-red-deep: #9e0c24;
+    --na-red-tint: #fcf1f2;
+    --na-blue: #1d6fa8;
+    --na-grey: #d6cfd0;
+    --na-grid: #efe9ea;
+    --na-axis: #b8afb0;
+    --na-amber: #8f5300;
+    --na-green: #2b7348;
+    --na-display: 'Dala Floda', 'Bodoni 72', Didot, 'Bodoni MT', Georgia, serif;
+  }
+
+  /* Masthead */
+  .na-hero { background: var(--na-red); color: #fff; padding: 2rem 0 3.25rem; }
+  .na-hero .breadcrumbs,
+  .na-hero .breadcrumbs a { color: rgba(255, 255, 255, 0.8); }
+  .na-hero .breadcrumbs a:hover { color: #fff; }
+  .na-kicker { margin: 2rem 0 0; font-size: 0.95rem; font-weight: 600; color: rgba(255, 255, 255, 0.88); }
+  .na-hero h1 {
+    margin: 0.6rem 0 0;
+    max-width: 12ch;
+    font-family: var(--na-display);
+    font-weight: 400;
+    font-synthesis: none;
+    font-size: clamp(3rem, 1.4rem + 6.5vw, 6.75rem);
+    line-height: 0.92;
+    letter-spacing: -0.01em;
+    color: #fff;
+    text-wrap: balance;
+  }
+  .na-lede { max-width: 60ch; margin: 1.75rem 0 0; font-size: 1.12rem; line-height: 1.6; color: rgba(255, 255, 255, 0.92); }
+  .na-take {
+    max-width: 52ch;
+    margin: 1.25rem 0 0;
+    font-size: clamp(1.15rem, 1rem + 0.6vw, 1.45rem);
+    line-height: 1.45;
+    font-weight: 500;
+    color: #fff;
+    text-wrap: pretty;
+  }
+  .na-take b {
+    font-weight: 800;
+    white-space: nowrap;
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-decoration-color: rgba(255, 255, 255, 0.45);
+    text-underline-offset: 0.2em;
+  }
+  .na-meta {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem 1.5rem;
+    margin: 2rem 0 0;
+    padding: 0;
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.82);
+  }
+
+  /* Headline figures */
+  .na-strip {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 1.75rem 2rem;
+    padding: 2.5rem 0 3rem;
+  }
+  @media (max-width: 1000px) { .na-strip { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+  @media (max-width: 640px) { .na-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.75rem 1.25rem; } }
+  .na-fig { display: grid; align-content: start; gap: 0.35rem; min-width: 0; }
+  .na-fig::before { content: ''; width: 2rem; height: 3px; margin-bottom: 0.5rem; background: var(--na-red); }
+  .na-fig p { margin: 0; }
+  .na-fig-l { min-height: 2.8em; font-size: 0.85rem; line-height: 1.4; color: var(--ink-soft); }
+  .na-fig-v {
+    font-family: var(--na-display);
+    font-weight: 400;
+    font-synthesis: none;
+    font-size: clamp(2.4rem, 1.9rem + 1.5vw, 3.2rem);
+    line-height: 1;
+    color: var(--na-red);
+  }
+  .na-fig-n { font-size: 0.85rem; color: var(--muted); }
+  .na-fig-t { padding-top: 0.25rem; font-size: 0.8rem; font-weight: 600; color: var(--na-red-deep); }
+
+  /* Proposition bands */
+  .na-band { padding: 3.75rem 0; border-top: 1px solid var(--line); }
+  .na-band-tint { --na-halo: var(--na-red-tint); background: var(--na-red-tint); border-top-color: transparent; }
+  .na-sec { display: grid; grid-template-columns: minmax(0, 15rem) minmax(0, 1fr); gap: 3rem; }
+  @media (max-width: 900px) { .na-sec { grid-template-columns: minmax(0, 1fr); gap: 1.75rem; } }
+  .na-head { display: grid; align-content: start; gap: 0.85rem; }
+  .na-num { margin: 0; font-size: 0.88rem; font-weight: 700; color: var(--na-red); }
+  .na-head h2 {
+    margin: 0;
+    font-family: var(--na-display);
+    font-weight: 400;
+    font-synthesis: none;
+    font-size: clamp(1.9rem, 1.4rem + 1.5vw, 2.6rem);
+    line-height: 1.02;
+    letter-spacing: -0.005em;
+    text-wrap: balance;
+  }
+  .na-quote {
+    margin: 0;
+    padding-left: 0.9rem;
+    border-left: 3px solid var(--na-red);
+    font-size: 0.95rem;
+    line-height: 1.55;
+    color: var(--ink-soft);
+  }
+  .na-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 21rem), 1fr));
+    gap: 3rem 2.5rem;
+    min-width: 0;
+  }
+  .na-ex { margin: 0; min-width: 0; display: grid; align-content: start; gap: 1rem; }
+  .na-wide { grid-column: 1 / -1; }
+  .na-ex h3 { margin: 0; font-size: 1.15rem; line-height: 1.3; letter-spacing: -0.01em; text-wrap: balance; }
+  .na-note { margin: 0.4rem 0 0; max-width: 68ch; font-size: 0.92rem; line-height: 1.55; color: var(--ink-soft); }
+  .na-body { margin: 0; max-width: 56ch; line-height: 1.6; }
+  .na-src { margin: 0; font-size: 0.8rem; line-height: 1.5; color: var(--muted); }
+  .na-src a { color: var(--na-red-deep); text-decoration: underline; text-decoration-color: rgba(158, 12, 36, 0.3); text-underline-offset: 2px; }
+  .na-src a:hover { text-decoration-color: currentColor; }
+
+  .na-verdict,
+  .na-total b,
+  .na-split-v {
+    font-family: var(--na-display);
+    font-weight: 400;
+    font-synthesis: none;
+    line-height: 1;
+    color: var(--na-red);
+  }
+  .na-verdict { margin: 0.25rem 0 0; font-size: clamp(2.6rem, 2rem + 2vw, 3.6rem); }
+  .na-total { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.5rem 1rem; margin: 0; }
+  .na-total b {
+    font-size: clamp(2.6rem, 2rem + 2vw, 3.6rem);
+    text-decoration: underline double;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.14em;
+  }
+  .na-total span { max-width: 30ch; font-size: 0.95rem; color: var(--ink-soft); }
+
+  .na-split { display: flex; gap: 2px; height: 2.25rem; border-radius: 4px; overflow: hidden; }
+  .na-split i { min-width: 2px; }
+  .na-split-key { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
+  .na-split-key p { margin: 0; }
+  .na-split-v { font-size: clamp(1.8rem, 1.5rem + 1vw, 2.3rem); }
+  .na-split-l { display: flex; align-items: center; gap: 0.4rem; margin-top: 0.35rem !important; font-size: 0.85rem; color: var(--ink-soft); }
+  .na-sw { width: 0.7rem; height: 0.7rem; border-radius: 2px; flex: none; }
+  .na-legend { display: flex; flex-wrap: wrap; gap: 0.4rem 1.25rem; margin: -0.5rem 0 0; font-size: 0.82rem; color: var(--ink-soft); }
+  .na-legend span { display: inline-flex; align-items: center; gap: 0.4rem; }
+
+  /* Tables */
+  .na-table-wrap { overflow-x: auto; }
+  .na-table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+  .na-table th {
+    padding: 0 0.9rem 0.6rem 0;
+    border-bottom: 2px solid var(--ink);
+    text-align: left;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--muted);
+  }
+  .na-table td { padding: 0.85rem 0.9rem 0.85rem 0; border-bottom: 1px solid var(--line); vertical-align: top; line-height: 1.5; }
+  .na-table .na-strong { font-weight: 600; color: var(--ink); }
+  .na-table .na-muted { color: var(--muted); }
+  .na-table .na-nowrap { white-space: nowrap; }
+  .na-chip { display: inline-flex; align-items: center; gap: 0.4rem; white-space: nowrap; font-weight: 600; }
+  .na-chip::before { content: ''; width: 0.5rem; height: 0.5rem; border-radius: 50%; background: currentColor; }
+  .na-chip-not { color: var(--na-red); }
+  .na-chip-part { color: var(--na-amber); }
+  .na-chip-ok { color: var(--na-green); }
+  .na-due .na-next { color: var(--na-red); font-weight: 700; }
+  .na-due .na-next::after { content: ' · due'; }
+  @media (max-width: 640px) { .na-hide-sm { display: none; } }
+
+  .na-cta { margin: 0 0 0.5rem; }
+
+  /* Tooltip contents are built by the page script, so they sit outside the scoped styles */
+  :global(.na-tip-h) { margin-bottom: 0.15rem; color: var(--muted); }
+  :global(.na-tip-r) { display: flex; align-items: center; gap: 0.4rem; color: var(--ink); }
+  :global(.na-tip-r b) { margin-left: auto; padding-left: 0.75rem; font-variant-numeric: tabular-nums; }
+  :global(.na-tip-sw) { width: 0.55rem; height: 0.55rem; border-radius: 2px; flex: none; }
+</style>

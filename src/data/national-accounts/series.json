@@ -1,0 +1,3486 @@
+{
+ "generated": "2026-10-23T15:28:54.590Z",
+ "wage_share": [
+  {
+   "year": 1948,
+   "compensation_gbp_m": 6791,
+   "gdp_gbp_m": 11383
+  },
+  {
+   "year": 1949,
+   "compensation_gbp_m": 7248,
+   "gdp_gbp_m": 12120
+  },
+  {
+   "year": 1950,
+   "compensation_gbp_m": 7625,
+   "gdp_gbp_m": 12684
+  },
+  {
+   "year": 1951,
+   "compensation_gbp_m": 8495,
+   "gdp_gbp_m": 14241
+  },
+  {
+   "year": 1952,
+   "compensation_gbp_m": 9100,
+   "gdp_gbp_m": 15467
+  },
+  {
+   "year": 1953,
+   "compensation_gbp_m": 9622,
+   "gdp_gbp_m": 16607
+  },
+  {
+   "year": 1954,
+   "compensation_gbp_m": 10271,
+   "gdp_gbp_m": 17517
+  },
+  {
+   "year": 1955,
+   "compensation_gbp_m": 11235,
+   "gdp_gbp_m": 19083
+  },
+  {
+   "year": 1956,
+   "compensation_gbp_m": 12263,
+   "gdp_gbp_m": 20754
+  },
+  {
+   "year": 1957,
+   "compensation_gbp_m": 12963,
+   "gdp_gbp_m": 22009
+  },
+  {
+   "year": 1958,
+   "compensation_gbp_m": 13474,
+   "gdp_gbp_m": 23119
+  },
+  {
+   "year": 1959,
+   "compensation_gbp_m": 14112,
+   "gdp_gbp_m": 24283
+  },
+  {
+   "year": 1960,
+   "compensation_gbp_m": 15165,
+   "gdp_gbp_m": 26091
+  },
+  {
+   "year": 1961,
+   "compensation_gbp_m": 16404,
+   "gdp_gbp_m": 27803
+  },
+  {
+   "year": 1962,
+   "compensation_gbp_m": 17314,
+   "gdp_gbp_m": 29114
+  },
+  {
+   "year": 1963,
+   "compensation_gbp_m": 18212,
+   "gdp_gbp_m": 30971
+  },
+  {
+   "year": 1964,
+   "compensation_gbp_m": 19748,
+   "gdp_gbp_m": 33909
+  },
+  {
+   "year": 1965,
+   "compensation_gbp_m": 21329,
+   "gdp_gbp_m": 36684
+  },
+  {
+   "year": 1966,
+   "compensation_gbp_m": 22868,
+   "gdp_gbp_m": 39242
+  },
+  {
+   "year": 1967,
+   "compensation_gbp_m": 23826,
+   "gdp_gbp_m": 41513
+  },
+  {
+   "year": 1968,
+   "compensation_gbp_m": 25497,
+   "gdp_gbp_m": 45621
+  },
+  {
+   "year": 1969,
+   "compensation_gbp_m": 27275,
+   "gdp_gbp_m": 49573
+  },
+  {
+   "year": 1970,
+   "compensation_gbp_m": 30624,
+   "gdp_gbp_m": 55834
+  },
+  {
+   "year": 1971,
+   "compensation_gbp_m": 33593,
+   "gdp_gbp_m": 62636
+  },
+  {
+   "year": 1972,
+   "compensation_gbp_m": 37996,
+   "gdp_gbp_m": 70309
+  },
+  {
+   "year": 1973,
+   "compensation_gbp_m": 44047,
+   "gdp_gbp_m": 81480
+  },
+  {
+   "year": 1974,
+   "compensation_gbp_m": 52659,
+   "gdp_gbp_m": 92302
+  },
+  {
+   "year": 1975,
+   "compensation_gbp_m": 68876,
+   "gdp_gbp_m": 114621
+  },
+  {
+   "year": 1976,
+   "compensation_gbp_m": 78384,
+   "gdp_gbp_m": 136441
+  },
+  {
+   "year": 1977,
+   "compensation_gbp_m": 86901,
+   "gdp_gbp_m": 159138
+  },
+  {
+   "year": 1978,
+   "compensation_gbp_m": 99166,
+   "gdp_gbp_m": 185403
+  },
+  {
+   "year": 1979,
+   "compensation_gbp_m": 116302,
+   "gdp_gbp_m": 220086
+  },
+  {
+   "year": 1980,
+   "compensation_gbp_m": 138358,
+   "gdp_gbp_m": 258927
+  },
+  {
+   "year": 1981,
+   "compensation_gbp_m": 150569,
+   "gdp_gbp_m": 289390
+  },
+  {
+   "year": 1982,
+   "compensation_gbp_m": 160038,
+   "gdp_gbp_m": 318730
+  },
+  {
+   "year": 1983,
+   "compensation_gbp_m": 171081,
+   "gdp_gbp_m": 350483
+  },
+  {
+   "year": 1984,
+   "compensation_gbp_m": 182867,
+   "gdp_gbp_m": 377081
+  },
+  {
+   "year": 1985,
+   "compensation_gbp_m": 197224,
+   "gdp_gbp_m": 413783
+  },
+  {
+   "year": 1986,
+   "compensation_gbp_m": 212426,
+   "gdp_gbp_m": 445750
+  },
+  {
+   "year": 1987,
+   "compensation_gbp_m": 227718,
+   "gdp_gbp_m": 496075
+  },
+  {
+   "year": 1988,
+   "compensation_gbp_m": 253455,
+   "gdp_gbp_m": 555124
+  },
+  {
+   "year": 1989,
+   "compensation_gbp_m": 282755,
+   "gdp_gbp_m": 614245
+  },
+  {
+   "year": 1990,
+   "compensation_gbp_m": 312186,
+   "gdp_gbp_m": 670331
+  },
+  {
+   "year": 1991,
+   "compensation_gbp_m": 332707,
+   "gdp_gbp_m": 705165
+  },
+  {
+   "year": 1992,
+   "compensation_gbp_m": 343938,
+   "gdp_gbp_m": 730156
+  },
+  {
+   "year": 1993,
+   "compensation_gbp_m": 354511,
+   "gdp_gbp_m": 769169
+  },
+  {
+   "year": 1994,
+   "compensation_gbp_m": 366976,
+   "gdp_gbp_m": 810165
+  },
+  {
+   "year": 1995,
+   "compensation_gbp_m": 383737,
+   "gdp_gbp_m": 851390
+  },
+  {
+   "year": 1996,
+   "compensation_gbp_m": 402416,
+   "gdp_gbp_m": 909894
+  },
+  {
+   "year": 1997,
+   "compensation_gbp_m": 436731,
+   "gdp_gbp_m": 954275
+  },
+  {
+   "year": 1998,
+   "compensation_gbp_m": 458862,
+   "gdp_gbp_m": 998676
+  },
+  {
+   "year": 1999,
+   "compensation_gbp_m": 495663,
+   "gdp_gbp_m": 1042219
+  },
+  {
+   "year": 2000,
+   "compensation_gbp_m": 532469,
+   "gdp_gbp_m": 1100367
+  },
+  {
+   "year": 2001,
+   "compensation_gbp_m": 566505,
+   "gdp_gbp_m": 1145871
+  },
+  {
+   "year": 2002,
+   "compensation_gbp_m": 580541,
+   "gdp_gbp_m": 1189667
+  },
+  {
+   "year": 2003,
+   "compensation_gbp_m": 611645,
+   "gdp_gbp_m": 1257397
+  },
+  {
+   "year": 2004,
+   "compensation_gbp_m": 653156,
+   "gdp_gbp_m": 1321889
+  },
+  {
+   "year": 2005,
+   "compensation_gbp_m": 692102,
+   "gdp_gbp_m": 1397632
+  },
+  {
+   "year": 2006,
+   "compensation_gbp_m": 732040,
+   "gdp_gbp_m": 1472264
+  },
+  {
+   "year": 2007,
+   "compensation_gbp_m": 782406,
+   "gdp_gbp_m": 1546393
+  },
+  {
+   "year": 2008,
+   "compensation_gbp_m": 799090,
+   "gdp_gbp_m": 1597786
+  },
+  {
+   "year": 2009,
+   "compensation_gbp_m": 791147,
+   "gdp_gbp_m": 1556801
+  },
+  {
+   "year": 2010,
+   "compensation_gbp_m": 811420,
+   "gdp_gbp_m": 1615304
+  },
+  {
+   "year": 2011,
+   "compensation_gbp_m": 829695,
+   "gdp_gbp_m": 1670576
+  },
+  {
+   "year": 2012,
+   "compensation_gbp_m": 844832,
+   "gdp_gbp_m": 1723202
+  },
+  {
+   "year": 2013,
+   "compensation_gbp_m": 876940,
+   "gdp_gbp_m": 1792584
+  },
+  {
+   "year": 2014,
+   "compensation_gbp_m": 899407,
+   "gdp_gbp_m": 1877018
+  },
+  {
+   "year": 2015,
+   "compensation_gbp_m": 929380,
+   "gdp_gbp_m": 1928920
+  },
+  {
+   "year": 2016,
+   "compensation_gbp_m": 965808,
+   "gdp_gbp_m": 2005533
+  },
+  {
+   "year": 2017,
+   "compensation_gbp_m": 1001716,
+   "gdp_gbp_m": 2102410
+  },
+  {
+   "year": 2018,
+   "compensation_gbp_m": 1045033,
+   "gdp_gbp_m": 2178105
+  },
+  {
+   "year": 2019,
+   "compensation_gbp_m": 1093559,
+   "gdp_gbp_m": 2263433
+  },
+  {
+   "year": 2020,
+   "compensation_gbp_m": 1098161,
+   "gdp_gbp_m": 2131729
+  },
+  {
+   "year": 2021,
+   "compensation_gbp_m": 1162434,
+   "gdp_gbp_m": 2332847
+  },
+  {
+   "year": 2022,
+   "compensation_gbp_m": 1247365,
+   "gdp_gbp_m": 2590757
+  },
+  {
+   "year": 2023,
+   "compensation_gbp_m": 1335478,
+   "gdp_gbp_m": 2766446
+  },
+  {
+   "year": 2024,
+   "compensation_gbp_m": 1415893,
+   "gdp_gbp_m": 2904950
+  },
+  {
+   "year": 2025,
+   "compensation_gbp_m": 1519055,
+   "gdp_gbp_m": 3044594
+  }
+ ],
+ "current_account": [
+  {
+   "year": 1948,
+   "balance_pct_gdp": 0.8
+  },
+  {
+   "year": 1949,
+   "balance_pct_gdp": 0.4
+  },
+  {
+   "year": 1950,
+   "balance_pct_gdp": 2.8
+  },
+  {
+   "year": 1951,
+   "balance_pct_gdp": -2.2
+  },
+  {
+   "year": 1952,
+   "balance_pct_gdp": 1.6
+  },
+  {
+   "year": 1953,
+   "balance_pct_gdp": 1.3
+  },
+  {
+   "year": 1954,
+   "balance_pct_gdp": 1
+  },
+  {
+   "year": 1955,
+   "balance_pct_gdp": -0.5
+  },
+  {
+   "year": 1956,
+   "balance_pct_gdp": 1.3
+  },
+  {
+   "year": 1957,
+   "balance_pct_gdp": 1.3
+  },
+  {
+   "year": 1958,
+   "balance_pct_gdp": 1.7
+  },
+  {
+   "year": 1959,
+   "balance_pct_gdp": 0.8
+  },
+  {
+   "year": 1960,
+   "balance_pct_gdp": -0.7
+  },
+  {
+   "year": 1961,
+   "balance_pct_gdp": 0.3
+  },
+  {
+   "year": 1962,
+   "balance_pct_gdp": 0.7
+  },
+  {
+   "year": 1963,
+   "balance_pct_gdp": 0.6
+  },
+  {
+   "year": 1964,
+   "balance_pct_gdp": -1
+  },
+  {
+   "year": 1965,
+   "balance_pct_gdp": -0.1
+  },
+  {
+   "year": 1966,
+   "balance_pct_gdp": 0.4
+  },
+  {
+   "year": 1967,
+   "balance_pct_gdp": -0.7
+  },
+  {
+   "year": 1968,
+   "balance_pct_gdp": -0.6
+  },
+  {
+   "year": 1969,
+   "balance_pct_gdp": 0.9
+  },
+  {
+   "year": 1970,
+   "balance_pct_gdp": 1.4
+  },
+  {
+   "year": 1971,
+   "balance_pct_gdp": 1.7
+  },
+  {
+   "year": 1972,
+   "balance_pct_gdp": 0.1
+  },
+  {
+   "year": 1973,
+   "balance_pct_gdp": -1.4
+  },
+  {
+   "year": 1974,
+   "balance_pct_gdp": -3.6
+  },
+  {
+   "year": 1975,
+   "balance_pct_gdp": -1.5
+  },
+  {
+   "year": 1976,
+   "balance_pct_gdp": -0.7
+  },
+  {
+   "year": 1977,
+   "balance_pct_gdp": -0.2
+  },
+  {
+   "year": 1978,
+   "balance_pct_gdp": 0.4
+  },
+  {
+   "year": 1979,
+   "balance_pct_gdp": -0.4
+  },
+  {
+   "year": 1980,
+   "balance_pct_gdp": 0.7
+  },
+  {
+   "year": 1981,
+   "balance_pct_gdp": 1.7
+  },
+  {
+   "year": 1982,
+   "balance_pct_gdp": 0.7
+  },
+  {
+   "year": 1983,
+   "balance_pct_gdp": 0.4
+  },
+  {
+   "year": 1984,
+   "balance_pct_gdp": -0.3
+  },
+  {
+   "year": 1985,
+   "balance_pct_gdp": -0.1
+  },
+  {
+   "year": 1986,
+   "balance_pct_gdp": -0.7
+  },
+  {
+   "year": 1987,
+   "balance_pct_gdp": -1.3
+  },
+  {
+   "year": 1988,
+   "balance_pct_gdp": -3.3
+  },
+  {
+   "year": 1989,
+   "balance_pct_gdp": -3.8
+  },
+  {
+   "year": 1990,
+   "balance_pct_gdp": -2.8
+  },
+  {
+   "year": 1991,
+   "balance_pct_gdp": -1.1
+  },
+  {
+   "year": 1992,
+   "balance_pct_gdp": -1.3
+  },
+  {
+   "year": 1993,
+   "balance_pct_gdp": -1
+  },
+  {
+   "year": 1994,
+   "balance_pct_gdp": -0.2
+  },
+  {
+   "year": 1995,
+   "balance_pct_gdp": -0.4
+  },
+  {
+   "year": 1996,
+   "balance_pct_gdp": -0.3
+  },
+  {
+   "year": 1997,
+   "balance_pct_gdp": -0.2
+  },
+  {
+   "year": 1998,
+   "balance_pct_gdp": -0.3
+  },
+  {
+   "year": 1999,
+   "balance_pct_gdp": -2.2
+  },
+  {
+   "year": 2000,
+   "balance_pct_gdp": -1.9
+  },
+  {
+   "year": 2001,
+   "balance_pct_gdp": -1.8
+  },
+  {
+   "year": 2002,
+   "balance_pct_gdp": -2
+  },
+  {
+   "year": 2003,
+   "balance_pct_gdp": -1.8
+  },
+  {
+   "year": 2004,
+   "balance_pct_gdp": -2.3
+  },
+  {
+   "year": 2005,
+   "balance_pct_gdp": -2
+  },
+  {
+   "year": 2006,
+   "balance_pct_gdp": -3.1
+  },
+  {
+   "year": 2007,
+   "balance_pct_gdp": -3.6
+  },
+  {
+   "year": 2008,
+   "balance_pct_gdp": -3.7
+  },
+  {
+   "year": 2009,
+   "balance_pct_gdp": -2.8
+  },
+  {
+   "year": 2010,
+   "balance_pct_gdp": -2.5
+  },
+  {
+   "year": 2011,
+   "balance_pct_gdp": -1.4
+  },
+  {
+   "year": 2012,
+   "balance_pct_gdp": -2.8
+  },
+  {
+   "year": 2013,
+   "balance_pct_gdp": -4.3
+  },
+  {
+   "year": 2014,
+   "balance_pct_gdp": -4.6
+  },
+  {
+   "year": 2015,
+   "balance_pct_gdp": -4.7
+  },
+  {
+   "year": 2016,
+   "balance_pct_gdp": -5.1
+  },
+  {
+   "year": 2017,
+   "balance_pct_gdp": -3.3
+  },
+  {
+   "year": 2018,
+   "balance_pct_gdp": -3.5
+  },
+  {
+   "year": 2019,
+   "balance_pct_gdp": -2.3
+  },
+  {
+   "year": 2020,
+   "balance_pct_gdp": -2.8
+  },
+  {
+   "year": 2021,
+   "balance_pct_gdp": -0.8
+  },
+  {
+   "year": 2022,
+   "balance_pct_gdp": -2
+  },
+  {
+   "year": 2023,
+   "balance_pct_gdp": -2.5
+  },
+  {
+   "year": 2024,
+   "balance_pct_gdp": -2.9
+  },
+  {
+   "year": 2025,
+   "balance_pct_gdp": -3
+  }
+ ],
+ "unemployment": [
+  {
+   "month": "1992-04",
+   "period": "1992 MAR-MAY",
+   "youth_pct": 16.1,
+   "all_pct": 9.8
+  },
+  {
+   "month": "1992-05",
+   "period": "1992 APR-JUN",
+   "youth_pct": 16.2,
+   "all_pct": 9.8
+  },
+  {
+   "month": "1992-06",
+   "period": "1992 MAY-JUL",
+   "youth_pct": 16.5,
+   "all_pct": 9.9
+  },
+  {
+   "month": "1992-07",
+   "period": "1992 JUN-AUG",
+   "youth_pct": 16.6,
+   "all_pct": 9.9
+  },
+  {
+   "month": "1992-08",
+   "period": "1992 JUL-SEP",
+   "youth_pct": 16.7,
+   "all_pct": 9.9
+  },
+  {
+   "month": "1992-09",
+   "period": "1992 AUG-OCT",
+   "youth_pct": 16.8,
+   "all_pct": 10.1
+  },
+  {
+   "month": "1992-10",
+   "period": "1992 SEP-NOV",
+   "youth_pct": 17.1,
+   "all_pct": 10.2
+  },
+  {
+   "month": "1992-11",
+   "period": "1992 OCT-DEC",
+   "youth_pct": 17.3,
+   "all_pct": 10.4
+  },
+  {
+   "month": "1992-12",
+   "period": "1992 NOV-JAN",
+   "youth_pct": 17.6,
+   "all_pct": 10.5
+  },
+  {
+   "month": "1993-01",
+   "period": "1992 DEC-FEB",
+   "youth_pct": 18,
+   "all_pct": 10.7
+  },
+  {
+   "month": "1993-02",
+   "period": "1993 JAN-MAR",
+   "youth_pct": 18.1,
+   "all_pct": 10.6
+  },
+  {
+   "month": "1993-03",
+   "period": "1993 FEB-APR",
+   "youth_pct": 18.1,
+   "all_pct": 10.6
+  },
+  {
+   "month": "1993-04",
+   "period": "1993 MAR-MAY",
+   "youth_pct": 18,
+   "all_pct": 10.5
+  },
+  {
+   "month": "1993-05",
+   "period": "1993 APR-JUN",
+   "youth_pct": 18,
+   "all_pct": 10.4
+  },
+  {
+   "month": "1993-06",
+   "period": "1993 MAY-JUL",
+   "youth_pct": 17.9,
+   "all_pct": 10.4
+  },
+  {
+   "month": "1993-07",
+   "period": "1993 JUN-AUG",
+   "youth_pct": 17.9,
+   "all_pct": 10.3
+  },
+  {
+   "month": "1993-08",
+   "period": "1993 JUL-SEP",
+   "youth_pct": 17.6,
+   "all_pct": 10.2
+  },
+  {
+   "month": "1993-09",
+   "period": "1993 AUG-OCT",
+   "youth_pct": 17.6,
+   "all_pct": 10.3
+  },
+  {
+   "month": "1993-10",
+   "period": "1993 SEP-NOV",
+   "youth_pct": 17.6,
+   "all_pct": 10.2
+  },
+  {
+   "month": "1993-11",
+   "period": "1993 OCT-DEC",
+   "youth_pct": 17.9,
+   "all_pct": 10.3
+  },
+  {
+   "month": "1993-12",
+   "period": "1993 NOV-JAN",
+   "youth_pct": 17.8,
+   "all_pct": 10.3
+  },
+  {
+   "month": "1994-01",
+   "period": "1993 DEC-FEB",
+   "youth_pct": 17.2,
+   "all_pct": 10.1
+  },
+  {
+   "month": "1994-02",
+   "period": "1994 JAN-MAR",
+   "youth_pct": 17,
+   "all_pct": 9.9
+  },
+  {
+   "month": "1994-03",
+   "period": "1994 FEB-APR",
+   "youth_pct": 16.8,
+   "all_pct": 9.8
+  },
+  {
+   "month": "1994-04",
+   "period": "1994 MAR-MAY",
+   "youth_pct": 16.9,
+   "all_pct": 9.7
+  },
+  {
+   "month": "1994-05",
+   "period": "1994 APR-JUN",
+   "youth_pct": 16.9,
+   "all_pct": 9.7
+  },
+  {
+   "month": "1994-06",
+   "period": "1994 MAY-JUL",
+   "youth_pct": 16.9,
+   "all_pct": 9.6
+  },
+  {
+   "month": "1994-07",
+   "period": "1994 JUN-AUG",
+   "youth_pct": 17.1,
+   "all_pct": 9.5
+  },
+  {
+   "month": "1994-08",
+   "period": "1994 JUL-SEP",
+   "youth_pct": 16.9,
+   "all_pct": 9.4
+  },
+  {
+   "month": "1994-09",
+   "period": "1994 AUG-OCT",
+   "youth_pct": 16.8,
+   "all_pct": 9.3
+  },
+  {
+   "month": "1994-10",
+   "period": "1994 SEP-NOV",
+   "youth_pct": 16.2,
+   "all_pct": 9.1
+  },
+  {
+   "month": "1994-11",
+   "period": "1994 OCT-DEC",
+   "youth_pct": 16.1,
+   "all_pct": 9
+  },
+  {
+   "month": "1994-12",
+   "period": "1994 NOV-JAN",
+   "youth_pct": 16.1,
+   "all_pct": 8.9
+  },
+  {
+   "month": "1995-01",
+   "period": "1994 DEC-FEB",
+   "youth_pct": 16.2,
+   "all_pct": 8.9
+  },
+  {
+   "month": "1995-02",
+   "period": "1995 JAN-MAR",
+   "youth_pct": 16.2,
+   "all_pct": 8.9
+  },
+  {
+   "month": "1995-03",
+   "period": "1995 FEB-APR",
+   "youth_pct": 16.1,
+   "all_pct": 8.8
+  },
+  {
+   "month": "1995-04",
+   "period": "1995 MAR-MAY",
+   "youth_pct": 16.1,
+   "all_pct": 8.8
+  },
+  {
+   "month": "1995-05",
+   "period": "1995 APR-JUN",
+   "youth_pct": 15.9,
+   "all_pct": 8.7
+  },
+  {
+   "month": "1995-06",
+   "period": "1995 MAY-JUL",
+   "youth_pct": 15.8,
+   "all_pct": 8.7
+  },
+  {
+   "month": "1995-07",
+   "period": "1995 JUN-AUG",
+   "youth_pct": 15.6,
+   "all_pct": 8.6
+  },
+  {
+   "month": "1995-08",
+   "period": "1995 JUL-SEP",
+   "youth_pct": 15.5,
+   "all_pct": 8.6
+  },
+  {
+   "month": "1995-09",
+   "period": "1995 AUG-OCT",
+   "youth_pct": 15.5,
+   "all_pct": 8.6
+  },
+  {
+   "month": "1995-10",
+   "period": "1995 SEP-NOV",
+   "youth_pct": 15.5,
+   "all_pct": 8.6
+  },
+  {
+   "month": "1995-11",
+   "period": "1995 OCT-DEC",
+   "youth_pct": 15.1,
+   "all_pct": 8.3
+  },
+  {
+   "month": "1995-12",
+   "period": "1995 NOV-JAN",
+   "youth_pct": 15.2,
+   "all_pct": 8.4
+  },
+  {
+   "month": "1996-01",
+   "period": "1995 DEC-FEB",
+   "youth_pct": 15.2,
+   "all_pct": 8.3
+  },
+  {
+   "month": "1996-02",
+   "period": "1996 JAN-MAR",
+   "youth_pct": 15.3,
+   "all_pct": 8.2
+  },
+  {
+   "month": "1996-03",
+   "period": "1996 FEB-APR",
+   "youth_pct": 15.6,
+   "all_pct": 8.3
+  },
+  {
+   "month": "1996-04",
+   "period": "1996 MAR-MAY",
+   "youth_pct": 15.5,
+   "all_pct": 8.3
+  },
+  {
+   "month": "1996-05",
+   "period": "1996 APR-JUN",
+   "youth_pct": 15.4,
+   "all_pct": 8.3
+  },
+  {
+   "month": "1996-06",
+   "period": "1996 MAY-JUL",
+   "youth_pct": 15.3,
+   "all_pct": 8.2
+  },
+  {
+   "month": "1996-07",
+   "period": "1996 JUN-AUG",
+   "youth_pct": 15.1,
+   "all_pct": 8.1
+  },
+  {
+   "month": "1996-08",
+   "period": "1996 JUL-SEP",
+   "youth_pct": 15.4,
+   "all_pct": 8.1
+  },
+  {
+   "month": "1996-09",
+   "period": "1996 AUG-OCT",
+   "youth_pct": 15.7,
+   "all_pct": 8.1
+  },
+  {
+   "month": "1996-10",
+   "period": "1996 SEP-NOV",
+   "youth_pct": 15.6,
+   "all_pct": 8
+  },
+  {
+   "month": "1996-11",
+   "period": "1996 OCT-DEC",
+   "youth_pct": 15.4,
+   "all_pct": 7.8
+  },
+  {
+   "month": "1996-12",
+   "period": "1996 NOV-JAN",
+   "youth_pct": 15.1,
+   "all_pct": 7.7
+  },
+  {
+   "month": "1997-01",
+   "period": "1996 DEC-FEB",
+   "youth_pct": 14.8,
+   "all_pct": 7.5
+  },
+  {
+   "month": "1997-02",
+   "period": "1997 JAN-MAR",
+   "youth_pct": 14.6,
+   "all_pct": 7.3
+  },
+  {
+   "month": "1997-03",
+   "period": "1997 FEB-APR",
+   "youth_pct": 14.2,
+   "all_pct": 7.2
+  },
+  {
+   "month": "1997-04",
+   "period": "1997 MAR-MAY",
+   "youth_pct": 14.3,
+   "all_pct": 7.2
+  },
+  {
+   "month": "1997-05",
+   "period": "1997 APR-JUN",
+   "youth_pct": 14.5,
+   "all_pct": 7.2
+  },
+  {
+   "month": "1997-06",
+   "period": "1997 MAY-JUL",
+   "youth_pct": 14.9,
+   "all_pct": 7.3
+  },
+  {
+   "month": "1997-07",
+   "period": "1997 JUN-AUG",
+   "youth_pct": 14.7,
+   "all_pct": 7.1
+  },
+  {
+   "month": "1997-08",
+   "period": "1997 JUL-SEP",
+   "youth_pct": 14,
+   "all_pct": 6.8
+  },
+  {
+   "month": "1997-09",
+   "period": "1997 AUG-OCT",
+   "youth_pct": 13.7,
+   "all_pct": 6.7
+  },
+  {
+   "month": "1997-10",
+   "period": "1997 SEP-NOV",
+   "youth_pct": 13.2,
+   "all_pct": 6.6
+  },
+  {
+   "month": "1997-11",
+   "period": "1997 OCT-DEC",
+   "youth_pct": 13.4,
+   "all_pct": 6.5
+  },
+  {
+   "month": "1997-12",
+   "period": "1997 NOV-JAN",
+   "youth_pct": 13.4,
+   "all_pct": 6.4
+  },
+  {
+   "month": "1998-01",
+   "period": "1997 DEC-FEB",
+   "youth_pct": 13.5,
+   "all_pct": 6.4
+  },
+  {
+   "month": "1998-02",
+   "period": "1998 JAN-MAR",
+   "youth_pct": 13.4,
+   "all_pct": 6.4
+  },
+  {
+   "month": "1998-03",
+   "period": "1998 FEB-APR",
+   "youth_pct": 13.4,
+   "all_pct": 6.3
+  },
+  {
+   "month": "1998-04",
+   "period": "1998 MAR-MAY",
+   "youth_pct": 13.3,
+   "all_pct": 6.3
+  },
+  {
+   "month": "1998-05",
+   "period": "1998 APR-JUN",
+   "youth_pct": 13.5,
+   "all_pct": 6.3
+  },
+  {
+   "month": "1998-06",
+   "period": "1998 MAY-JUL",
+   "youth_pct": 13.5,
+   "all_pct": 6.3
+  },
+  {
+   "month": "1998-07",
+   "period": "1998 JUN-AUG",
+   "youth_pct": 13.8,
+   "all_pct": 6.3
+  },
+  {
+   "month": "1998-08",
+   "period": "1998 JUL-SEP",
+   "youth_pct": 13.5,
+   "all_pct": 6.2
+  },
+  {
+   "month": "1998-09",
+   "period": "1998 AUG-OCT",
+   "youth_pct": 13.4,
+   "all_pct": 6.2
+  },
+  {
+   "month": "1998-10",
+   "period": "1998 SEP-NOV",
+   "youth_pct": 13.6,
+   "all_pct": 6.2
+  },
+  {
+   "month": "1998-11",
+   "period": "1998 OCT-DEC",
+   "youth_pct": 13.6,
+   "all_pct": 6.1
+  },
+  {
+   "month": "1998-12",
+   "period": "1998 NOV-JAN",
+   "youth_pct": 13.8,
+   "all_pct": 6.2
+  },
+  {
+   "month": "1999-01",
+   "period": "1998 DEC-FEB",
+   "youth_pct": 13.7,
+   "all_pct": 6.2
+  },
+  {
+   "month": "1999-02",
+   "period": "1999 JAN-MAR",
+   "youth_pct": 13.4,
+   "all_pct": 6.2
+  },
+  {
+   "month": "1999-03",
+   "period": "1999 FEB-APR",
+   "youth_pct": 13.2,
+   "all_pct": 6.2
+  },
+  {
+   "month": "1999-04",
+   "period": "1999 MAR-MAY",
+   "youth_pct": 13.2,
+   "all_pct": 6.1
+  },
+  {
+   "month": "1999-05",
+   "period": "1999 APR-JUN",
+   "youth_pct": 13.2,
+   "all_pct": 6
+  },
+  {
+   "month": "1999-06",
+   "period": "1999 MAY-JUL",
+   "youth_pct": 13,
+   "all_pct": 6
+  },
+  {
+   "month": "1999-07",
+   "period": "1999 JUN-AUG",
+   "youth_pct": 12.9,
+   "all_pct": 5.9
+  },
+  {
+   "month": "1999-08",
+   "period": "1999 JUL-SEP",
+   "youth_pct": 12.6,
+   "all_pct": 5.9
+  },
+  {
+   "month": "1999-09",
+   "period": "1999 AUG-OCT",
+   "youth_pct": 12.5,
+   "all_pct": 5.8
+  },
+  {
+   "month": "1999-10",
+   "period": "1999 SEP-NOV",
+   "youth_pct": 12.4,
+   "all_pct": 5.8
+  },
+  {
+   "month": "1999-11",
+   "period": "1999 OCT-DEC",
+   "youth_pct": 12.5,
+   "all_pct": 5.8
+  },
+  {
+   "month": "1999-12",
+   "period": "1999 NOV-JAN",
+   "youth_pct": 12.6,
+   "all_pct": 5.9
+  },
+  {
+   "month": "2000-01",
+   "period": "1999 DEC-FEB",
+   "youth_pct": 12.7,
+   "all_pct": 5.8
+  },
+  {
+   "month": "2000-02",
+   "period": "2000 JAN-MAR",
+   "youth_pct": 12.9,
+   "all_pct": 5.8
+  },
+  {
+   "month": "2000-03",
+   "period": "2000 FEB-APR",
+   "youth_pct": 12.9,
+   "all_pct": 5.7
+  },
+  {
+   "month": "2000-04",
+   "period": "2000 MAR-MAY",
+   "youth_pct": 12.8,
+   "all_pct": 5.6
+  },
+  {
+   "month": "2000-05",
+   "period": "2000 APR-JUN",
+   "youth_pct": 12.3,
+   "all_pct": 5.5
+  },
+  {
+   "month": "2000-06",
+   "period": "2000 MAY-JUL",
+   "youth_pct": 11.9,
+   "all_pct": 5.3
+  },
+  {
+   "month": "2000-07",
+   "period": "2000 JUN-AUG",
+   "youth_pct": 11.9,
+   "all_pct": 5.3
+  },
+  {
+   "month": "2000-08",
+   "period": "2000 JUL-SEP",
+   "youth_pct": 12.1,
+   "all_pct": 5.3
+  },
+  {
+   "month": "2000-09",
+   "period": "2000 AUG-OCT",
+   "youth_pct": 12.5,
+   "all_pct": 5.4
+  },
+  {
+   "month": "2000-10",
+   "period": "2000 SEP-NOV",
+   "youth_pct": 12.4,
+   "all_pct": 5.3
+  },
+  {
+   "month": "2000-11",
+   "period": "2000 OCT-DEC",
+   "youth_pct": 12.3,
+   "all_pct": 5.2
+  },
+  {
+   "month": "2000-12",
+   "period": "2000 NOV-JAN",
+   "youth_pct": 12,
+   "all_pct": 5.2
+  },
+  {
+   "month": "2001-01",
+   "period": "2000 DEC-FEB",
+   "youth_pct": 12.3,
+   "all_pct": 5.2
+  },
+  {
+   "month": "2001-02",
+   "period": "2001 JAN-MAR",
+   "youth_pct": 12,
+   "all_pct": 5.1
+  },
+  {
+   "month": "2001-03",
+   "period": "2001 FEB-APR",
+   "youth_pct": 11.8,
+   "all_pct": 5
+  },
+  {
+   "month": "2001-04",
+   "period": "2001 MAR-MAY",
+   "youth_pct": 11.6,
+   "all_pct": 4.9
+  },
+  {
+   "month": "2001-05",
+   "period": "2001 APR-JUN",
+   "youth_pct": 11.7,
+   "all_pct": 5
+  },
+  {
+   "month": "2001-06",
+   "period": "2001 MAY-JUL",
+   "youth_pct": 11.7,
+   "all_pct": 5
+  },
+  {
+   "month": "2001-07",
+   "period": "2001 JUN-AUG",
+   "youth_pct": 11.9,
+   "all_pct": 5.1
+  },
+  {
+   "month": "2001-08",
+   "period": "2001 JUL-SEP",
+   "youth_pct": 11.9,
+   "all_pct": 5.1
+  },
+  {
+   "month": "2001-09",
+   "period": "2001 AUG-OCT",
+   "youth_pct": 12.1,
+   "all_pct": 5.1
+  },
+  {
+   "month": "2001-10",
+   "period": "2001 SEP-NOV",
+   "youth_pct": 12.2,
+   "all_pct": 5.1
+  },
+  {
+   "month": "2001-11",
+   "period": "2001 OCT-DEC",
+   "youth_pct": 12.4,
+   "all_pct": 5.2
+  },
+  {
+   "month": "2001-12",
+   "period": "2001 NOV-JAN",
+   "youth_pct": 12.2,
+   "all_pct": 5.2
+  },
+  {
+   "month": "2002-01",
+   "period": "2001 DEC-FEB",
+   "youth_pct": 12.1,
+   "all_pct": 5.1
+  },
+  {
+   "month": "2002-02",
+   "period": "2002 JAN-MAR",
+   "youth_pct": 12.3,
+   "all_pct": 5.2
+  },
+  {
+   "month": "2002-03",
+   "period": "2002 FEB-APR",
+   "youth_pct": 12.1,
+   "all_pct": 5.2
+  },
+  {
+   "month": "2002-04",
+   "period": "2002 MAR-MAY",
+   "youth_pct": 12.1,
+   "all_pct": 5.2
+  },
+  {
+   "month": "2002-05",
+   "period": "2002 APR-JUN",
+   "youth_pct": 11.9,
+   "all_pct": 5.2
+  },
+  {
+   "month": "2002-06",
+   "period": "2002 MAY-JUL",
+   "youth_pct": 12.1,
+   "all_pct": 5.2
+  },
+  {
+   "month": "2002-07",
+   "period": "2002 JUN-AUG",
+   "youth_pct": 12.2,
+   "all_pct": 5.2
+  },
+  {
+   "month": "2002-08",
+   "period": "2002 JUL-SEP",
+   "youth_pct": 12.2,
+   "all_pct": 5.3
+  },
+  {
+   "month": "2002-09",
+   "period": "2002 AUG-OCT",
+   "youth_pct": 12,
+   "all_pct": 5.2
+  },
+  {
+   "month": "2002-10",
+   "period": "2002 SEP-NOV",
+   "youth_pct": 12.3,
+   "all_pct": 5.2
+  },
+  {
+   "month": "2002-11",
+   "period": "2002 OCT-DEC",
+   "youth_pct": 12.3,
+   "all_pct": 5.1
+  },
+  {
+   "month": "2002-12",
+   "period": "2002 NOV-JAN",
+   "youth_pct": 12.1,
+   "all_pct": 5
+  },
+  {
+   "month": "2003-01",
+   "period": "2002 DEC-FEB",
+   "youth_pct": 12.5,
+   "all_pct": 5.1
+  },
+  {
+   "month": "2003-02",
+   "period": "2003 JAN-MAR",
+   "youth_pct": 12.8,
+   "all_pct": 5.2
+  },
+  {
+   "month": "2003-03",
+   "period": "2003 FEB-APR",
+   "youth_pct": 12.7,
+   "all_pct": 5.1
+  },
+  {
+   "month": "2003-04",
+   "period": "2003 MAR-MAY",
+   "youth_pct": 12.5,
+   "all_pct": 5
+  },
+  {
+   "month": "2003-05",
+   "period": "2003 APR-JUN",
+   "youth_pct": 12.4,
+   "all_pct": 4.9
+  },
+  {
+   "month": "2003-06",
+   "period": "2003 MAY-JUL",
+   "youth_pct": 12.7,
+   "all_pct": 5.1
+  },
+  {
+   "month": "2003-07",
+   "period": "2003 JUN-AUG",
+   "youth_pct": 12.7,
+   "all_pct": 5.1
+  },
+  {
+   "month": "2003-08",
+   "period": "2003 JUL-SEP",
+   "youth_pct": 12.4,
+   "all_pct": 5
+  },
+  {
+   "month": "2003-09",
+   "period": "2003 AUG-OCT",
+   "youth_pct": 12.1,
+   "all_pct": 5
+  },
+  {
+   "month": "2003-10",
+   "period": "2003 SEP-NOV",
+   "youth_pct": 11.8,
+   "all_pct": 4.9
+  },
+  {
+   "month": "2003-11",
+   "period": "2003 OCT-DEC",
+   "youth_pct": 11.8,
+   "all_pct": 4.9
+  },
+  {
+   "month": "2003-12",
+   "period": "2003 NOV-JAN",
+   "youth_pct": 11.8,
+   "all_pct": 4.8
+  },
+  {
+   "month": "2004-01",
+   "period": "2003 DEC-FEB",
+   "youth_pct": 11.9,
+   "all_pct": 4.8
+  },
+  {
+   "month": "2004-02",
+   "period": "2004 JAN-MAR",
+   "youth_pct": 12.1,
+   "all_pct": 4.8
+  },
+  {
+   "month": "2004-03",
+   "period": "2004 FEB-APR",
+   "youth_pct": 12.2,
+   "all_pct": 4.8
+  },
+  {
+   "month": "2004-04",
+   "period": "2004 MAR-MAY",
+   "youth_pct": 11.9,
+   "all_pct": 4.8
+  },
+  {
+   "month": "2004-05",
+   "period": "2004 APR-JUN",
+   "youth_pct": 12.1,
+   "all_pct": 4.8
+  },
+  {
+   "month": "2004-06",
+   "period": "2004 MAY-JUL",
+   "youth_pct": 12.2,
+   "all_pct": 4.8
+  },
+  {
+   "month": "2004-07",
+   "period": "2004 JUN-AUG",
+   "youth_pct": 12.2,
+   "all_pct": 4.7
+  },
+  {
+   "month": "2004-08",
+   "period": "2004 JUL-SEP",
+   "youth_pct": 12.4,
+   "all_pct": 4.7
+  },
+  {
+   "month": "2004-09",
+   "period": "2004 AUG-OCT",
+   "youth_pct": 12.2,
+   "all_pct": 4.7
+  },
+  {
+   "month": "2004-10",
+   "period": "2004 SEP-NOV",
+   "youth_pct": 12.3,
+   "all_pct": 4.7
+  },
+  {
+   "month": "2004-11",
+   "period": "2004 OCT-DEC",
+   "youth_pct": 12.5,
+   "all_pct": 4.7
+  },
+  {
+   "month": "2004-12",
+   "period": "2004 NOV-JAN",
+   "youth_pct": 12.5,
+   "all_pct": 4.7
+  },
+  {
+   "month": "2005-01",
+   "period": "2004 DEC-FEB",
+   "youth_pct": 12.7,
+   "all_pct": 4.8
+  },
+  {
+   "month": "2005-02",
+   "period": "2005 JAN-MAR",
+   "youth_pct": 12.3,
+   "all_pct": 4.7
+  },
+  {
+   "month": "2005-03",
+   "period": "2005 FEB-APR",
+   "youth_pct": 12.4,
+   "all_pct": 4.7
+  },
+  {
+   "month": "2005-04",
+   "period": "2005 MAR-MAY",
+   "youth_pct": 12.7,
+   "all_pct": 4.8
+  },
+  {
+   "month": "2005-05",
+   "period": "2005 APR-JUN",
+   "youth_pct": 12.8,
+   "all_pct": 4.8
+  },
+  {
+   "month": "2005-06",
+   "period": "2005 MAY-JUL",
+   "youth_pct": 12.5,
+   "all_pct": 4.7
+  },
+  {
+   "month": "2005-07",
+   "period": "2005 JUN-AUG",
+   "youth_pct": 12.6,
+   "all_pct": 4.7
+  },
+  {
+   "month": "2005-08",
+   "period": "2005 JUL-SEP",
+   "youth_pct": 12.7,
+   "all_pct": 4.7
+  },
+  {
+   "month": "2005-09",
+   "period": "2005 AUG-OCT",
+   "youth_pct": 13.6,
+   "all_pct": 4.9
+  },
+  {
+   "month": "2005-10",
+   "period": "2005 SEP-NOV",
+   "youth_pct": 13.6,
+   "all_pct": 5.1
+  },
+  {
+   "month": "2005-11",
+   "period": "2005 OCT-DEC",
+   "youth_pct": 13.9,
+   "all_pct": 5.1
+  },
+  {
+   "month": "2005-12",
+   "period": "2005 NOV-JAN",
+   "youth_pct": 13.6,
+   "all_pct": 5.1
+  },
+  {
+   "month": "2006-01",
+   "period": "2005 DEC-FEB",
+   "youth_pct": 13.7,
+   "all_pct": 5.2
+  },
+  {
+   "month": "2006-02",
+   "period": "2006 JAN-MAR",
+   "youth_pct": 13.6,
+   "all_pct": 5.2
+  },
+  {
+   "month": "2006-03",
+   "period": "2006 FEB-APR",
+   "youth_pct": 13.9,
+   "all_pct": 5.3
+  },
+  {
+   "month": "2006-04",
+   "period": "2006 MAR-MAY",
+   "youth_pct": 14.1,
+   "all_pct": 5.4
+  },
+  {
+   "month": "2006-05",
+   "period": "2006 APR-JUN",
+   "youth_pct": 14.3,
+   "all_pct": 5.5
+  },
+  {
+   "month": "2006-06",
+   "period": "2006 MAY-JUL",
+   "youth_pct": 14.5,
+   "all_pct": 5.5
+  },
+  {
+   "month": "2006-07",
+   "period": "2006 JUN-AUG",
+   "youth_pct": 14.1,
+   "all_pct": 5.5
+  },
+  {
+   "month": "2006-08",
+   "period": "2006 JUL-SEP",
+   "youth_pct": 14.3,
+   "all_pct": 5.5
+  },
+  {
+   "month": "2006-09",
+   "period": "2006 AUG-OCT",
+   "youth_pct": 14.1,
+   "all_pct": 5.5
+  },
+  {
+   "month": "2006-10",
+   "period": "2006 SEP-NOV",
+   "youth_pct": 13.8,
+   "all_pct": 5.4
+  },
+  {
+   "month": "2006-11",
+   "period": "2006 OCT-DEC",
+   "youth_pct": 14.1,
+   "all_pct": 5.5
+  },
+  {
+   "month": "2006-12",
+   "period": "2006 NOV-JAN",
+   "youth_pct": 14.3,
+   "all_pct": 5.5
+  },
+  {
+   "month": "2007-01",
+   "period": "2006 DEC-FEB",
+   "youth_pct": 14.5,
+   "all_pct": 5.5
+  },
+  {
+   "month": "2007-02",
+   "period": "2007 JAN-MAR",
+   "youth_pct": 14.5,
+   "all_pct": 5.5
+  },
+  {
+   "month": "2007-03",
+   "period": "2007 FEB-APR",
+   "youth_pct": 14.6,
+   "all_pct": 5.5
+  },
+  {
+   "month": "2007-04",
+   "period": "2007 MAR-MAY",
+   "youth_pct": 14.7,
+   "all_pct": 5.4
+  },
+  {
+   "month": "2007-05",
+   "period": "2007 APR-JUN",
+   "youth_pct": 14.7,
+   "all_pct": 5.4
+  },
+  {
+   "month": "2007-06",
+   "period": "2007 MAY-JUL",
+   "youth_pct": 14.6,
+   "all_pct": 5.3
+  },
+  {
+   "month": "2007-07",
+   "period": "2007 JUN-AUG",
+   "youth_pct": 14.6,
+   "all_pct": 5.3
+  },
+  {
+   "month": "2007-08",
+   "period": "2007 JUL-SEP",
+   "youth_pct": 14.5,
+   "all_pct": 5.3
+  },
+  {
+   "month": "2007-09",
+   "period": "2007 AUG-OCT",
+   "youth_pct": 14.2,
+   "all_pct": 5.2
+  },
+  {
+   "month": "2007-10",
+   "period": "2007 SEP-NOV",
+   "youth_pct": 14,
+   "all_pct": 5.2
+  },
+  {
+   "month": "2007-11",
+   "period": "2007 OCT-DEC",
+   "youth_pct": 13.9,
+   "all_pct": 5.2
+  },
+  {
+   "month": "2007-12",
+   "period": "2007 NOV-JAN",
+   "youth_pct": 13.8,
+   "all_pct": 5.2
+  },
+  {
+   "month": "2008-01",
+   "period": "2007 DEC-FEB",
+   "youth_pct": 13.8,
+   "all_pct": 5.2
+  },
+  {
+   "month": "2008-02",
+   "period": "2008 JAN-MAR",
+   "youth_pct": 14,
+   "all_pct": 5.2
+  },
+  {
+   "month": "2008-03",
+   "period": "2008 FEB-APR",
+   "youth_pct": 14.3,
+   "all_pct": 5.3
+  },
+  {
+   "month": "2008-04",
+   "period": "2008 MAR-MAY",
+   "youth_pct": 14,
+   "all_pct": 5.2
+  },
+  {
+   "month": "2008-05",
+   "period": "2008 APR-JUN",
+   "youth_pct": 14.6,
+   "all_pct": 5.4
+  },
+  {
+   "month": "2008-06",
+   "period": "2008 MAY-JUL",
+   "youth_pct": 14.8,
+   "all_pct": 5.5
+  },
+  {
+   "month": "2008-07",
+   "period": "2008 JUN-AUG",
+   "youth_pct": 15.3,
+   "all_pct": 5.7
+  },
+  {
+   "month": "2008-08",
+   "period": "2008 JUL-SEP",
+   "youth_pct": 15.5,
+   "all_pct": 5.9
+  },
+  {
+   "month": "2008-09",
+   "period": "2008 AUG-OCT",
+   "youth_pct": 15.9,
+   "all_pct": 6
+  },
+  {
+   "month": "2008-10",
+   "period": "2008 SEP-NOV",
+   "youth_pct": 16.3,
+   "all_pct": 6.2
+  },
+  {
+   "month": "2008-11",
+   "period": "2008 OCT-DEC",
+   "youth_pct": 16.5,
+   "all_pct": 6.4
+  },
+  {
+   "month": "2008-12",
+   "period": "2008 NOV-JAN",
+   "youth_pct": 16.8,
+   "all_pct": 6.5
+  },
+  {
+   "month": "2009-01",
+   "period": "2008 DEC-FEB",
+   "youth_pct": 16.9,
+   "all_pct": 6.7
+  },
+  {
+   "month": "2009-02",
+   "period": "2009 JAN-MAR",
+   "youth_pct": 18.1,
+   "all_pct": 7.1
+  },
+  {
+   "month": "2009-03",
+   "period": "2009 FEB-APR",
+   "youth_pct": 18.6,
+   "all_pct": 7.3
+  },
+  {
+   "month": "2009-04",
+   "period": "2009 MAR-MAY",
+   "youth_pct": 19.4,
+   "all_pct": 7.6
+  },
+  {
+   "month": "2009-05",
+   "period": "2009 APR-JUN",
+   "youth_pct": 19.4,
+   "all_pct": 7.8
+  },
+  {
+   "month": "2009-06",
+   "period": "2009 MAY-JUL",
+   "youth_pct": 19.9,
+   "all_pct": 7.9
+  },
+  {
+   "month": "2009-07",
+   "period": "2009 JUN-AUG",
+   "youth_pct": 19.9,
+   "all_pct": 7.9
+  },
+  {
+   "month": "2009-08",
+   "period": "2009 JUL-SEP",
+   "youth_pct": 20,
+   "all_pct": 7.8
+  },
+  {
+   "month": "2009-09",
+   "period": "2009 AUG-OCT",
+   "youth_pct": 20.1,
+   "all_pct": 7.9
+  },
+  {
+   "month": "2009-10",
+   "period": "2009 SEP-NOV",
+   "youth_pct": 19.6,
+   "all_pct": 7.8
+  },
+  {
+   "month": "2009-11",
+   "period": "2009 OCT-DEC",
+   "youth_pct": 19.5,
+   "all_pct": 7.8
+  },
+  {
+   "month": "2009-12",
+   "period": "2009 NOV-JAN",
+   "youth_pct": 19.6,
+   "all_pct": 7.7
+  },
+  {
+   "month": "2010-01",
+   "period": "2009 DEC-FEB",
+   "youth_pct": 19.9,
+   "all_pct": 7.9
+  },
+  {
+   "month": "2010-02",
+   "period": "2010 JAN-MAR",
+   "youth_pct": 20.3,
+   "all_pct": 8
+  },
+  {
+   "month": "2010-03",
+   "period": "2010 FEB-APR",
+   "youth_pct": 20.2,
+   "all_pct": 8
+  },
+  {
+   "month": "2010-04",
+   "period": "2010 MAR-MAY",
+   "youth_pct": 20.1,
+   "all_pct": 7.9
+  },
+  {
+   "month": "2010-05",
+   "period": "2010 APR-JUN",
+   "youth_pct": 19.9,
+   "all_pct": 7.9
+  },
+  {
+   "month": "2010-06",
+   "period": "2010 MAY-JUL",
+   "youth_pct": 19.6,
+   "all_pct": 7.8
+  },
+  {
+   "month": "2010-07",
+   "period": "2010 JUN-AUG",
+   "youth_pct": 19.8,
+   "all_pct": 7.8
+  },
+  {
+   "month": "2010-08",
+   "period": "2010 JUL-SEP",
+   "youth_pct": 19.3,
+   "all_pct": 7.8
+  },
+  {
+   "month": "2010-09",
+   "period": "2010 AUG-OCT",
+   "youth_pct": 20.2,
+   "all_pct": 7.9
+  },
+  {
+   "month": "2010-10",
+   "period": "2010 SEP-NOV",
+   "youth_pct": 20.5,
+   "all_pct": 7.9
+  },
+  {
+   "month": "2010-11",
+   "period": "2010 OCT-DEC",
+   "youth_pct": 20.6,
+   "all_pct": 7.9
+  },
+  {
+   "month": "2010-12",
+   "period": "2010 NOV-JAN",
+   "youth_pct": 20.6,
+   "all_pct": 7.9
+  },
+  {
+   "month": "2011-01",
+   "period": "2010 DEC-FEB",
+   "youth_pct": 20.5,
+   "all_pct": 7.8
+  },
+  {
+   "month": "2011-02",
+   "period": "2011 JAN-MAR",
+   "youth_pct": 20.3,
+   "all_pct": 7.8
+  },
+  {
+   "month": "2011-03",
+   "period": "2011 FEB-APR",
+   "youth_pct": 19.7,
+   "all_pct": 7.7
+  },
+  {
+   "month": "2011-04",
+   "period": "2011 MAR-MAY",
+   "youth_pct": 20.1,
+   "all_pct": 7.8
+  },
+  {
+   "month": "2011-05",
+   "period": "2011 APR-JUN",
+   "youth_pct": 20.6,
+   "all_pct": 7.9
+  },
+  {
+   "month": "2011-06",
+   "period": "2011 MAY-JUL",
+   "youth_pct": 21.3,
+   "all_pct": 8
+  },
+  {
+   "month": "2011-07",
+   "period": "2011 JUN-AUG",
+   "youth_pct": 21.9,
+   "all_pct": 8.2
+  },
+  {
+   "month": "2011-08",
+   "period": "2011 JUL-SEP",
+   "youth_pct": 22.3,
+   "all_pct": 8.3
+  },
+  {
+   "month": "2011-09",
+   "period": "2011 AUG-OCT",
+   "youth_pct": 22.4,
+   "all_pct": 8.4
+  },
+  {
+   "month": "2011-10",
+   "period": "2011 SEP-NOV",
+   "youth_pct": 22.5,
+   "all_pct": 8.5
+  },
+  {
+   "month": "2011-11",
+   "period": "2011 OCT-DEC",
+   "youth_pct": 22.3,
+   "all_pct": 8.4
+  },
+  {
+   "month": "2011-12",
+   "period": "2011 NOV-JAN",
+   "youth_pct": 22.4,
+   "all_pct": 8.3
+  },
+  {
+   "month": "2012-01",
+   "period": "2011 DEC-FEB",
+   "youth_pct": 22.1,
+   "all_pct": 8.3
+  },
+  {
+   "month": "2012-02",
+   "period": "2012 JAN-MAR",
+   "youth_pct": 21.9,
+   "all_pct": 8.2
+  },
+  {
+   "month": "2012-03",
+   "period": "2012 FEB-APR",
+   "youth_pct": 21.9,
+   "all_pct": 8.2
+  },
+  {
+   "month": "2012-04",
+   "period": "2012 MAR-MAY",
+   "youth_pct": 21.9,
+   "all_pct": 8.1
+  },
+  {
+   "month": "2012-05",
+   "period": "2012 APR-JUN",
+   "youth_pct": 21.5,
+   "all_pct": 8
+  },
+  {
+   "month": "2012-06",
+   "period": "2012 MAY-JUL",
+   "youth_pct": 21.6,
+   "all_pct": 8
+  },
+  {
+   "month": "2012-07",
+   "period": "2012 JUN-AUG",
+   "youth_pct": 20.8,
+   "all_pct": 7.9
+  },
+  {
+   "month": "2012-08",
+   "period": "2012 JUL-SEP",
+   "youth_pct": 21,
+   "all_pct": 7.8
+  },
+  {
+   "month": "2012-09",
+   "period": "2012 AUG-OCT",
+   "youth_pct": 20.5,
+   "all_pct": 7.8
+  },
+  {
+   "month": "2012-10",
+   "period": "2012 SEP-NOV",
+   "youth_pct": 20.8,
+   "all_pct": 7.8
+  },
+  {
+   "month": "2012-11",
+   "period": "2012 OCT-DEC",
+   "youth_pct": 21,
+   "all_pct": 7.8
+  },
+  {
+   "month": "2012-12",
+   "period": "2012 NOV-JAN",
+   "youth_pct": 21.4,
+   "all_pct": 7.8
+  },
+  {
+   "month": "2013-01",
+   "period": "2012 DEC-FEB",
+   "youth_pct": 21.2,
+   "all_pct": 8
+  },
+  {
+   "month": "2013-02",
+   "period": "2013 JAN-MAR",
+   "youth_pct": 20.8,
+   "all_pct": 7.8
+  },
+  {
+   "month": "2013-03",
+   "period": "2013 FEB-APR",
+   "youth_pct": 20.5,
+   "all_pct": 7.8
+  },
+  {
+   "month": "2013-04",
+   "period": "2013 MAR-MAY",
+   "youth_pct": 20.9,
+   "all_pct": 7.7
+  },
+  {
+   "month": "2013-05",
+   "period": "2013 APR-JUN",
+   "youth_pct": 21.4,
+   "all_pct": 7.7
+  },
+  {
+   "month": "2013-06",
+   "period": "2013 MAY-JUL",
+   "youth_pct": 21.3,
+   "all_pct": 7.7
+  },
+  {
+   "month": "2013-07",
+   "period": "2013 JUN-AUG",
+   "youth_pct": 21.3,
+   "all_pct": 7.7
+  },
+  {
+   "month": "2013-08",
+   "period": "2013 JUL-SEP",
+   "youth_pct": 21.2,
+   "all_pct": 7.6
+  },
+  {
+   "month": "2013-09",
+   "period": "2013 AUG-OCT",
+   "youth_pct": 20.6,
+   "all_pct": 7.4
+  },
+  {
+   "month": "2013-10",
+   "period": "2013 SEP-NOV",
+   "youth_pct": 20.2,
+   "all_pct": 7.2
+  },
+  {
+   "month": "2013-11",
+   "period": "2013 OCT-DEC",
+   "youth_pct": 20.1,
+   "all_pct": 7.2
+  },
+  {
+   "month": "2013-12",
+   "period": "2013 NOV-JAN",
+   "youth_pct": 19.9,
+   "all_pct": 7.1
+  },
+  {
+   "month": "2014-01",
+   "period": "2013 DEC-FEB",
+   "youth_pct": 19.2,
+   "all_pct": 6.9
+  },
+  {
+   "month": "2014-02",
+   "period": "2014 JAN-MAR",
+   "youth_pct": 18.9,
+   "all_pct": 6.7
+  },
+  {
+   "month": "2014-03",
+   "period": "2014 FEB-APR",
+   "youth_pct": 18.2,
+   "all_pct": 6.6
+  },
+  {
+   "month": "2014-04",
+   "period": "2014 MAR-MAY",
+   "youth_pct": 17.6,
+   "all_pct": 6.4
+  },
+  {
+   "month": "2014-05",
+   "period": "2014 APR-JUN",
+   "youth_pct": 16.7,
+   "all_pct": 6.3
+  },
+  {
+   "month": "2014-06",
+   "period": "2014 MAY-JUL",
+   "youth_pct": 16.5,
+   "all_pct": 6.1
+  },
+  {
+   "month": "2014-07",
+   "period": "2014 JUN-AUG",
+   "youth_pct": 16.1,
+   "all_pct": 6
+  },
+  {
+   "month": "2014-08",
+   "period": "2014 JUL-SEP",
+   "youth_pct": 16.4,
+   "all_pct": 6
+  },
+  {
+   "month": "2014-09",
+   "period": "2014 AUG-OCT",
+   "youth_pct": 16.6,
+   "all_pct": 5.9
+  },
+  {
+   "month": "2014-10",
+   "period": "2014 SEP-NOV",
+   "youth_pct": 17,
+   "all_pct": 5.9
+  },
+  {
+   "month": "2014-11",
+   "period": "2014 OCT-DEC",
+   "youth_pct": 16.4,
+   "all_pct": 5.7
+  },
+  {
+   "month": "2014-12",
+   "period": "2014 NOV-JAN",
+   "youth_pct": 16.2,
+   "all_pct": 5.6
+  },
+  {
+   "month": "2015-01",
+   "period": "2014 DEC-FEB",
+   "youth_pct": 16.1,
+   "all_pct": 5.6
+  },
+  {
+   "month": "2015-02",
+   "period": "2015 JAN-MAR",
+   "youth_pct": 15.9,
+   "all_pct": 5.5
+  },
+  {
+   "month": "2015-03",
+   "period": "2015 FEB-APR",
+   "youth_pct": 15.9,
+   "all_pct": 5.5
+  },
+  {
+   "month": "2015-04",
+   "period": "2015 MAR-MAY",
+   "youth_pct": 15.7,
+   "all_pct": 5.6
+  },
+  {
+   "month": "2015-05",
+   "period": "2015 APR-JUN",
+   "youth_pct": 15.7,
+   "all_pct": 5.6
+  },
+  {
+   "month": "2015-06",
+   "period": "2015 MAY-JUL",
+   "youth_pct": 15.5,
+   "all_pct": 5.5
+  },
+  {
+   "month": "2015-07",
+   "period": "2015 JUN-AUG",
+   "youth_pct": 14.7,
+   "all_pct": 5.4
+  },
+  {
+   "month": "2015-08",
+   "period": "2015 JUL-SEP",
+   "youth_pct": 14.2,
+   "all_pct": 5.3
+  },
+  {
+   "month": "2015-09",
+   "period": "2015 AUG-OCT",
+   "youth_pct": 13.6,
+   "all_pct": 5.2
+  },
+  {
+   "month": "2015-10",
+   "period": "2015 SEP-NOV",
+   "youth_pct": 13.8,
+   "all_pct": 5.1
+  },
+  {
+   "month": "2015-11",
+   "period": "2015 OCT-DEC",
+   "youth_pct": 13.6,
+   "all_pct": 5.1
+  },
+  {
+   "month": "2015-12",
+   "period": "2015 NOV-JAN",
+   "youth_pct": 13.8,
+   "all_pct": 5.1
+  },
+  {
+   "month": "2016-01",
+   "period": "2015 DEC-FEB",
+   "youth_pct": 13.8,
+   "all_pct": 5.1
+  },
+  {
+   "month": "2016-02",
+   "period": "2016 JAN-MAR",
+   "youth_pct": 13.7,
+   "all_pct": 5.1
+  },
+  {
+   "month": "2016-03",
+   "period": "2016 FEB-APR",
+   "youth_pct": 13.5,
+   "all_pct": 5
+  },
+  {
+   "month": "2016-04",
+   "period": "2016 MAR-MAY",
+   "youth_pct": 13.4,
+   "all_pct": 4.9
+  },
+  {
+   "month": "2016-05",
+   "period": "2016 APR-JUN",
+   "youth_pct": 13.6,
+   "all_pct": 4.9
+  },
+  {
+   "month": "2016-06",
+   "period": "2016 MAY-JUL",
+   "youth_pct": 13.7,
+   "all_pct": 4.9
+  },
+  {
+   "month": "2016-07",
+   "period": "2016 JUN-AUG",
+   "youth_pct": 13.8,
+   "all_pct": 5
+  },
+  {
+   "month": "2016-08",
+   "period": "2016 JUL-SEP",
+   "youth_pct": 13.3,
+   "all_pct": 4.8
+  },
+  {
+   "month": "2016-09",
+   "period": "2016 AUG-OCT",
+   "youth_pct": 13,
+   "all_pct": 4.8
+  },
+  {
+   "month": "2016-10",
+   "period": "2016 SEP-NOV",
+   "youth_pct": 12.7,
+   "all_pct": 4.8
+  },
+  {
+   "month": "2016-11",
+   "period": "2016 OCT-DEC",
+   "youth_pct": 12.5,
+   "all_pct": 4.7
+  },
+  {
+   "month": "2016-12",
+   "period": "2016 NOV-JAN",
+   "youth_pct": 12.3,
+   "all_pct": 4.7
+  },
+  {
+   "month": "2017-01",
+   "period": "2016 DEC-FEB",
+   "youth_pct": 12.5,
+   "all_pct": 4.6
+  },
+  {
+   "month": "2017-02",
+   "period": "2017 JAN-MAR",
+   "youth_pct": 12.4,
+   "all_pct": 4.6
+  },
+  {
+   "month": "2017-03",
+   "period": "2017 FEB-APR",
+   "youth_pct": 12.5,
+   "all_pct": 4.5
+  },
+  {
+   "month": "2017-04",
+   "period": "2017 MAR-MAY",
+   "youth_pct": 12.5,
+   "all_pct": 4.4
+  },
+  {
+   "month": "2017-05",
+   "period": "2017 APR-JUN",
+   "youth_pct": 12.3,
+   "all_pct": 4.4
+  },
+  {
+   "month": "2017-06",
+   "period": "2017 MAY-JUL",
+   "youth_pct": 12.1,
+   "all_pct": 4.3
+  },
+  {
+   "month": "2017-07",
+   "period": "2017 JUN-AUG",
+   "youth_pct": 12.2,
+   "all_pct": 4.3
+  },
+  {
+   "month": "2017-08",
+   "period": "2017 JUL-SEP",
+   "youth_pct": 12,
+   "all_pct": 4.3
+  },
+  {
+   "month": "2017-09",
+   "period": "2017 AUG-OCT",
+   "youth_pct": 12,
+   "all_pct": 4.2
+  },
+  {
+   "month": "2017-10",
+   "period": "2017 SEP-NOV",
+   "youth_pct": 12.2,
+   "all_pct": 4.3
+  },
+  {
+   "month": "2017-11",
+   "period": "2017 OCT-DEC",
+   "youth_pct": 12.4,
+   "all_pct": 4.4
+  },
+  {
+   "month": "2017-12",
+   "period": "2017 NOV-JAN",
+   "youth_pct": 12.3,
+   "all_pct": 4.3
+  },
+  {
+   "month": "2018-01",
+   "period": "2017 DEC-FEB",
+   "youth_pct": 12.1,
+   "all_pct": 4.2
+  },
+  {
+   "month": "2018-02",
+   "period": "2018 JAN-MAR",
+   "youth_pct": 12,
+   "all_pct": 4.2
+  },
+  {
+   "month": "2018-03",
+   "period": "2018 FEB-APR",
+   "youth_pct": 11.8,
+   "all_pct": 4.2
+  },
+  {
+   "month": "2018-04",
+   "period": "2018 MAR-MAY",
+   "youth_pct": 12,
+   "all_pct": 4.2
+  },
+  {
+   "month": "2018-05",
+   "period": "2018 APR-JUN",
+   "youth_pct": 11.3,
+   "all_pct": 4
+  },
+  {
+   "month": "2018-06",
+   "period": "2018 MAY-JUL",
+   "youth_pct": 11.3,
+   "all_pct": 4
+  },
+  {
+   "month": "2018-07",
+   "period": "2018 JUN-AUG",
+   "youth_pct": 10.9,
+   "all_pct": 4
+  },
+  {
+   "month": "2018-08",
+   "period": "2018 JUL-SEP",
+   "youth_pct": 11.2,
+   "all_pct": 4.1
+  },
+  {
+   "month": "2018-09",
+   "period": "2018 AUG-OCT",
+   "youth_pct": 11.4,
+   "all_pct": 4.1
+  },
+  {
+   "month": "2018-10",
+   "period": "2018 SEP-NOV",
+   "youth_pct": 11.7,
+   "all_pct": 4
+  },
+  {
+   "month": "2018-11",
+   "period": "2018 OCT-DEC",
+   "youth_pct": 11.8,
+   "all_pct": 4
+  },
+  {
+   "month": "2018-12",
+   "period": "2018 NOV-JAN",
+   "youth_pct": 11.5,
+   "all_pct": 3.9
+  },
+  {
+   "month": "2019-01",
+   "period": "2018 DEC-FEB",
+   "youth_pct": 11.3,
+   "all_pct": 4
+  },
+  {
+   "month": "2019-02",
+   "period": "2019 JAN-MAR",
+   "youth_pct": 11,
+   "all_pct": 3.8
+  },
+  {
+   "month": "2019-03",
+   "period": "2019 FEB-APR",
+   "youth_pct": 11.2,
+   "all_pct": 3.8
+  },
+  {
+   "month": "2019-04",
+   "period": "2019 MAR-MAY",
+   "youth_pct": 11.5,
+   "all_pct": 3.8
+  },
+  {
+   "month": "2019-05",
+   "period": "2019 APR-JUN",
+   "youth_pct": 11.6,
+   "all_pct": 3.9
+  },
+  {
+   "month": "2019-06",
+   "period": "2019 MAY-JUL",
+   "youth_pct": 11.6,
+   "all_pct": 3.9
+  },
+  {
+   "month": "2019-07",
+   "period": "2019 JUN-AUG",
+   "youth_pct": 11.8,
+   "all_pct": 3.9
+  },
+  {
+   "month": "2019-08",
+   "period": "2019 JUL-SEP",
+   "youth_pct": 11.9,
+   "all_pct": 3.9
+  },
+  {
+   "month": "2019-09",
+   "period": "2019 AUG-OCT",
+   "youth_pct": 11.4,
+   "all_pct": 3.8
+  },
+  {
+   "month": "2019-10",
+   "period": "2019 SEP-NOV",
+   "youth_pct": 11.4,
+   "all_pct": 3.8
+  },
+  {
+   "month": "2019-11",
+   "period": "2019 OCT-DEC",
+   "youth_pct": 11.2,
+   "all_pct": 3.7
+  },
+  {
+   "month": "2019-12",
+   "period": "2019 NOV-JAN",
+   "youth_pct": 11.7,
+   "all_pct": 3.9
+  },
+  {
+   "month": "2020-01",
+   "period": "2019 DEC-FEB",
+   "youth_pct": 11.8,
+   "all_pct": 3.9
+  },
+  {
+   "month": "2020-02",
+   "period": "2020 JAN-MAR",
+   "youth_pct": 12.4,
+   "all_pct": 4.1
+  },
+  {
+   "month": "2020-03",
+   "period": "2020 FEB-APR",
+   "youth_pct": 12.8,
+   "all_pct": 4.1
+  },
+  {
+   "month": "2020-04",
+   "period": "2020 MAR-MAY",
+   "youth_pct": 13,
+   "all_pct": 4.1
+  },
+  {
+   "month": "2020-05",
+   "period": "2020 APR-JUN",
+   "youth_pct": 13,
+   "all_pct": 4.1
+  },
+  {
+   "month": "2020-06",
+   "period": "2020 MAY-JUL",
+   "youth_pct": 13.9,
+   "all_pct": 4.4
+  },
+  {
+   "month": "2020-07",
+   "period": "2020 JUN-AUG",
+   "youth_pct": 14.7,
+   "all_pct": 4.6
+  },
+  {
+   "month": "2020-08",
+   "period": "2020 JUL-SEP",
+   "youth_pct": 15.2,
+   "all_pct": 5
+  },
+  {
+   "month": "2020-09",
+   "period": "2020 AUG-OCT",
+   "youth_pct": 15.2,
+   "all_pct": 5.2
+  },
+  {
+   "month": "2020-10",
+   "period": "2020 SEP-NOV",
+   "youth_pct": 14.8,
+   "all_pct": 5.2
+  },
+  {
+   "month": "2020-11",
+   "period": "2020 OCT-DEC",
+   "youth_pct": 14.8,
+   "all_pct": 5.3
+  },
+  {
+   "month": "2020-12",
+   "period": "2020 NOV-JAN",
+   "youth_pct": 14.7,
+   "all_pct": 5.2
+  },
+  {
+   "month": "2021-01",
+   "period": "2020 DEC-FEB",
+   "youth_pct": 14.6,
+   "all_pct": 5
+  },
+  {
+   "month": "2021-02",
+   "period": "2021 JAN-MAR",
+   "youth_pct": 13.7,
+   "all_pct": 4.9
+  },
+  {
+   "month": "2021-03",
+   "period": "2021 FEB-APR",
+   "youth_pct": 13.6,
+   "all_pct": 4.8
+  },
+  {
+   "month": "2021-04",
+   "period": "2021 MAR-MAY",
+   "youth_pct": 13.3,
+   "all_pct": 4.8
+  },
+  {
+   "month": "2021-05",
+   "period": "2021 APR-JUN",
+   "youth_pct": 12.9,
+   "all_pct": 4.7
+  },
+  {
+   "month": "2021-06",
+   "period": "2021 MAY-JUL",
+   "youth_pct": 12.9,
+   "all_pct": 4.6
+  },
+  {
+   "month": "2021-07",
+   "period": "2021 JUN-AUG",
+   "youth_pct": 12.4,
+   "all_pct": 4.5
+  },
+  {
+   "month": "2021-08",
+   "period": "2021 JUL-SEP",
+   "youth_pct": 11.9,
+   "all_pct": 4.4
+  },
+  {
+   "month": "2021-09",
+   "period": "2021 AUG-OCT",
+   "youth_pct": 11.4,
+   "all_pct": 4.3
+  },
+  {
+   "month": "2021-10",
+   "period": "2021 SEP-NOV",
+   "youth_pct": 11.2,
+   "all_pct": 4.2
+  },
+  {
+   "month": "2021-11",
+   "period": "2021 OCT-DEC",
+   "youth_pct": 11.3,
+   "all_pct": 4.2
+  },
+  {
+   "month": "2021-12",
+   "period": "2021 NOV-JAN",
+   "youth_pct": 11.4,
+   "all_pct": 4.1
+  },
+  {
+   "month": "2022-01",
+   "period": "2021 DEC-FEB",
+   "youth_pct": 11.4,
+   "all_pct": 3.9
+  },
+  {
+   "month": "2022-02",
+   "period": "2022 JAN-MAR",
+   "youth_pct": 10.7,
+   "all_pct": 3.8
+  },
+  {
+   "month": "2022-03",
+   "period": "2022 FEB-APR",
+   "youth_pct": 10.9,
+   "all_pct": 3.8
+  },
+  {
+   "month": "2022-04",
+   "period": "2022 MAR-MAY",
+   "youth_pct": 10.3,
+   "all_pct": 3.7
+  },
+  {
+   "month": "2022-05",
+   "period": "2022 APR-JUN",
+   "youth_pct": 10.3,
+   "all_pct": 3.8
+  },
+  {
+   "month": "2022-06",
+   "period": "2022 MAY-JUL",
+   "youth_pct": 9.3,
+   "all_pct": 3.6
+  },
+  {
+   "month": "2022-07",
+   "period": "2022 JUN-AUG",
+   "youth_pct": 9.4,
+   "all_pct": 3.6
+  },
+  {
+   "month": "2022-08",
+   "period": "2022 JUL-SEP",
+   "youth_pct": 10,
+   "all_pct": 3.7
+  },
+  {
+   "month": "2022-09",
+   "period": "2022 AUG-OCT",
+   "youth_pct": 10.7,
+   "all_pct": 3.8
+  },
+  {
+   "month": "2022-10",
+   "period": "2022 SEP-NOV",
+   "youth_pct": 11.4,
+   "all_pct": 3.9
+  },
+  {
+   "month": "2022-11",
+   "period": "2022 OCT-DEC",
+   "youth_pct": 11.8,
+   "all_pct": 3.9
+  },
+  {
+   "month": "2022-12",
+   "period": "2022 NOV-JAN",
+   "youth_pct": 11.2,
+   "all_pct": 3.9
+  },
+  {
+   "month": "2023-01",
+   "period": "2022 DEC-FEB",
+   "youth_pct": 11.5,
+   "all_pct": 4
+  },
+  {
+   "month": "2023-02",
+   "period": "2023 JAN-MAR",
+   "youth_pct": 11.7,
+   "all_pct": 4
+  },
+  {
+   "month": "2023-03",
+   "period": "2023 FEB-APR",
+   "youth_pct": 11.3,
+   "all_pct": 3.9
+  },
+  {
+   "month": "2023-04",
+   "period": "2023 MAR-MAY",
+   "youth_pct": 11.4,
+   "all_pct": 4
+  },
+  {
+   "month": "2023-05",
+   "period": "2023 APR-JUN",
+   "youth_pct": 12.3,
+   "all_pct": 4.2
+  },
+  {
+   "month": "2023-06",
+   "period": "2023 MAY-JUL",
+   "youth_pct": 13.1,
+   "all_pct": 4.4
+  },
+  {
+   "month": "2023-07",
+   "period": "2023 JUN-AUG",
+   "youth_pct": 13,
+   "all_pct": 4.3
+  },
+  {
+   "month": "2023-08",
+   "period": "2023 JUL-SEP",
+   "youth_pct": 11.9,
+   "all_pct": 4.1
+  },
+  {
+   "month": "2023-09",
+   "period": "2023 AUG-OCT",
+   "youth_pct": 12,
+   "all_pct": 4
+  },
+  {
+   "month": "2023-10",
+   "period": "2023 SEP-NOV",
+   "youth_pct": 12.4,
+   "all_pct": 4
+  },
+  {
+   "month": "2023-11",
+   "period": "2023 OCT-DEC",
+   "youth_pct": 11.9,
+   "all_pct": 3.9
+  },
+  {
+   "month": "2023-12",
+   "period": "2023 NOV-JAN",
+   "youth_pct": 12.3,
+   "all_pct": 4.1
+  },
+  {
+   "month": "2024-01",
+   "period": "2023 DEC-FEB",
+   "youth_pct": 12.8,
+   "all_pct": 4.2
+  },
+  {
+   "month": "2024-02",
+   "period": "2024 JAN-MAR",
+   "youth_pct": 13.2,
+   "all_pct": 4.3
+  },
+  {
+   "month": "2024-03",
+   "period": "2024 FEB-APR",
+   "youth_pct": 13.6,
+   "all_pct": 4.4
+  },
+  {
+   "month": "2024-04",
+   "period": "2024 MAR-MAY",
+   "youth_pct": 13.9,
+   "all_pct": 4.4
+  },
+  {
+   "month": "2024-05",
+   "period": "2024 APR-JUN",
+   "youth_pct": 13.5,
+   "all_pct": 4.2
+  },
+  {
+   "month": "2024-06",
+   "period": "2024 MAY-JUL",
+   "youth_pct": 14.5,
+   "all_pct": 4.2
+  },
+  {
+   "month": "2024-07",
+   "period": "2024 JUN-AUG",
+   "youth_pct": 13.8,
+   "all_pct": 4.1
+  },
+  {
+   "month": "2024-08",
+   "period": "2024 JUL-SEP",
+   "youth_pct": 14.6,
+   "all_pct": 4.3
+  },
+  {
+   "month": "2024-09",
+   "period": "2024 AUG-OCT",
+   "youth_pct": 13.6,
+   "all_pct": 4.2
+  },
+  {
+   "month": "2024-10",
+   "period": "2024 SEP-NOV",
+   "youth_pct": 14.4,
+   "all_pct": 4.4
+  },
+  {
+   "month": "2024-11",
+   "period": "2024 OCT-DEC",
+   "youth_pct": 14.7,
+   "all_pct": 4.4
+  },
+  {
+   "month": "2024-12",
+   "period": "2024 NOV-JAN",
+   "youth_pct": 14.6,
+   "all_pct": 4.4
+  },
+  {
+   "month": "2025-01",
+   "period": "2024 DEC-FEB",
+   "youth_pct": 14.6,
+   "all_pct": 4.5
+  },
+  {
+   "month": "2025-02",
+   "period": "2025 JAN-MAR",
+   "youth_pct": 14.2,
+   "all_pct": 4.6
+  },
+  {
+   "month": "2025-03",
+   "period": "2025 FEB-APR",
+   "youth_pct": 14.4,
+   "all_pct": 4.6
+  },
+  {
+   "month": "2025-04",
+   "period": "2025 MAR-MAY",
+   "youth_pct": 14.2,
+   "all_pct": 4.7
+  },
+  {
+   "month": "2025-05",
+   "period": "2025 APR-JUN",
+   "youth_pct": 14.3,
+   "all_pct": 4.7
+  },
+  {
+   "month": "2025-06",
+   "period": "2025 MAY-JUL",
+   "youth_pct": 14.3,
+   "all_pct": 4.7
+  },
+  {
+   "month": "2025-07",
+   "period": "2025 JUN-AUG",
+   "youth_pct": 14.6,
+   "all_pct": 4.8
+  },
+  {
+   "month": "2025-08",
+   "period": "2025 JUL-SEP",
+   "youth_pct": 15.3,
+   "all_pct": 5
+  },
+  {
+   "month": "2025-09",
+   "period": "2025 AUG-OCT",
+   "youth_pct": 15.9,
+   "all_pct": 5.1
+  },
+  {
+   "month": "2025-10",
+   "period": "2025 SEP-NOV",
+   "youth_pct": 15.9,
+   "all_pct": 5.1
+  },
+  {
+   "month": "2025-11",
+   "period": "2025 OCT-DEC",
+   "youth_pct": 16.1,
+   "all_pct": 5.2
+  },
+  {
+   "month": "2025-12",
+   "period": "2025 NOV-JAN",
+   "youth_pct": 16.1,
+   "all_pct": 5.2
+  },
+  {
+   "month": "2026-01",
+   "period": "2025 DEC-FEB",
+   "youth_pct": 15.9,
+   "all_pct": 4.9
+  },
+  {
+   "month": "2026-02",
+   "period": "2026 JAN-MAR",
+   "youth_pct": 16.2,
+   "all_pct": 5
+  },
+  {
+   "month": "2026-03",
+   "period": "2026 FEB-APR",
+   "youth_pct": 16.2,
+   "all_pct": 4.9
+  },
+  {
+   "month": "2026-04",
+   "period": "2026 MAR-MAY",
+   "youth_pct": 16.4,
+   "all_pct": 4.9
+  },
+  {
+   "month": "2026-05",
+   "period": "2026 APR-JUN",
+   "youth_pct": 16.2,
+   "all_pct": 4.9
+  },
+  {
+   "month": "2026-06",
+   "period": "2026 MAY-JUL",
+   "youth_pct": 16.4,
+   "all_pct": 4.9
+  },
+  {
+   "month": "2026-07",
+   "period": "2026 JUN-AUG",
+   "youth_pct": 15.6,
+   "all_pct": 4.7
+  }
+ ],
+ "alaska_pfd": [
+  {
+   "year": 1982,
+   "dividend_usd": 1000,
+   "applications_paid": 470897,
+   "population": 464300
+  },
+  {
+   "year": 1983,
+   "dividend_usd": 386.15,
+   "applications_paid": 458213,
+   "population": 499100
+  },
+  {
+   "year": 1984,
+   "dividend_usd": 331.29,
+   "applications_paid": 482135,
+   "population": 524000
+  },
+  {
+   "year": 1985,
+   "dividend_usd": 404,
+   "applications_paid": 519413,
+   "population": 543900
+  },
+  {
+   "year": 1986,
+   "dividend_usd": 556.26,
+   "applications_paid": 533315,
+   "population": 550700
+  },
+  {
+   "year": 1987,
+   "dividend_usd": 708.19,
+   "applications_paid": 530594,
+   "population": 541300
+  },
+  {
+   "year": 1988,
+   "dividend_usd": 826.93,
+   "applications_paid": 519724,
+   "population": 535000
+  },
+  {
+   "year": 1989,
+   "dividend_usd": 873.16,
+   "applications_paid": 508710,
+   "population": 538900
+  },
+  {
+   "year": 1990,
+   "dividend_usd": 952.63,
+   "applications_paid": 498447,
+   "population": 553171
+  },
+  {
+   "year": 1991,
+   "dividend_usd": 931.34,
+   "applications_paid": 512764,
+   "population": 569054
+  },
+  {
+   "year": 1992,
+   "dividend_usd": 915.84,
+   "applications_paid": 523099,
+   "population": 586722
+  },
+  {
+   "year": 1993,
+   "dividend_usd": 949.46,
+   "applications_paid": 528399,
+   "population": 596906
+  },
+  {
+   "year": 1994,
+   "dividend_usd": 983.9,
+   "applications_paid": 535178,
+   "population": 600622
+  },
+  {
+   "year": 1995,
+   "dividend_usd": 990.3,
+   "applications_paid": 542397,
+   "population": 601581
+  },
+  {
+   "year": 1996,
+   "dividend_usd": 1130.68,
+   "applications_paid": 546651,
+   "population": 605212
+  },
+  {
+   "year": 1997,
+   "dividend_usd": 1296.54,
+   "applications_paid": 555289,
+   "population": 609655
+  },
+  {
+   "year": 1998,
+   "dividend_usd": 1540.88,
+   "applications_paid": 565657,
+   "population": 617082
+  },
+  {
+   "year": 1999,
+   "dividend_usd": 1769.84,
+   "applications_paid": 573324,
+   "population": 622000
+  },
+  {
+   "year": 2000,
+   "dividend_usd": 1963.86,
+   "applications_paid": 583633,
+   "population": 627533
+  },
+  {
+   "year": 2001,
+   "dividend_usd": 1850.28,
+   "applications_paid": 586848,
+   "population": 632241
+  },
+  {
+   "year": 2002,
+   "dividend_usd": 1540.76,
+   "applications_paid": 590031,
+   "population": 640544
+  },
+  {
+   "year": 2003,
+   "dividend_usd": 1107.56,
+   "applications_paid": 596176,
+   "population": 647747
+  },
+  {
+   "year": 2004,
+   "dividend_usd": 919.84,
+   "applications_paid": 599992,
+   "population": 656834
+  },
+  {
+   "year": 2005,
+   "dividend_usd": 845.76,
+   "applications_paid": 597639,
+   "population": 663253
+  },
+  {
+   "year": 2006,
+   "dividend_usd": 1106.96,
+   "applications_paid": 595166,
+   "population": 670053
+  },
+  {
+   "year": 2007,
+   "dividend_usd": 1654,
+   "applications_paid": 600278,
+   "population": 674510
+  },
+  {
+   "year": 2008,
+   "dividend_usd": 2069,
+   "applications_paid": 616484,
+   "population": 679720
+  },
+  {
+   "year": 2009,
+   "dividend_usd": 1305,
+   "applications_paid": 624888,
+   "population": 692314
+  },
+  {
+   "year": 2010,
+   "dividend_usd": 1281,
+   "applications_paid": 637873,
+   "population": 710231
+  },
+  {
+   "year": 2011,
+   "dividend_usd": 1174,
+   "applications_paid": 644959,
+   "population": 722190
+  },
+  {
+   "year": 2012,
+   "dividend_usd": 878,
+   "applications_paid": 641644,
+   "population": 732298
+  },
+  {
+   "year": 2013,
+   "dividend_usd": 900,
+   "applications_paid": 634366,
+   "population": 736399
+  },
+  {
+   "year": 2014,
+   "dividend_usd": 1884,
+   "applications_paid": 637289,
+   "population": 735601
+  },
+  {
+   "year": 2015,
+   "dividend_usd": 2072,
+   "applications_paid": 641561,
+   "population": 737625
+  },
+  {
+   "year": 2016,
+   "dividend_usd": 1022,
+   "applications_paid": 638178,
+   "population": 739828
+  },
+  {
+   "year": 2017,
+   "dividend_usd": 1100,
+   "applications_paid": 633005,
+   "population": 737847
+  },
+  {
+   "year": 2018,
+   "dividend_usd": 1600,
+   "applications_paid": 639247,
+   "population": 736239
+  },
+  {
+   "year": 2019,
+   "dividend_usd": 1606,
+   "applications_paid": 633243,
+   "population": 732734
+  },
+  {
+   "year": 2020,
+   "dividend_usd": 992,
+   "applications_paid": 630937,
+   "population": 728903
+  },
+  {
+   "year": 2021,
+   "dividend_usd": 1114,
+   "applications_paid": 636895,
+   "population": 732670
+  },
+  {
+   "year": 2022,
+   "dividend_usd": 3284,
+   "applications_paid": 625912,
+   "population": 733583
+  },
+  {
+   "year": 2023,
+   "dividend_usd": 1312,
+   "applications_paid": 624354,
+   "population": 733406
+  },
+  {
+   "year": 2024,
+   "dividend_usd": 1702,
+   "applications_paid": 624489,
+   "population": 741147
+  },
+  {
+   "year": 2025,
+   "dividend_usd": 1000,
+   "applications_paid": 618863,
+   "population": 738737
+  }
+ ],
+ "norway_fund": {
+  "fund": "Government Pension Fund Global",
+  "place": "Norway",
+  "assets_bn": 22683,
+  "currency": "NOK",
+  "assets_as_of": "End of first half 2026",
+  "gdp_bn": 5511.3,
+  "gdp_year": 2025,
+  "pays_dividend": "No (funds the state budget)",
+  "source": "nbim"
+ },
+ "releases": [
+  {
+   "series": "Wage share and current account",
+   "title": "UK Economic Accounts (DTWM, YBHA, AA6H)",
+   "publisher": "ONS",
+   "last_release": "30 September 2026",
+   "next_release": "22 December 2026",
+   "next_release_iso": "2026-12-22"
+  },
+  {
+   "series": "Unemployment by age",
+   "title": "Labour market overview (MGWY, MGSX)",
+   "publisher": "ONS",
+   "last_release": "20 October 2026",
+   "next_release": "17 November 2026",
+   "next_release_iso": "2026-11-17"
+  },
+  {
+   "series": "Alaska dividend amounts",
+   "title": "Summary of dividend applications and payments",
+   "publisher": "Alaska Dept of Revenue",
+   "last_release": "2025 dividend",
+   "next_release": "Each October",
+   "next_release_iso": "2026-10-31"
+  }
+ ]
+}
